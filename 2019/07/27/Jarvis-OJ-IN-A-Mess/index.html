@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="新先生">
 <meta property="og:description" content="查看源码发现index.phps文件，打开开始代码审计   1234567891011121314151617181920212223242526&amp;lt;?phpif(!$_GET[&apos;id&apos;])&amp;#123;	header(&apos;Location: index.php?id=1&apos;);	exit();&amp;#125;$id=$_GET[&apos;id&apos;];$a=$_GET[&apos;a&apos;];$b=$_GET[&apos;b&apos;];if(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/Jarvis-OJ-IN-A-Mess/Image.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/Jarvis-OJ-IN-A-Mess/Image.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/Jarvis-OJ-IN-A-Mess/Image.png">
 <meta property="og:image" content="en-resource://database/11567:1">
 <meta property="og:image" content="en-resource://database/11569:1">
@@ -104,11 +104,11 @@
 <meta property="og:image" content="en-resource://database/11583:1">
 <meta property="og:image" content="en-resource://database/11585:1">
 <meta property="og:image" content="en-resource://database/11587:1">
-<meta property="og:updated_time" content="2019-07-26T23:02:49.004Z">
+<meta property="og:updated_time" content="2019-07-26T23:09:59.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jarvis OJ IN A Mess">
 <meta name="twitter:description" content="查看源码发现index.phps文件，打开开始代码审计   1234567891011121314151617181920212223242526&amp;lt;?phpif(!$_GET[&apos;id&apos;])&amp;#123;	header(&apos;Location: index.php?id=1&apos;);	exit();&amp;#125;$id=$_GET[&apos;id&apos;];$a=$_GET[&apos;a&apos;];$b=$_GET[&apos;b&apos;];if(">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/Jarvis-OJ-IN-A-Mess/Image.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/Jarvis-OJ-IN-A-Mess/Image.jpg">
 
 
 
@@ -396,7 +396,7 @@
 <p>他的意思就是判断某个字符串中是否有1114，这个某个字符串就是111加上b的第一个字符。这个条件很容易满足，但是问题就在后面，它又要求b的第一个字符不等于四。前后矛盾啊。<strong>在这里我们使用00截断</strong><br><strong>而且变量a的值是一个文件，不是一个字符串。</strong>因此我们就不能将对应的字符串传递给a，使得data为对应的字符串。<strong>在这里我们使用php伪协议。</strong>那么php伪协议到底什么呢？<br>php://input 是个可以访问请求的原始数据的只读流。，我们的变量a必须是一个文件名字，但是我们总不能在部署服务器上搭建一个文件，所以这个协议在这里充当的作用就是一个衔接的作用，我们以post方式传递参数。<br>id的值很显然不能为0，<strong>但是我们可以利用弱等于</strong>。<br>那我们就开始构造payload：<br><strong>长度大于5<br>其中有1114<br>但是第四个不等等于4</strong></p>
 <hr>
 <hr>
-<p><a href="http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114" target="_blank" rel="noopener">http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114</a><br><img src="Jarvis-OJ-IN-A-Mess/Image.png" alt><br>竟然不出flag，给了一串字符。不是加密、、、也不是flag、、、前面有个/有点像目录呀，试试呗。<br><img src="Jarvis-OJ-IN-A-Mess/Image.png" alt="11"><br>后面有个id，可能是sql注入？加个单引号’<br><img src="en-resource://database/11567:1" alt="395766c1b9be18bba3b06281df5810cc.png"><br>判断列但是无论多少列都是一样的回显，肯定过滤了什么，我们试试过没过滤空格<br><img src="en-resource://database/11569:1" alt="2427505225efa9e4f2f5d1532253879f.png"><br>依旧不行，双写order 也不行。<br><img src="en-resource://database/11571:1" alt="793dc2732728436fdeedc29b501420c2.png"></p>
+<p><a href="http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114" target="_blank" rel="noopener">http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114</a><br>//<img src="Jarvis-OJ-IN-A-Mess/Image.jpg" alt><br>竟然不出flag，给了一串字符。不是加密、、、也不是flag、、、前面有个/有点像目录呀，试试呗。<br><img src="Jarvis-OJ-IN-A-Mess/Image.png" alt="11"><br>后面有个id，可能是sql注入？加个单引号’<br><img src="en-resource://database/11567:1" alt="395766c1b9be18bba3b06281df5810cc.png"><br>判断列但是无论多少列都是一样的回显，肯定过滤了什么，我们试试过没过滤空格<br><img src="en-resource://database/11569:1" alt="2427505225efa9e4f2f5d1532253879f.png"><br>依旧不行，双写order 也不行。<br><img src="en-resource://database/11571:1" alt="793dc2732728436fdeedc29b501420c2.png"></p>
 <hr>
 <p><strong>既然这样那么我们就开始苦逼的sql注入之路吧</strong></p>
 <hr>
