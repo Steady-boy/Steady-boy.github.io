@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>新先生</title>
+  
+  <subtitle>乘物游心 上善若水</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-07-26T14:02:33.467Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>新先生</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jarvis OJ IN A Mess</title>
+    <link href="http://yoursite.com/2019/07/26/sql1/"/>
+    <id>http://yoursite.com/2019/07/26/sql1/</id>
+    <published>2019-07-26T13:11:30.000Z</published>
+    <updated>2019-07-26T14:02:33.467Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;查看源码发现index.phps文件，打开开始代码审计&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Jarvis OJ wp" scheme="http://yoursite.com/tags/Jarvis-OJ-wp/"/>
+    
+  </entry>
+  
+</feed>

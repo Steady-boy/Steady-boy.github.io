@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Jarvis OJ IN A Mess]]></title>
+    <url>%2F2019%2F07%2F26%2Fsql1%2F</url>
+    <content type="text"><![CDATA[查看源码发现index.phps文件，打开开始代码审计 1234567891011121314151617181920212223242526&lt;?phpif(!$_GET['id'])&#123; header('Location: index.php?id=1'); exit();&#125;$id=$_GET['id'];$a=$_GET['a'];$b=$_GET['b'];if(stripos($a,'.'))&#123; echo 'Hahahahahaha'; return ;&#125;$data = @file_get_contents($a,'r');if($data=="1112 is a nice lab!" and $id==0 and strlen($b)&gt;5 and eregi("111".substr($b,0,1),"1114") and substr($b,0,1)!=4)&#123; require("flag.txt");&#125;else&#123; print "work harder!harder!harder!";&#125;?&gt; 代码解释：1.判断id参数存不存在，如果不存在跳转到index.php?id=12.获取三个变量id，a，b3.判断a变量中有没有’.’4.打开文件a,并且放到字符串r中5.1)data变量等于一个字符串2)id=03)b变量的长度大于54)ereg()函数用指定的模式搜索一个字符串中指定的字符串,如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。eregi函数对大小写不敏感。6.file_get_contents 函数返回字符串的结果，可以赋值给变量，也可以直接进行使用：返回结果直接使用的例子代码：echo file_get_contents(‘a.txt’);此语句直接显示a.txt的文件内容返回结果赋值给变量的例子代码：$s=file_get_contents(‘a.txt’);接下来可以对字符串变量$s进行使用，例如获取部分内容。 @符号用来屏蔽错误信息，当函数不存在或者包含文件不存在时，不会显示错误信息。 eregi存在%00截断，而substr没有，也就是说eregi如果第一个字符是%00，那它就跳过这个再检测。 12345678910&lt; ?php if (ereg(&quot;c&quot;,&quot;abcdef&quot;))&#123; //说明：判断abcdef中是否含有字母c echo &quot;通过&quot;; &#125;else&#123; echo &quot;错误&quot;; &#125; ?&gt; eregi(&quot;111&quot;.substr($b,0,1),&quot;1114&quot;) 他的意思就是判断某个字符串中是否有1114，这个某个字符串就是111加上b的第一个字符。这个条件很容易满足，但是问题就在后面，它又要求b的第一个字符不等于四。前后矛盾啊。在这里我们使用00截断而且变量a的值是一个文件，不是一个字符串。因此我们就不能将对应的字符串传递给a，使得data为对应的字符串。在这里我们使用php伪协议。那么php伪协议到底什么呢？php://input 是个可以访问请求的原始数据的只读流。，我们的变量a必须是一个文件名字，但是我们总不能在部署服务器上搭建一个文件，所以这个协议在这里充当的作用就是一个衔接的作用，我们以post方式传递参数。id的值很显然不能为0，但是我们可以利用弱等于。那我们就开始构造payload：长度大于5其中有1114但是第四个不等等于4]]></content>
+      <tags>
+        <tag>Jarvis OJ wp</tag>
+      </tags>
+  </entry>
+</search>
