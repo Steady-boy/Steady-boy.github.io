@@ -89,12 +89,15 @@
 <meta property="og:site_name" content="新先生">
 <meta property="og:description" content="面对这道题我完全小白，所以我必须详细解释。  基础知识 什么是php框架？框架思想就是提供一种可以在多个应用程序中使用的设计。所有应用程序都有大量通用的基本内容 —— 具体地说，就是某类与数据库的接口、某些应用程序逻辑、应用程序呈现给用户的内容等。如果您编写过许多 PHP 应用程序，则会知道这些基本内容是什么。您可能已经编写过一组函数或从数据库中读取数据和向数据库中写入数据的类，可能已经使用过诸如">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/07/29/Jarvis-OJ-api调用/Jarvis-OJ-api%E8%B0%83%E7%94%A8/Image.png">
-<meta property="og:updated_time" content="2019-07-29T01:34:42.572Z">
+<meta property="og:image" content="http://i2.tiimg.com/695378/02f635f15caadf54.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/f314ffcd700c0757.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/bf20b76bd6791e9c.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/19c21b84d284e801.png">
+<meta property="og:updated_time" content="2019-07-29T01:41:24.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jarvis-OJ-api调用">
 <meta name="twitter:description" content="面对这道题我完全小白，所以我必须详细解释。  基础知识 什么是php框架？框架思想就是提供一种可以在多个应用程序中使用的设计。所有应用程序都有大量通用的基本内容 —— 具体地说，就是某类与数据库的接口、某些应用程序逻辑、应用程序呈现给用户的内容等。如果您编写过许多 PHP 应用程序，则会知道这些基本内容是什么。您可能已经编写过一组函数或从数据库中读取数据和向数据库中写入数据的类，可能已经使用过诸如">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/29/Jarvis-OJ-api调用/Jarvis-OJ-api%E8%B0%83%E7%94%A8/Image.png">
+<meta name="twitter:image" content="http://i2.tiimg.com/695378/02f635f15caadf54.png">
 
 
 
@@ -375,7 +378,7 @@
 <h4 id="xxe漏洞详解"><a href="#xxe漏洞详解" class="headerlink" title="xxe漏洞详解"></a><strong>xxe漏洞详解</strong></h4><p>此部分在我的博客有详细解说,一定要先看看去看</p>
 <hr>
 <h4 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h4><hr>
-<p>我们一开始看到一个登陆框，输入没什么反省，只是回显字段，后来我们抓包也没什么反映，但是我们在输入参数之后进行抓包，出现反映了。<br><img src="Jarvis-OJ-api%E8%B0%83%E7%94%A8/Image.png" alt="528461d302f635f15caadf5433aff30a.png"><br>我们可以看到回显信息是json格式，而且content-type为application/json。application即为应用，api简称是啥应用程序编程接口，题目是啥api调用emmmmmmmm有点关系了。<br>![53745660f314ffcd700c07571feb43f6.png](Jarvis-OJ-api调用/Image [2].png)</p>
+<p>我们一开始看到一个登陆框，输入没什么反省，只是回显字段，后来我们抓包也没什么反映，但是我们在输入参数之后进行抓包，出现反映了。<br><img src="http://i2.tiimg.com/695378/02f635f15caadf54.png" alt="528461d302f635f15caadf5433aff30a.png"><br>我们可以看到回显信息是json格式，而且content-type为application/json。application即为应用，api简称是啥应用程序编程接口，题目是啥api调用emmmmmmmm有点关系了。<br><img src="http://i2.tiimg.com/695378/f314ffcd700c0757.png" alt="53745660f314ffcd700c07571feb43f6.png"></p>
 <hr>
 <p>关于content-type</p>
 <hr>
@@ -383,11 +386,11 @@
 <p>常见的媒体格式类型如下：<br>text/html ： HTML格式<br>text/plain ：纯文本格式<br>text/xml ：  XML格式<br>image/gif ：gif图片格式<br>image/jpeg ：jpg图片格式<br>image/png：png图片格式<br>以application开头的媒体格式类型：<br>application/xhtml+xml ：XHTML格式<br>application/xml     ： XML数据格式<br>application/atom+xml  ：Atom XML聚合格式<br>application/json    ： JSON数据格式<br>application/pdf       ：pdf格式<br>application/msword  ： Word文档格式<br>application/octet-stream ： 二进制流数据（如常见的文件下载） </p>
 <hr>
 <hr>
-<p>题目表述：请设法获得目标机器/home/ctf/flag.txt中的flag值。题目还出现了json，而且我们可以看到我们传入的数据以另一种的形式出现在下面，可以修改。<br>![8b0370a3bf20b76bd6791e9c57c48afb.png](Jarvis-OJ-api调用/Image [3].png)<br>这里使我们想到了xml，与xml相关的漏洞是什么？xee，xee原理我们已经了解过了所以我们开始获取flag。<br>XXE漏洞就是服务器接受从客户端发送来的xml格式数据时，xml数据中恶意的引用了外部实体，将它的值绑定为服务器的目标文件，这样在服务器返回给我们解析后的值时，就会把目标文件的内容返回给我们，我们就读取了敏感文件。</p>
+<p>题目表述：请设法获得目标机器/home/ctf/flag.txt中的flag值。题目还出现了json，而且我们可以看到我们传入的数据以另一种的形式出现在下面，可以修改。<br><img src="http://i2.tiimg.com/695378/bf20b76bd6791e9c.png" alt="8b0370a3bf20b76bd6791e9c57c48afb.png"><br>这里使我们想到了xml，与xml相关的漏洞是什么？xee，xee原理我们已经了解过了所以我们开始获取flag。<br>XXE漏洞就是服务器接受从客户端发送来的xml格式数据时，xml数据中恶意的引用了外部实体，将它的值绑定为服务器的目标文件，这样在服务器返回给我们解析后的值时，就会把目标文件的内容返回给我们，我们就读取了敏感文件。</p>
 <p>但是这道题目，默认的是json格式传递，因此首先我们更改Content-Type的值为application/xml,然后传入xml代码：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=”1.0″?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE abcd[</span></span><br><span class="line"><span class="meta">&lt;!ENTITY any SYSTEM "file:///home/ctf/flag.txt"&gt;]&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">something</span>&gt;</span>&amp;any;<span class="tag">&lt;/<span class="name">something</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>![eccc79ae19c21b84d284e8010b90b535.png](Jarvis-OJ-api调用/Image [4].png)</p>
+<p><img src="http://i2.tiimg.com/695378/19c21b84d284e801.png" alt="eccc79ae19c21b84d284e8010b90b535.png"></p>
 
       
     </div>
