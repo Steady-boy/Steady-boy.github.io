@@ -286,6 +286,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/Jarvis-OJ-api调用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="新先生">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新先生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/29/Jarvis-OJ-api调用/" itemprop="url">Jarvis-OJ-api调用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T09:28:52+08:00">
+                2019-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>面对这道题我完全小白，所以我必须详细解释。</p>
+<hr>
+<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><hr>
+<h4 id="什么是php框架？"><a href="#什么是php框架？" class="headerlink" title="什么是php框架？"></a><strong>什么是php框架？</strong></h4><p>框架思想就是提供一种可以在多个应用程序中使用的设计。所有应用程序都有大量通用的基本内容 —— 具体地说，就是某类与数据库的接口、某些应用程序逻辑、应用程序呈现给用户的内容等。如果您编写过许多 PHP 应用程序，则会知道这些基本内容是什么。您可能已经编写过一组函数或从数据库中读取数据和向数据库中写入数据的类，可能已经使用过诸如 Smarty 之类的模板引擎来管理 UI。而且一定编写过大量 PHP 代码来完成诸如分析表单提交并根据提交的数据作决定之类的事务。如果您已经编写过很多应用程序，则可能已经一次又一次地做过相同的基本工作，有时还会将一个应用程序中的代码借用到另一个应用程序中。<br>　　框架专门用于为这些常用元素(数据库交互、表示层、应用程序逻辑)提供结构，以便您可以花费更少的时间来编写数据库接口代码或者表示层接口，而花费更多的时间来编写应用程序本身。以这种方式分解应用程序，这种架构被称为模型-视图-控制器(Model-View-Controller，MVC)。模型 指数据，视图 指表示层，而控制器 指应用程序逻辑或业务逻辑。对 MVC 的完整讨论超出本文的范围，但是鼓励您研究 MVC 并深入了解 MVC 的一切(请参阅 参考资料)。<br>　　选择框架<br>　　每种语言几乎都有若干个框架可用。选择刚好满足需求的框架可能有点难，尤其是当您以前未曾使用过任何一个框架时更是如此。虽然熟悉此领域的同事和可信赖的 developerWorks 作者提供的建议和评价会十分有帮助，但是选择任何框架时实际上应当遵循的惟一一个指导原则是：框架为每个人 节省的时间和精力越多越好。如果一个框架工作得很好但是会导致产生大量支持调用，那就不是一个优秀框架。如果一个框架易于支持，但是起到的阻碍作用大于辅助开发作用，那也不是一个优秀框架。如果一个框架十分优雅，但是会导致出现支持问题和开发问题，那么这个框架也是没有用的。<br>　　选择项目框架时，考虑从上到下所有相关人员的意见，并且在评估框架时，考虑到对其他各方的影响。<br>　　当考虑采用一个框架时，请进一步审视您的应用程序，并思考该应用程序是不是需要一个框架。框架不是必需品。即使不使用框架，也可以继续编写企业应用程序。框架会对项目有帮助么?它是否会节省每个人的时间和精力?您的应用程序在框架中是否会执行得更好?它是否将提供所缺乏的稳定性?如果上面任意一个问题的答案为是，那么您应当考虑采用框架。如果所有这些问题的答案都为否，那么使用框架只会把事情变复杂。</p>
+<h4 id="什么是api？"><a href="#什么是api？" class="headerlink" title="什么是api？"></a><strong>什么是api？</strong></h4><p>从文件操作开始谈API。以C语言为例，我们使用fopen()函数可以打开一个文件，感觉非常简单。文件保存在硬盘上，要经过复杂的处理才能显示，这些细节对我们来说是透明的，由操作系统完成。也就是说，我们调用fopen()函数来通知操作系统，让操作系统打开一个文件。那么，我们如何告诉操作系统打开文件呢？</p>
+<p>看似简单的操作到底层都非常复杂，打开文件首先要扫描硬盘，找到文件的位置，然后从文件中读取一部分数据，将数据放进I/O缓冲区，放进内存；这些数据都是0、1序列，还要对照ASCII表或Unicode表”翻译“成字符，再在显示器上显示出来。这个过程如果要让程序员来完成，那简直是噩梦！怎么办呢？操作系统想了一个很好的办法，它预先把这些复杂的操作写在一个函数里面，编译成一个组件（一般是动态链接库），随操作系统一起发布，并配上说明文档，程序员只需要简单地调用这些函数就可以完成复杂的工作，让编程变得简单有趣。这些封装好的函数，就叫做API(Application Programming Interface)，即应用程序编程接口。说得更加通俗易懂一些，别人写好的代码，或者编译好的程序，提供给你使用，就叫做API。你使用了别人代码（或者程序）中的某个函数、类、对象，就叫做使用了某个API。</p>
+<p>各种编程语言自带的标准库其实也是API。这些API由编程语言的开发者们编写，安全、高效、健壮，为我们实现了常见的功能，让我们不用再重复造轮子。C语言 API 以函数的形式呈现，例如 printf()、scanf()、fopen() 等。Java API 主要以类的形式呈现，例如 String、Thread、Date 等。C++ 是在C语言的基础上进行的扩展，所以 C++ API 既包含函数也包含类。第三方库（框架）libxml2——xml的c语言版库，2个项目使用过，win和Linux下都很犀利~~比较快捷CURL—— 这个用的主要是使用了他的封装的http和https的请求，比较犀利，其中包含了openssl的内容iconv——功能强大的编码格式转化库，UTF8，Unicode等互相转化很方便openssl——C的开源密库，可以进行证书加密和https的访问的模拟提交可以和CURL配合使用cocos2d——2D游戏引擎，相比较传统的UI自己控制的重画OpenCV——开源图像库还有很多第三方（非官方）的组织机构、公司、个人提供的代码，也是一种 API。这些代码有的免费，有的收费；有的开源，有的闭源。这些代码大都针对某个特定的应用领域编写，有时候被称为框架或者库。例如基于C语言的图形界面库GTK，基于C++的网络库ACE，基于Java的大数据处理平台Hadoop，基于Python的Web开发框架Django，基于JavaScript的前端开发框架React。<br>严格的来说, API 代表：应用程序编程接口，在某些或其他方面，很多大型公司会建立自己的API提供给用户或者内部使用。<br>不过怎么用通俗的语言向你解释什么是API呢，在开发和业务中他是不是更多的含义呢，让我们后退一步看看网络是如何工作的。<br>严格的来说, API 代表：应用程序编程接口，在某些或其他方面，很多大型公司会建立自己的API提供给用户或者内部使用。<br>不过怎么用通俗的语言向你解释什么是API呢，在开发和业务中他是不是更多的含义呢，让我们后退一步看看网络是如何工作的。</p>
+<p><strong>www和远程服务器</strong><br>当我想到网络的时候，我脑海中想象了一张巨大的连接服务网络<br>每一张页面都储存在远程服务器中，而一个远程服务器并不是那么的神秘，他就是一部分用来优化请求过程的远程计算机。为了能让事情更透明，你可以在你一台可以服务整个网站到网络上的手提电脑上启动一个服务器（事实上，一个本地服务器就是在发布到公众上之前工程师需要开发网站：注：其实这句话我不是很理解，翻译得乱七八糟，原文是：a local server is what engineers use to develop websites before releasing them to the public）。当你键入<a href="http://www.facebook.com进入你的浏览器并回车的时候，一个请求就去到了faceboook的远程服务器。一旦你的浏览器接收到了响应，它就解析代码并展示页面。浏览器，也就是我们说的客户端" target="_blank" rel="noopener">www.facebook.com进入你的浏览器并回车的时候，一个请求就去到了faceboook的远程服务器。一旦你的浏览器接收到了响应，它就解析代码并展示页面。浏览器，也就是我们说的客户端</a> ，也可以不太严谨的说facebook的服务器就是个API ，这意味这每次你在网络上浏览网页的时候，你就和一些远程服务器的API发生了交互。一个API并不是等同于一整个远程服务器，他是服务器用来接受请求和发送响应的一部分</p>
+<p><strong>API就是一种为你客户提供服务的方法</strong><br>你可能听说过公司将API包做成一个产品，例如，”地下气象站“出售的就是它自己的气象数据API的 入口<br>实例场景： 你的个人小型商业网站有一个给客户注册的预约表格，你想要给你的客户提供自动创建一个谷歌日历时间的能力。<br>API 使用：这概念就是让你的网站服务器带着请求去创建一个具体的事件，你的服务器之后会接收到谷歌的响应，处理它，然后将有关信息发送回给你的浏览器，例如发送一个认证信息给你的用户。另外，你的浏览器会通过你的服务器经常直接发送API 请求到谷歌服务器。谷歌日历的API 和其他的远程服务器的API 究竟有什么不同。专业的说，不同之处在于他们的请求和响应的形式是不一样的。当你提交整个页面的时候，你的浏览器期待的是一种HTML格式的响应，这个响应里包含了一些描述性的代码，当谷歌日历API 响应的时候会返回一些数据，大多是类似与json的格式。如果你的网站服务器发出了个API 请求，那么你的网站服务器就变成了个客户端（类似与当你使用浏览器访问网站的时候你的浏览器就成了客户端一样），从用户的角度来说，API允许他们完成一些没有离开网站的动作。很多现代的网站都至少使用了一些第三方API。很多问题都有了第三方的解决方案了，无论是以函数库或者是服务的形式，使用第三方的解决方案现在已经逐渐变得更简单和更可靠。这是很常见的，开发团队将他们的应用分解到多个服务器里面，服务器通过API 相互交流。为主应用服务器提供辅助功能的服务器这方面的知识可以参考微型服务器。总得来说，当一个公司向它的用户提供了API 的时候，这就意味着他们建造了一系列的专用URL通道，用来返回纯数据形式的响应，意味这响应不会包含一些用于解释的额外开销，你期望的是一种像网站一样的图表用户界面。你的浏览器可以发送这种请求吗，当然可以，由于实际的HTTP传输都是以文本的形式进行的，你的浏览器总是能达到它能展示响应的最好状态。例如，你可以通过浏览器直接访问GitHub的API ，甚至根本不需要访问标记（=_= # 什么是访问标记…..)，当你用浏览器访问一个GitHub的用户API的时候，你将获得一个JSON形式的响应</p>
+<p><strong>A就是application</strong><br>作为结束，就多扔几个关于API 的事例吧<br>“应用”可以指很多事情，在API 里面他指代的是：<br> 1 :一个具有不同功能的软件<br> 2：整个服务器，整个app，或者是app的一小部分<br>基本上任何软件都可以从环境中有区别的分离开来，有可能在API 里成为A（也就是Application），也可能它本身就是某种API。假设你在你的代码里使用了第三方的函数库，一旦与你的代码结合了，一个函数路就成为了你真个APP里的一部分，成为软件中特殊的一部分，函数库很可能具有一个让你可以与你其他的代码相互沟通的API .这有其他的一些例子，在面对对象设计中，代码是被组织进对象的，你的应用程序可能是由上百个可以相互交流的类构成的,每个类都有一个API ，一系列公共方法和用于和其他类进行交流的的属性,一个类可能有内部的私有化属性，这意味这它是对外部环境隐藏的（不是一个API ）,在使用API 这个东西越来越普遍的今天，希望你看完本篇文章后会有更多的理解</p>
+<h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4><p>JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。它基于 ECMAScript (欧洲计算机协会制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率</p>
+<h4 id="xxe漏洞详解"><a href="#xxe漏洞详解" class="headerlink" title="xxe漏洞详解"></a><strong>xxe漏洞详解</strong></h4><p>此部分在我的博客有详细解说,一定要先看看去看</p>
+<hr>
+<h4 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h4><hr>
+<p>我们一开始看到一个登陆框，输入没什么反省，只是回显字段，后来我们抓包也没什么反映，但是我们在输入参数之后进行抓包，出现反映了。<br><img src="Jarvis-OJ-api%E8%B0%83%E7%94%A8/Image.png" alt="528461d302f635f15caadf5433aff30a.png"><br>我们可以看到回显信息是json格式，而且content-type为application/json。application即为应用，api简称是啥应用程序编程接口，题目是啥api调用emmmmmmmm有点关系了。<br>![53745660f314ffcd700c07571feb43f6.png](Jarvis-OJ-api调用/Image [2].png)</p>
+<hr>
+<p>关于content-type</p>
+<hr>
+<p>MediaType，即是Internet Media Type，互联网媒体类型；也叫做MIME类型，在Http协议消息头中，使用Content-Type来表示具体请求中的媒体类型信息。</p>
+<p>常见的媒体格式类型如下：<br>text/html ： HTML格式<br>text/plain ：纯文本格式<br>text/xml ：  XML格式<br>image/gif ：gif图片格式<br>image/jpeg ：jpg图片格式<br>image/png：png图片格式<br>以application开头的媒体格式类型：<br>application/xhtml+xml ：XHTML格式<br>application/xml     ： XML数据格式<br>application/atom+xml  ：Atom XML聚合格式<br>application/json    ： JSON数据格式<br>application/pdf       ：pdf格式<br>application/msword  ： Word文档格式<br>application/octet-stream ： 二进制流数据（如常见的文件下载） </p>
+<hr>
+<hr>
+<p>题目表述：请设法获得目标机器/home/ctf/flag.txt中的flag值。题目还出现了json，而且我们可以看到我们传入的数据以另一种的形式出现在下面，可以修改。<br>![8b0370a3bf20b76bd6791e9c57c48afb.png](Jarvis-OJ-api调用/Image [3].png)<br>这里使我们想到了xml，与xml相关的漏洞是什么？xee，xee原理我们已经了解过了所以我们开始获取flag。<br>XXE漏洞就是服务器接受从客户端发送来的xml格式数据时，xml数据中恶意的引用了外部实体，将它的值绑定为服务器的目标文件，这样在服务器返回给我们解析后的值时，就会把目标文件的内容返回给我们，我们就读取了敏感文件。</p>
+<p>但是这道题目，默认的是json格式传递，因此首先我们更改Content-Type的值为application/xml,然后传入xml代码：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=”1.0″?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE abcd[</span></span><br><span class="line"><span class="meta">&lt;!ENTITY any SYSTEM "file:///home/ctf/flag.txt"&gt;]&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">something</span>&gt;</span>&amp;any;<span class="tag">&lt;/<span class="name">something</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>![eccc79ae19c21b84d284e8010b90b535.png](Jarvis-OJ-api调用/Image [4].png)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -448,7 +596,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -461,7 +609,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
