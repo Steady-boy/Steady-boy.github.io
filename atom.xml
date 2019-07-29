@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-29T01:41:24.004Z</updated>
+  <updated>2019-07-29T01:47:44.558Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,20 +21,14 @@
     <link href="http://yoursite.com/2019/07/29/Jarvis-OJ-api%E8%B0%83%E7%94%A8/"/>
     <id>http://yoursite.com/2019/07/29/Jarvis-OJ-api调用/</id>
     <published>2019-07-29T01:28:52.000Z</published>
-    <updated>2019-07-29T01:41:24.004Z</updated>
+    <updated>2019-07-29T01:47:44.558Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;面对这道题我完全小白，所以我必须详细解释。&lt;/p&gt;
+      &lt;p&gt;面对这道题我完全小白，所以我必须详细解释。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h3&gt;&lt;hr&gt;
-&lt;h4 id=&quot;什么是php框架？&quot;&gt;&lt;a
-        
-      
+&lt;h4 id=&quot;什么是php框架？&quot;&gt;&lt;a href=&quot;#什么是php框架？&quot; class=&quot;headerlink&quot; title=&quot;什么是php框架？&quot;&gt;&lt;/a&gt;&lt;strong&gt;什么是php框架？&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;框架思想就是提供一种可以在多个应用程序中使用的设计。所有应用程序都有大量通用的基本内容 —— 具体地说，就是某类与数据库的接口、某些应用程序逻辑、应用程序呈现给用户的内容等。如果您编写过许多 PHP 应用程序，则会知道这些基本内容是什么。
     
     </summary>
     
