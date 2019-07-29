@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[python-scoket主机识别]]></title>
     <url>%2F2019%2F07%2F29%2Fpython-scoket%E4%B8%BB%E6%9C%BA%E8%AF%86%E5%88%AB%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[1234567891011121314151617#!/usr/bin/python#coding=utf-8import socketdef portScan(ip,port): try: s=socket.socket(socket.AF_INET,socket.SOCK_STREAM) s.connect(ip,port) print "%s TCP port %d is open"%(ip,port) except: print "%s TCP port %d is close"%(ip,port) finally: s.close()if __name__=="__main__": ip='192.168.19.1' port=8888888 portScan(ip,port) 1234567891011121314151617181920212223242526272829303132333435363738394041#!/usr/bin/python#coding=utf-8import socketfrom threading import Threadfrom optparse import OptionParserdef portScan(ip,port): try: c=socket.socket(socket.AF_INET,socket.SOCK_STREAM) c.connect((ip,port)) print "%s TCP port %d is open"%(ip,port) except: print "%s TCP port %d is closed"%(ip,port) finally: c.close()if __name__=="__main__": parser=OptionParser('usage: %prog -i &lt;target host&gt; -n &lt;network&gt; -p &lt;target port&gt;') parser.add_option('-i',type='string',dest='tgtIP',help='specify target host') parser.add_option('-n',type='string',dest='tgtnetwork',help='specify target network') parser.add_option('-p',type='string',dest='tgtport',help='specify target port') (options,args)=parser.parse_args() tgtIP=options.tgtIP tgtnetwork=options.tgtnetwork tgtport=options.tgtport if (tgtport == None or tgtIP==None and tgtnetwork==None): print parser.usage exit(0) tgtport=tgtport.split(',') if tgtIP: for p in tgtport: portScan(tgtIP,int(p)) if tgtnetwork: ip=tgtnetwork.split('.')[0] + '.' +tgtnetwork.split('.')[1] + '.' +tgtnetwork.split('.')[2] + '.' for i in range(1,255): try: IP=ip + str(i) for p in tgtport: t=Thread(target=portScan,args=(IP,int(p))) t.start() except KeyboardInterrupt: exit()]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[xxe漏洞详解]]></title>
