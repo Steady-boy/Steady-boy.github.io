@@ -90,7 +90,32 @@
 <meta property="og:description" content="基础知识  XML基础知识XML用于标记电子文件使其具有结构性的标记语言，可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。XML文档结构包括XML声明、DTD文档类型定义（可选）、文档元素。—-看了之后是不是很牛逼？高大上？其实百分之99的人看不懂。下面来点通俗的讲解：      简单概括的话就是，xml本身是一种格式规范，是一种包含了数据以及数据说明的文本格式规范">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i2.tiimg.com/695378/634d8ce1313fad33.png">
-<meta property="og:updated_time" content="2019-07-29T02:40:34.771Z">
+<meta property="og:image" content="http://i2.tiimg.com/695378/971e62b5bcdaa269.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/8f35a560d5a8c404.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/5bd0cb96442f3edf.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/5bd0cb96442f3edf.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/c9d358633c27f111.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/a7bd7a6619c5b264.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/1e172cec82f33bd4.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/869db5e01e30f374.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/7cb4544fa53ffe04.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/2c6deb9f66be4a7d.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/926cc6a23fe1c167.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/3231f5eae2451e14.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/6756248887341bbe.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/aaddff04e8f90b30.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/256d4677874e03e4.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/0300f4994c4da7e9.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/38eee370e7c5b3d6.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/81ccc8efd99e7315.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/49f8be7b93ee2691.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/198f1aecff208552.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/2c14d9a1e4d6bcc2.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/22f69eed6b970594.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/e2d935e4840a0524.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/ce9498b7c79f46b4.png">
+<meta property="og:image" content="http://i2.tiimg.com/695378/d77788d8d27425d5.png">
+<meta property="og:updated_time" content="2019-07-29T03:14:22.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xxe漏洞详解">
 <meta name="twitter:description" content="基础知识  XML基础知识XML用于标记电子文件使其具有结构性的标记语言，可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。XML文档结构包括XML声明、DTD文档类型定义（可选）、文档元素。—-看了之后是不是很牛逼？高大上？其实百分之99的人看不懂。下面来点通俗的讲解：      简单概括的话就是，xml本身是一种格式规范，是一种包含了数据以及数据说明的文本格式规范">
@@ -391,17 +416,17 @@
 <hr>
 <h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a><strong>漏洞利用</strong></h3><hr>
 <hr>
-<h4 id="XML外部实体注入-XML-External-Entity"><a href="#XML外部实体注入-XML-External-Entity" class="headerlink" title="XML外部实体注入(XML External Entity)"></a><strong>XML外部实体注入(XML External Entity)</strong></h4><p>当允许引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口、攻击内网网站等危害。 引入外部实体方式有多种，比如：<br>恶意引入外部实体方式1：<br>XML内容：<br>![a70b7220971e62b5bcdaa269d99bf8ea.png](xxe漏洞详解/Image [1].png)<br>恶意引入外部实体方式2：<br>XML内容：<br>![3d7224f68f35a560d5a8c4048effabaa.png](xxe漏洞详解/Image [2].png)<br>DTD文件(evil.dtd)内容：<br>![5fd617485bd0cb96442f3edf7b0fbf4d.png](xxe漏洞详解/Image [3].png)<br>恶意引入外部实体方式3：<br>XML内容：<br>![5fd617485bd0cb96442f3edf7b0fbf4d.png](xxe漏洞详解/Image [4].png)<br>DTD文件(evil.dtd)内容：<br>![2964602ac9d358633c27f111741353d5.png](xxe漏洞详解/Image [5].png)<br>另外，不同程序支持的协议不一样，<br>![0ad9f435a7bd7a6619c5b264c42b4f23.png](xxe漏洞详解/Image [6].png)<br>上图是默认支持协议，还可以支持其他，如PHP支持的扩展协议有<br>![f158f86b1e172cec82f33bd41450db2c.png](xxe漏洞详解/Image [7].png)</p>
+<h4 id="XML外部实体注入-XML-External-Entity"><a href="#XML外部实体注入-XML-External-Entity" class="headerlink" title="XML外部实体注入(XML External Entity)"></a><strong>XML外部实体注入(XML External Entity)</strong></h4><p>当允许引用外部实体时，通过构造恶意内容，可导致读取任意文件、执行系统命令、探测内网端口、攻击内网网站等危害。 引入外部实体方式有多种，比如：<br>恶意引入外部实体方式1：<br>XML内容：<br><img src="http://i2.tiimg.com/695378/971e62b5bcdaa269.png" alt="a70b7220971e62b5bcdaa269d99bf8ea.png"><br>恶意引入外部实体方式2：<br>XML内容：<br><img src="http://i2.tiimg.com/695378/8f35a560d5a8c404.png" alt="3d7224f68f35a560d5a8c4048effabaa.png"><br>DTD文件(evil.dtd)内容：<br><img src="http://i2.tiimg.com/695378/5bd0cb96442f3edf.png" alt="5fd617485bd0cb96442f3edf7b0fbf4d.png"><br>恶意引入外部实体方式3：<br>XML内容：<br><img src="http://i2.tiimg.com/695378/5bd0cb96442f3edf.png" alt="5fd617485bd0cb96442f3edf7b0fbf4d.png"><br>DTD文件(evil.dtd)内容：<br><img src="http://i2.tiimg.com/695378/c9d358633c27f111.png" alt="2964602ac9d358633c27f111741353d5.png"><br>另外，不同程序支持的协议不一样，<br><img src="http://i2.tiimg.com/695378/a7bd7a6619c5b264.png" alt="0ad9f435a7bd7a6619c5b264c42b4f23.png"><br>上图是默认支持协议，还可以支持其他，如PHP支持的扩展协议有<br><img src="http://i2.tiimg.com/695378/1e172cec82f33bd4.png" alt="f158f86b1e172cec82f33bd41450db2c.png"></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" standalone="no"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE root SYSTEM "http://www.test.org/test.dtd"&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>对于以上的一些代码我们做一些解释：</strong><br>DOCTYPE分析<br>DTD声明始终以!DOCTYPE开头,空一格后跟着文档根元素的名称,如果是内部DTD,则再空一格出现[],在中括号中是文档类型定义的内容. 而对于外部DTD,则又分为私有DTD与公共DTD,私有DTD使用SYSTEM表示,接着是外部DTD的URL. 而公共DTD则使用PUBLIC,接着是DTD公共名称,接着是DTD的URL.下面是一些示例<br>公共DTD,DTD名称格式为”注册//组织//类型 标签//语言”,”注册”指示组织是否由国际标准化组织(ISO)注册,+表示是,-表示不是.”组织”即组织名称,如:W3C; “类型”一般是DTD,”标签”是指定公开文本描述，即对所引用的公开文本的唯一描述性名称,后面可附带版本号。最后”语言”是DTD语言的ISO 639语言标识符,如:EN表示英文,ZH表示中文,在下面的地址有完整的ISO 639语言标识符列表[url]<a href="http://ftp.ics.uci.edu/pub/ietf/http/related/iso639.txt" target="_blank" rel="noopener">http://ftp.ics.uci.edu/pub/ietf/http/related/iso639.txt</a> [/url] </p>
-<h4 id="以下举例说明XXE危害，当然XXE不止这些危害。"><a href="#以下举例说明XXE危害，当然XXE不止这些危害。" class="headerlink" title="以下举例说明XXE危害，当然XXE不止这些危害。"></a><strong>以下举例说明XXE危害，当然XXE不止这些危害。</strong></h4><p>XXE危害1：读取任意文件<br>![a6d23109869db5e01e30f374bf494275.png](xxe漏洞详解/Image [8].png)<br>![6a5ade407cb4544fa53ffe04329bdfdb.png](xxe漏洞详解/Image [9].png)</p>
-<p>该CASE是读取/etc/passwd，有些XML解析库支持列目录，攻击者通过列目录、读文件，获取帐号密码后进一步攻击，如读取tomcat-users.xml得到帐号密码后登录tomcat的manager部署webshell。<br> 另外，数据不回显就没有问题了吗？如下图，<br> ![2552bee32c6deb9f66be4a7dced17379.png](xxe漏洞详解/Image [10].png)</p>
-<p>不，可以把数据发送到远程服务器，<br>![d3a6fb3a926cc6a23fe1c1672c8055d5.png](xxe漏洞详解/Image [11].png)<br>远程evil.dtd文件内容如下：<br>![b0ed113b3231f5eae2451e1472262ff5.png](xxe漏洞详解/Image [12].png)<br>触发XXE攻击后，服务器会把文件内容发送到攻击者网站<br>![2efb47426756248887341bbeafb3a18c.png](xxe漏洞详解/Image [13].png)<br>![3c8d7461aaddff04e8f90b30f0d3ed8d.png](xxe漏洞详解/Image [14].png)</p>
-<p><strong>XXE危害2：执行系统命令</strong><br>![b2534e5f256d4677874e03e482207390.png](xxe漏洞详解/Image [15].png)<br>![3d2816190300f4994c4da7e9fab2d0f0.png](xxe漏洞详解/Image [16].png)<br> 该CASE是在安装expect扩展的PHP环境里执行系统命令，其他协议也有可能可以执行系统命令。</p>
-<p><strong>XXE危害3：探测内网端口</strong><br>![fdf13f2238eee370e7c5b3d67fb241be.png](xxe漏洞详解/Image [17].png)<br>![168daa5c81ccc8efd99e7315c90e8d87.png](xxe漏洞详解/Image [18].png)<br>![168daa5c81ccc8efd99e7315c90e8d87.png](xxe漏洞详解/Image [19].png)<br> 该CASE是探测192.168.1.1的80、81端口，通过返回的“Connection refused”可以知道该81端口是closed的，而80端口是open的。</p>
-<p><strong>XXE危害4：攻击内网网站</strong><br>![952b814849f8be7b93ee269174440450.png](xxe漏洞详解/Image [20].png)<br>![52f0bec6198f1aecff208552222b9853.png](xxe漏洞详解/Image [21].png)<br>该CASE是攻击内网struts2网站，远程执行系统命令。</p>
-<h4 id="客户端XXE案例"><a href="#客户端XXE案例" class="headerlink" title="客户端XXE案例"></a><strong>客户端XXE案例</strong></h4><p>日前，某office文档转换软件被爆存在XXE漏洞（PS:感谢TSRC平台白帽子Titans)报告告漏洞），某一应用场景为：Web程序调用该office软件来获取office文档内容后提供在线预览。由于该软件在处理office文档时，读取xml文件且允许引用外部实体，当用户上传恶意文档并预览时触发XXE攻击。详情如下：<br>新建一个正常文档，内容为Hi TSRC，<br>![62b38e002c14d9a1e4d6bcc21b21221c.png](xxe漏洞详解/Image [22].png)<br> 使用该软件转换后可以得到文本格式的文档内容，<br> ![093e889722f69eed6b9705942aa97fec.png](xxe漏洞详解/Image [23].png)<br> ![87d9823de2d935e4840a05242dc0c9c9.png](xxe漏洞详解/Image [24].png)<br>  当往该docx的xml文件注入恶意代码（引用外部实体）时，可进行XXE攻击。<br>  ![d2e5f382ce9498b7c79f46b4fb5778bb.png](xxe漏洞详解/Image [25].png)<br>  ![4465391cd77788d8d27425d5d1fe7841.png](xxe漏洞详解/Image [26].png)</p>
+<h4 id="以下举例说明XXE危害，当然XXE不止这些危害。"><a href="#以下举例说明XXE危害，当然XXE不止这些危害。" class="headerlink" title="以下举例说明XXE危害，当然XXE不止这些危害。"></a><strong>以下举例说明XXE危害，当然XXE不止这些危害。</strong></h4><p>XXE危害1：读取任意文件<br><img src="http://i2.tiimg.com/695378/869db5e01e30f374.png" alt="a6d23109869db5e01e30f374bf494275.png"><br><img src="http://i2.tiimg.com/695378/7cb4544fa53ffe04.png" alt="6a5ade407cb4544fa53ffe04329bdfdb.png"></p>
+<p>该CASE是读取/etc/passwd，有些XML解析库支持列目录，攻击者通过列目录、读文件，获取帐号密码后进一步攻击，如读取tomcat-users.xml得到帐号密码后登录tomcat的manager部署webshell。<br> 另外，数据不回显就没有问题了吗？如下图，<br> <img src="http://i2.tiimg.com/695378/2c6deb9f66be4a7d.png" alt="2552bee32c6deb9f66be4a7dced17379.png"></p>
+<p>不，可以把数据发送到远程服务器，<br><img src="http://i2.tiimg.com/695378/926cc6a23fe1c167.png" alt="d3a6fb3a926cc6a23fe1c1672c8055d5.png"><br>远程evil.dtd文件内容如下：<br><img src="http://i2.tiimg.com/695378/3231f5eae2451e14.png" alt="b0ed113b3231f5eae2451e1472262ff5.png"><br>触发XXE攻击后，服务器会把文件内容发送到攻击者网站<br><img src="http://i2.tiimg.com/695378/6756248887341bbe.png" alt="2efb47426756248887341bbeafb3a18c.png"><br><img src="http://i2.tiimg.com/695378/aaddff04e8f90b30.png" alt="3c8d7461aaddff04e8f90b30f0d3ed8d.png"></p>
+<p><strong>XXE危害2：执行系统命令</strong><br><img src="http://i2.tiimg.com/695378/256d4677874e03e4.png" alt="b2534e5f256d4677874e03e482207390.png"><br><img src="http://i2.tiimg.com/695378/0300f4994c4da7e9.png" alt="3d2816190300f4994c4da7e9fab2d0f0.png"><br> 该CASE是在安装expect扩展的PHP环境里执行系统命令，其他协议也有可能可以执行系统命令。</p>
+<p><strong>XXE危害3：探测内网端口</strong><br><img src="http://i2.tiimg.com/695378/38eee370e7c5b3d6.png" alt="fdf13f2238eee370e7c5b3d67fb241be.png"><br><img src="http://i2.tiimg.com/695378/81ccc8efd99e7315.png" alt="168daa5c81ccc8efd99e7315c90e8d87.png"><br> 该CASE是探测192.168.1.1的80、81端口，通过返回的“Connection refused”可以知道该81端口是closed的，而80端口是open的。</p>
+<p><strong>XXE危害4：攻击内网网站</strong><br><img src="http://i2.tiimg.com/695378/49f8be7b93ee2691.png" alt="952b814849f8be7b93ee269174440450.png"><br><img src="http://i2.tiimg.com/695378/198f1aecff208552.png" alt="52f0bec6198f1aecff208552222b9853.png"><br>该CASE是攻击内网struts2网站，远程执行系统命令。</p>
+<h4 id="客户端XXE案例"><a href="#客户端XXE案例" class="headerlink" title="客户端XXE案例"></a><strong>客户端XXE案例</strong></h4><p>日前，某office文档转换软件被爆存在XXE漏洞（PS:感谢TSRC平台白帽子Titans)报告告漏洞），某一应用场景为：Web程序调用该office软件来获取office文档内容后提供在线预览。由于该软件在处理office文档时，读取xml文件且允许引用外部实体，当用户上传恶意文档并预览时触发XXE攻击。详情如下：<br>新建一个正常文档，内容为Hi TSRC，<br><img src="http://i2.tiimg.com/695378/2c14d9a1e4d6bcc2.png" alt="62b38e002c14d9a1e4d6bcc21b21221c.png"><br> 使用该软件转换后可以得到文本格式的文档内容，<br> <img src="http://i2.tiimg.com/695378/22f69eed6b970594.png" alt="093e889722f69eed6b9705942aa97fec.png"><br> <img src="http://i2.tiimg.com/695378/e2d935e4840a0524.png" alt="87d9823de2d935e4840a05242dc0c9c9.png"><br>  当往该docx的xml文件注入恶意代码（引用外部实体）时，可进行XXE攻击。<br>  <img src="http://i2.tiimg.com/695378/ce9498b7c79f46b4.png" alt="d2e5f382ce9498b7c79f46b4fb5778bb.png"><br>  <img src="http://i2.tiimg.com/695378/d77788d8d27425d5.png" alt="4465391cd77788d8d27425d5d1fe7841.png"></p>
 <hr>
 <h3 id="防御XXE攻击"><a href="#防御XXE攻击" class="headerlink" title="防御XXE攻击"></a><strong>防御XXE攻击</strong></h3><hr>
 <p>方案一、使用开发语言提供的禁用外部实体的方法<br>PHP：libxml_disable_entity_loader(true);</p>
