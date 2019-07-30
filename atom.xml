@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-30T07:01:44.245Z</updated>
+  <updated>2019-07-30T07:17:54.635Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/07/30/BugKu-login3-SKCTF/"/>
     <id>http://yoursite.com/2019/07/30/BugKu-login3-SKCTF/</id>
     <published>2019-07-30T06:35:03.000Z</published>
-    <updated>2019-07-30T07:01:44.245Z</updated>
+    <updated>2019-07-30T07:17:54.635Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,7 @@
       
         
         
-          &lt;p&gt;看到一个登陆框 ，首先用admin+万能密码登陆，发现提示密码错误证明用户名是正确的。所以我们开始注入：&lt;br&gt;首先我们输入admin’:&lt;br&gt;&lt;a href=&quot;http://i2.tiimg.com/695378/b7fb5ee5afa4b499.png&quot;
+          &lt;p&gt;看到一个登陆框 ，首先用admin+万能密码登陆，发现提示密码错误证明用户名是正确的。所以我们开始注入：&lt;br&gt;首先我们输入admin’:&lt;br&gt;&lt;img src=&quot;http://i2.tiimg.com/695378/b7fb5ee5afa4b499.png&quot;
         
       
     
