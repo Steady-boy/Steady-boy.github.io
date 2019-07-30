@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-30T08:03:50.216Z</updated>
+  <updated>2019-07-30T08:26:37.714Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,13 +21,15 @@
     <link href="http://yoursite.com/2019/07/30/sql%E6%B3%A8%E5%85%A5%E4%B8%AD%E7%9A%84%E7%BB%95%E8%BF%87/"/>
     <id>http://yoursite.com/2019/07/30/sql注入中的绕过/</id>
     <published>2019-07-30T08:03:02.000Z</published>
-    <updated>2019-07-30T08:03:50.216Z</updated>
+    <updated>2019-07-30T08:26:37.714Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;sql注入绕过详解。&lt;/p&gt;
     
     </summary>
+    
+      <category term="sql" scheme="http://yoursite.com/categories/sql/"/>
     
     
       <category term="sql" scheme="http://yoursite.com/tags/sql/"/>
@@ -39,7 +41,7 @@
     <link href="http://yoursite.com/2019/07/30/BugKu-login3-SKCTF/"/>
     <id>http://yoursite.com/2019/07/30/BugKu-login3-SKCTF/</id>
     <published>2019-07-30T06:35:03.000Z</published>
-    <updated>2019-07-30T07:58:34.439Z</updated>
+    <updated>2019-07-30T08:28:08.170Z</updated>
     
     <summary type="html">
     
@@ -47,10 +49,10 @@
     
     </summary>
     
+      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
     
-      <category term="slq 注入" scheme="http://yoursite.com/tags/slq-%E6%B3%A8%E5%85%A5/"/>
     
-      <category term="BUGKU" scheme="http://yoursite.com/tags/BUGKU/"/>
+      <category term="sql" scheme="http://yoursite.com/tags/sql/"/>
     
   </entry>
   
