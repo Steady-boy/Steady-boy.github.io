@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Jarvis OJ wp,">
+  <meta name="keywords" content="解析漏洞,">
 
 
 
@@ -81,34 +81,21 @@
 
 
 
-<meta name="description" content="查看源码发现index.phps文件，打开开始代码审计">
-<meta name="keywords" content="Jarvis OJ wp">
+<meta name="description" content="文件解析漏洞总结-Apache">
+<meta name="keywords" content="解析漏洞">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Jarvis OJ IN A Mess">
-<meta property="og:url" content="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/index.html">
+<meta property="og:title" content="文件解析漏洞总结-Apache">
+<meta property="og:url" content="http://yoursite.com/2019/08/01/文件解析漏洞总结-Apache/index.html">
 <meta property="og:site_name" content="新先生">
-<meta property="og:description" content="查看源码发现index.phps文件，打开开始代码审计">
+<meta property="og:description" content="文件解析漏洞总结-Apache">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i2.tiimg.com/695378/498b59dccf26dc24.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/bcec2baef29ccdf3.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/b9be18bba3b06281.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/25efa9e4f2f5d153.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/333567e6be32b103.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/63d51e46025628c3.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/a1b1994c19e77237.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/ca8c71e724201a62.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/ca8c71e724201a62.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/08d1ed0f89e61017.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/16c649a74025b5d3.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/880af66aa5170d50.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/221f79319b6f1801.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/00c07b94fe17aee1.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/0f870d9b3054863b.png">
-<meta property="og:updated_time" content="2019-07-30T08:00:15.256Z">
+<meta property="og:image" content="http://i2.tiimg.com/695378/ad6bbdedf27c86bb.png">
+<meta property="og:image" content="http://i1.fuimg.com/695378/9e2ba440510aae5b.png">
+<meta property="og:updated_time" content="2019-08-01T07:11:53.580Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jarvis OJ IN A Mess">
-<meta name="twitter:description" content="查看源码发现index.phps文件，打开开始代码审计">
-<meta name="twitter:image" content="http://i2.tiimg.com/695378/498b59dccf26dc24.png">
+<meta name="twitter:title" content="文件解析漏洞总结-Apache">
+<meta name="twitter:description" content="文件解析漏洞总结-Apache">
+<meta name="twitter:image" content="http://i2.tiimg.com/695378/ad6bbdedf27c86bb.png">
 
 
 
@@ -138,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/01/文件解析漏洞总结-Apache/">
 
 
 
 
 
-  <title>Jarvis OJ IN A Mess | 新先生</title>
+  <title>文件解析漏洞总结-Apache | 新先生</title>
   
 
 
@@ -303,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/01/文件解析漏洞总结-Apache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="新先生">
@@ -320,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Jarvis OJ IN A Mess</h1>
+          <h1 class="post-title" itemprop="name headline">文件解析漏洞总结-Apache</h1>
         
 
         <div class="post-meta">
@@ -332,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-27T07:01:51+08:00">
-                2019-07-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-01T13:42:16+08:00">
+                2019-08-01
               </time>
             
 
@@ -342,28 +329,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -397,40 +362,40 @@
       
 
       
-        <p>查看源码发现index.phps文件，打开开始代码审计</p>
-<a id="more"></a>
+        <h4 id="文件解析漏洞总结-Apache"><a href="#文件解析漏洞总结-Apache" class="headerlink" title="文件解析漏洞总结-Apache"></a><strong>文件解析漏洞总结-Apache</strong></h4><a id="more"></a>
 <hr>
-<hr>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span>(!$_GET[<span class="string">'id'</span>])</span><br><span class="line">&#123;</span><br><span class="line">	header(<span class="string">'Location: index.php?id=1'</span>);</span><br><span class="line">	<span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line">$id=$_GET[<span class="string">'id'</span>];</span><br><span class="line">$a=$_GET[<span class="string">'a'</span>];</span><br><span class="line">$b=$_GET[<span class="string">'b'</span>];</span><br><span class="line"><span class="keyword">if</span>(stripos($a,<span class="string">'.'</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">echo</span> <span class="string">'Hahahahahaha'</span>;</span><br><span class="line">	<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line">$data = @file_get_contents($a,<span class="string">'r'</span>);</span><br><span class="line"><span class="keyword">if</span>($data==<span class="string">"1112 is a nice lab!"</span> <span class="keyword">and</span> $id==<span class="number">0</span> <span class="keyword">and</span> strlen($b)&gt;<span class="number">5</span> <span class="keyword">and</span> eregi(<span class="string">"111"</span>.substr($b,<span class="number">0</span>,<span class="number">1</span>),<span class="string">"1114"</span>) <span class="keyword">and</span> substr($b,<span class="number">0</span>,<span class="number">1</span>)!=<span class="number">4</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">require</span>(<span class="string">"flag.txt"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">print</span> <span class="string">"work harder!harder!harder!"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>百度许久，又谷歌一番，最终发觉，Apache关于文件解析，似乎只有三种“漏洞”。之所以打引号是因为我觉得这三种“漏洞”都不是Apache的漏洞，只是其特性，而很多程序员不了解这种特性，故而写出有问题的代码，这才给黑客可趁之机，造成漏洞。但大家都称呼这是Apache的文件解析漏洞，我也只好随大流了。<br><strong>1.多后缀名</strong><br>先说第一种特性：多后缀名。这是怎么的一种鲜为人知的特性呢？原来是这样的，Apache认为，一个文件可以有多个后缀，如：werner.txt.png.mp3。这一文件，放在Windows里，毫无疑问，就是个mp3文件，Windows只认最后一个“.”及其后面的字符“mp3”，觉得该文件后缀为“.mp3”，这也是大多数操作系统、应用软件的处理方式、是正常人习惯。而在Apache中，则可能有所不同，如果有必要，Apache会从后（右）往前（左），一一辨别后缀。何时有必要？当Apache不认识某个后缀时，便有必要。如某文件名为：werner.mp3.html.qwe.arex，Apache在处理时，先读取最后一个后缀，为“.arex”，一看，这啥玩意啊，不认识，继续读取下一个后缀“.qwe”，一看，呀，这又是啥，还是不认识，继续读下一个后缀“.html”，一看，哦，这是个超文本标记语言文件，俗称网页文件，这回认识了，也就不继续读下一个后缀了。若是所有后缀都看完了没有一个认识怎么办？此时就会把该文件当做默认类型进行处理了，一般来说，默认类型是text/plain。据说在Apache的配置文件中搜索“DefaultType”就能看到默认类型的明确定义了，但我却不知为何，没有找到。<br>哪些后缀Apache认识，哪些不认识？有一个名为mime.types的文件，其中记录着Apache认识的后缀。在Ubuntu下，该文件位于/etc/mime.types，在Windows下，该文件位于C:/apache/conf/mime.types（类似这样的，注意Apache的安装路径）。该文件是一个一对多的映射表，定义了某一种文件类型，对应的几种后缀。除了该文件，在Apache的配置文件中，还可以用AddCharset语句添加映射，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddCharset us-ascii   .ascii .us-ascii</span><br><span class="line">AddCharset ISO-2022-CN .iso2022-cn .cis</span><br></pre></td></tr></table></figure>
 
-<hr>
-<hr>
-<p>代码解释：<br>1.判断id参数存不存在，如果不存在跳转到index.php?id=1<br>2.获取三个变量id，a，b<br>3.判断a变量中有没有’.’<br>4.打开文件a,并且放到字符串r中<br>5.<br>1)data变量等于一个字符串<br>2)id=0<br>3)b变量的长度大于5<br>4)<br>ereg()函数用指定的模式搜索一个字符串中指定的字符串,如果匹配成功返回true,否则,则返回false。搜索字母的字符是大小写敏感的。<br>eregi函数对大小写不敏感。<br>6.<br>file_get_contents 函数返回字符串的结果，可以赋值给变量，也可以直接进行使用：<br>返回结果直接使用的例子代码：<br>echo file_get_contents(‘a.txt’);<br>此语句直接显示a.txt的文件内容<br>返回结果赋值给变量的例子代码：<br>$s=file_get_contents(‘a.txt’);<br>接下来可以对字符串变量$s进行使用，例如获取部分内容。</p>
-<ol start="7">
-<li>@符号用来屏蔽错误信息，当函数不存在或者包含文件不存在时，不会显示错误信息。 </li>
-<li>eregi存在%00截断，而substr没有，也就是说eregi如果第一个字符是%00，那它就跳过这个再检测。</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt; ?php  </span><br><span class="line"><span class="keyword">if</span> (ereg(<span class="string">"c"</span>,<span class="string">"abcdef"</span>))&#123;     </span><br><span class="line"><span class="comment">//说明：判断abcdef中是否含有字母c       </span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"通过"</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;      </span><br><span class="line"><span class="keyword">echo</span> <span class="string">"错误"</span>; </span><br><span class="line">&#125; <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>mime.types是个很长的文件，大概看了下，Apache认识的后缀比我多多了。节选部分如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">application/java-archive          jar</span><br><span class="line">application/m3g                         m3g</span><br><span class="line">application/java-vm                   class</span><br><span class="line">application/javascript                js</span><br><span class="line">application/json                    json</span><br><span class="line">text/html                             html htm shtml</span><br><span class="line">text/x-diff                             diff patch</span><br><span class="line">video/x-flv                             flv</span><br><span class="line">video/x-la-asf                          lsf lsx</span><br><span class="line">video/x-mng                             mng</span><br><span class="line">video/x-ms-asf                          asf asx</span><br><span class="line">video/x-ms-wm                         wm</span><br></pre></td></tr></table></figure>
 
-<p><code>eregi(&quot;111&quot;.substr($b,0,1),&quot;1114&quot;)</code> </p>
-<hr>
-<hr>
-<p>他的意思就是判断某个字符串中是否有1114，这个某个字符串就是111加上b的第一个字符。这个条件很容易满足，但是问题就在后面，它又要求b的第一个字符不等于四。前后矛盾啊。<strong>在这里我们使用00截断</strong><br><strong>而且变量a的值是一个文件，不是一个字符串。</strong>因此我们就不能将对应的字符串传递给a，使得data为对应的字符串。<strong>在这里我们使用php伪协议。</strong>那么php伪协议到底什么呢？<br>php://input 是个可以访问请求的原始数据的只读流。，我们的变量a必须是一个文件名字，但是我们总不能在部署服务器上搭建一个文件，所以这个协议在这里充当的作用就是一个衔接的作用，我们以post方式传递参数。<br>id的值很显然不能为0，<strong>但是我们可以利用弱等于</strong>。<br>那我们就开始构造payload：<br><strong>长度大于5<br>其中有1114<br>但是第四个不等等于4</strong></p>
-<hr>
-<hr>
-<p><a href="http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114" target="_blank" rel="noopener">http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114</a><br><img src="http://i2.tiimg.com/695378/498b59dccf26dc24.png" alt><br>竟然不出flag，给了一串字符。不是加密、、、也不是flag、、、前面有个/有点像目录呀，试试呗。<br><img src="http://i2.tiimg.com/695378/bcec2baef29ccdf3.png" alt><br>后面有个id，可能是sql注入？加个单引号’<br><img src="http://i2.tiimg.com/695378/b9be18bba3b06281.png" alt><br>判断列但是无论多少列都是一样的回显，肯定过滤了什么，我们试试过没过滤空格,在下面的步骤中我们试过了没有过滤order by,但是为什么这里是sql防御回显,肯定是过滤了空格。<br><img src="http://i2.tiimg.com/695378/25efa9e4f2f5d153.png" alt="2427505225efa9e4f2f5d1532253879f.png"></p>
-<hr>
-<p><strong>既然这样那么我们就开始苦逼的sql注入之路吧</strong></p>
-<hr>
-<p>一开始是各种猛操作啊，但是屁用没有，正常的思路就是应该判断过滤了什么，但是我嫌麻烦。。。返回头来还是老老实实的看过滤什么字符吧，一开始我想到了burp的模糊测试，但是太麻烦了分post和get，我在网上只找到了post的方法。最后用到了我以前学习的小技巧。<br><code>web.jarvisoj.com:32780/^HT2mCpcvOLf/index.php?id=1&#39;^(length(select)=0)</code><br><img src="http://i2.tiimg.com/695378/333567e6be32b103.png" alt="100d6805333567e6be32b103a5bd5bf1.png"><br>select被过滤掉了。接着我们就换其他的测试，在这里想测谁的就测谁的哈哈哈哈哈哈哈哈哈哈。但是被过滤了我们不要忘记绕过方法。比如双写<br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=1%27^(length(selecselectt)=0)</code><br><img src="http://i2.tiimg.com/695378/63d51e46025628c3.png" alt="d54c942563d51e46025628c3a643fddd.png"><br>最后我我们得到的结果：<br><strong>被过滤：</strong><br>select<br>from<br><strong>没有被过滤：</strong><br>and<br>where<br>or<br>/<em>2</em>/<br>/#(为了避免笔记对应的操作这里加一个/)<br>information<br>‘<br>order<br>by<br>我在测试空格的时候，竟然爆错了，说明空格不但被过滤了而且。。。还被限制了。/**/ 竟然也被限制了emmm太毒了。–+也被限制了但是#没有哈哈哈哈哈哈哈哈哈哈</p>
-<hr>
-<p>这题很狗啊，双写绕过必须穿插，不能是selectselect.</p>
-<hr>
-<p>真正的注入即将开始<br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=1/*1*/or/*1*/1=1#</code><br><img src="http://i2.tiimg.com/695378/a1b1994c19e77237.png" alt="8151c3a5a1b1994c19e77237495e1085.png"><br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=1/*1*/order/*1*/by/*1*/3#</code><br><img src="http://i2.tiimg.com/695378/ca8c71e724201a62.png" alt="d38c5f6aca8c71e724201a623653a773.png"><br>三个字段。回显正常。4个字段回显不正常</p>
-<p><img src="http://i2.tiimg.com/695378/ca8c71e724201a62.png" alt="990cca5608d1ed0f89e61017043e656c.png"><br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=-1/*1*/uniounionn/*1*/selecselectt/*1*/1,2,group_concat(column_name)/*1*/frofromm/*1*/information_schema.columns/*1*/where/*1*/table_name=0x636F6E74656E74#</code><br><img src="http://i2.tiimg.com/695378/08d1ed0f89e61017.png" alt="9f465f74f8351777fb4f2d409bb92b92.png"><br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=-1/*1*/uniounionn/*1*/selecselectt/*1*/1,2,context/*1*/ffromrom/*1*/content#</code><br><img src="http://i2.tiimg.com/695378/16c649a74025b5d3.png" alt></p>
-<hr>
-<hr>
-<p>flag得到了，那么我们现在就来总结一下吧。<br>首先，我们正常思路，单引号、order by、union、select。在这里我们一定要主要我们每次输入语句的时候页面给我们回显的是什么，在这个题中我们输入单引号报错，页面给我们回显。其实当我们使用or 1=1#的时候按理来说应该跟id=1的情况回显一样，但是这个题过滤或者限制了某个字符，我们在使用的时候肯定是报错或者出现固定的提示。我们使用没有过滤的字符：<br><img src="http://i2.tiimg.com/695378/880af66aa5170d50.png" alt="b3ee544c880af66aa5170d50f4980267.png"><br>可以看到与id=1的时候回显一样。<br>我在不断的错误中发现了三种情况：<br>1.正常回显<br><img src="http://i2.tiimg.com/695378/221f79319b6f1801.png" alt="95308864221f79319b6f18013cab962a.png"><br>2.错误回显，这里指的是我们输入的sql语句错误或者没有正确闭合(也就是报错)<br><img src="http://i2.tiimg.com/695378/00c07b94fe17aee1.png" alt="9748e99700c07b94fe17aee1b5a558a7.png"><br>3.sql防御回显，这里指的是后端如果检测到它所指定的危险字段，会给我们回显固定的语句或者提示(这里要与二区别开来)<br><img src="http://i2.tiimg.com/695378/0f870d9b3054863b.png" alt="d8f336010f870d9b3054863b39a20b9b.png"></p>
+<p>这一特性会带来什么问题呢？网站往往有上传文件的功能，但一定不想让用户上传程序，因为这很可能会危害网站安全，故而会检查上传文件的后缀名，若是.php，则拒绝上传（假设这是个php站）。此时用户只需上传文件evildoer.php.qwe，若是程序员不了解Apache的这一特性，编写的程序检查后缀时只看“.qwe”，而认为这不是程序文件，允许上传，则用户成功地绕过了上传时的安全检查，上传了php程序文件。该文件的最后一个后缀“.qwe”是Apache不认识的，故而Apache会以倒数第二个后缀“.php”为准，把该文件当做是php文件，解析执行。</p>
+<p>这总是奏效的吗？按理来说，由于这是特性而不是漏洞，所以适用于所有版本的Apache。这一奇怪的特性，说不定正是Apache的自豪之处呢。但是，在我的测试中却发现，类似aaa.php.xxx的文件并不会被作为php程序执行，而是被当成文本文件，返回给浏览器，在浏览器中可以看到php源码，而不是执行结果。测试环境是Ubuntu14.04+Apache2.4.7+php5。</p>
+<p>这是怎么回事？难道前面几百字都是废话，说的是错的？我们来做个实验。准备一个文件，内容随意，命名为test.jpg.aaa，放置在Apache中，然后在浏览器中访问它，结果如下图所示：<br><img src="http://i2.tiimg.com/695378/ad6bbdedf27c86bb.png" alt><br>可见浏览器是将该文件作为图片处理的。浏览器为何认为test.jpg.aaa是图片呢？aaa可不是图片文件的后缀。这是因为服务器的响应HTTP头中的Content-Type字段值为image/jpeg，浏览器看到image/jpeg，便知这是图片文件。这说明服务器（此处即Apache）是把test.jpg.aaa当做图片的，也说明，前面分析的Apache的多后缀处理是没有错的。</p>
+<p>那么aaa.php.xxx为何没有被作为php代码执行呢？我猜是这样的，当然只是我的猜测，实在是找不到相关资料，只好猜了。Apache看到文件aaa.php.xxx，按照多后缀名的解析规则，认为该文件是php程序文件，把该文件作为php程序文件处理。怎么处理呢？交给php解释器，Apache本身并不懂php。而php解释器却有着和Apache不同的后缀解析规则，可能只认最后一个后缀，故而认为aaa.php.xxx不是php程序文件，拒绝执行。在我的测试环境中，php以模块（module）的模式工作于Apache的领导下。这种模式下php接受到领导Apache分配的任务——aaa.php.xxx，一看，不是php程序文件，没法执行，但也没有报错，而是返回了文件内容本身。php还可以以FASTCGI的模式工作于Apache中，此种模式下php遇到类似aaa.php.xxx这种不是php程序的文件，会触发500错误。</p>
+<p>php本身是如何识别文件的呢？我在Apache的模块的配置文件中找到了php5.conf，内容如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">FilesMatch</span> "<span class="attr">.</span>+\<span class="attr">.ph</span>(<span class="attr">p</span>[<span class="attr">345</span>]?|<span class="attr">t</span>|<span class="attr">tml</span>)$"&gt;</span></span><br><span class="line">    SetHandler application/x-httpd-php</span><br><span class="line"><span class="tag">&lt;/<span class="name">FilesMatch</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">FilesMatch</span> "<span class="attr">.</span>+\<span class="attr">.phps</span>$"&gt;</span></span><br><span class="line">    SetHandler application/x-httpd-php-source</span><br><span class="line">    # Deny access to raw php sources by default</span><br><span class="line">    # To re-enable it's recommended to enable access to the files</span><br><span class="line">    # only in specific virtual host or directory</span><br><span class="line">    Order Deny,Allow</span><br><span class="line">    Deny from all</span><br><span class="line"><span class="tag">&lt;/<span class="name">FilesMatch</span>&gt;</span></span><br><span class="line"># Deny access to files without filename (e.g. '.php')</span><br><span class="line"><span class="tag">&lt;<span class="name">FilesMatch</span> "^\<span class="attr">.ph</span>(<span class="attr">p</span>[<span class="attr">345</span>]?|<span class="attr">t</span>|<span class="attr">tml</span>|<span class="attr">ps</span>)$"&gt;</span></span><br><span class="line">    Order Deny,Allow</span><br><span class="line">    Deny from all</span><br><span class="line"><span class="tag">&lt;/<span class="name">FilesMatch</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># Running PHP scripts in user directories is disabled by default</span><br><span class="line">#</span><br><span class="line"># To re-enable PHP in user directories comment the following lines</span><br><span class="line"># (from <span class="tag">&lt;<span class="name">IfModule</span> <span class="attr">...</span>&gt;</span> to <span class="tag">&lt;/<span class="name">IfModule</span>&gt;</span>.) Do NOT set it to On as it</span><br><span class="line"># prevents .htaccess files from disabling it.</span><br><span class="line"><span class="tag">&lt;<span class="name">IfModule</span> <span class="attr">mod_userdir.c</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Directory</span> /<span class="attr">home</span>/*/<span class="attr">public_html</span>&gt;</span></span><br><span class="line">        php_admin_flag engine Off</span><br><span class="line">    <span class="tag">&lt;/<span class="name">Directory</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">IfModule</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>阅读上示配置文件可知，被当做php程序执行的文件名要符合正则表达式：”.+.ph(p[345]?|t|tml)”，其中“”符号在正则中匹配结束，故而可知php本身确实是只看最后一个后缀的。就算Apache把某文件当php程序，php自己不认它，也是无用。进一步试验，把php5.conf文件中刚刚提到的正则表达式的“$”换成“.”，即：<br><code>&quot;.+\.ph(p[345]?|t|tml)\.&quot;</code>,然后重启Apache使配置文件生效，再在浏览器中访问aaa.php.xxx，这次，aaa.php.xxx果然被当做php程序执行了，在浏览器中，看到的是程序执行结果而不是源码。这也从侧面验证了，我的猜测是正确的。测试完之后，一定要记得改回去。<br><strong>2.罕见后缀计</strong><br>算机世界自开天辟地以来，便自由多彩。还记得mime.types文件吗？在该文件中搜索“php”这三个字母，结果如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">werner@Yasser:~$ cat /etc/mime.types | grep php</span><br><span class="line"><span class="comment">#application/x-httpd-php          phtml pht php</span></span><br><span class="line"><span class="comment">#application/x-httpd-php-source           phps</span></span><br><span class="line"><span class="comment">#application/x-httpd-php3         php3</span></span><br><span class="line"><span class="comment">#application/x-httpd-php3-preprocessed        php3p</span></span><br><span class="line"><span class="comment">#application/x-httpd-php4         php4</span></span><br><span class="line"><span class="comment">#application/x-httpd-php5         php5</span></span><br></pre></td></tr></table></figure>
+
+<p>还记得正则表达式”.+.ph(p[345]?|t|tml)$”吗，该正则表达式匹配的不仅仅有php，还有php3、php4、php5、pht和phtml。</p>
+<p>好吧，原来不仅php，就连phtml、pht、php3、php4和php5都是Apache和php认可的php程序的文件后缀。我原本只知道“.php”的，真是大开眼界。这就好比，不仅py是Python程序文件的后缀，还有pyc和pyo也都是。写上传过滤规则的程序员是否博学多识，也知道这些知识呢？我想，大抵是不知道的。利用这些“罕见”的后缀名，也可能绕过安全检查，干些“坏事”。</p>
+<p>我在Ubuntu14.04+Apache2.4.7中进行测试，先准备文件text.php，其内容是经典的<br>Hello World：<br><code>&lt;?php echo &#39;HELLO WORLD&#39;; ?&gt;</code><br>然后在浏览器中打开它，成功显示“HELLO WORLD”。再修改该文件后缀为各种后缀，进行测试。测试结果是，以php、phtml、pht、php3、php4和php5为后缀，能成功看到“HELLO WORLD”；以phps为后缀，会报403错误，Forbidden；以php3p为后缀，会在浏览器中看到源码。</p>
+<p><strong>3.妙用.htaccess</strong><br>.htaccess是Apache的又一特色。一般来说，配置文件的作用范围都是全局的，但Apache提供了一种很方便的、可作用于当前目录及其子目录的配置文件——.htaccess（分布式配置文件）。</p>
+<p>要想使.htaccess文件生效，需要两个条件，一是在Apache的配置文件中写上：<br><code>AllowOverride All</code><br>若这样写则.htaccess不会生效：<br><code>AllowOverride None</code><br>二是Apache要加载mod_Rewrite模块。加载该模块，需要在Apache的配置文件中写上：<br>LoadModule rewrite_module /usr/lib/apache2/modules/mod_rewrite.so<br>需要注意Apache可能有多个配置文件，后加载的配置文件会覆盖先加载的配置文件中的配置。所以在某个配置文件中将AllowOverride设置成All，若是其后加载的某个配置文件中AllowOverride的设置是None，则也是没有用的。一般来说，先加载httpd.conf，再加载conf.d/中的配置文件，最后加载sites-enabled/中的配置文件。</p>
+<p>这意味着，.htaccess并不总是有效的。而且不幸的是，在我的测试环境中.htaccess默认无效。好吧，为了测试，我只好将它改为有效。以下讨论均在.htaccess有效的前提下进行。</p>
+<p>.htaccess文件可以配置很多事情，如是否开启站点的图片缓存、自定义错误页面、自定义默认文档、设置WWW域名重定向、设置网页重定向、设置图片防盗链和访问权限控制。但我们这里只关心.htaccess文件的一个作用——MIME类型修改。如在.htaccess文件中写入：<br><code>AddType application/x-httpd-php xxx</code><br>就成功地使该.htaccess文件所在目录及其子目录中的后缀为.xxx的文件被Apache当做php文件。另一种写法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch &quot;shell.jpg&quot;&gt;</span><br><span class="line">  SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>该语句会让Apache把shell.jpg文件解析为php文件。<br>下面是一次测试，测试前已经打开Apache对.htaccess文件的支持。在网站根目录中准备如下文件树：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">│</span><br><span class="line">├── htaccess_test/</span><br><span class="line">│   ├── .htaccess</span><br><span class="line">│   ├── shell.jpg</span><br><span class="line">│   ├── type.xxx</span><br><span class="line">│   └── test/</span><br><span class="line">│       ├── shell.jpg</span><br><span class="line">│       └── type.xxx</span><br><span class="line">├── shell.jpg</span><br><span class="line">└── type.xxx</span><br></pre></td></tr></table></figure>
+
+<p>其中，文件.htaccess的内容为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php xxx</span><br><span class="line"></span><br><span class="line">&lt;FilesMatch &quot;shell.jpg&quot;&gt;</span><br><span class="line">SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>文件shell.jpg和type.xxx的内容相同，均为：<br><code>&lt;?php echo &#39;HELLO WORLD&#39;; ?&gt;</code><br>然后在浏览器中访问各文件，结果如下表所示：<br><img src="http://i1.fuimg.com/695378/9e2ba440510aae5b.png" alt></p>
 
       
     </div>
@@ -448,7 +413,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Jarvis-OJ-wp/" rel="tag"># Jarvis OJ wp</a>
+            <a href="/tags/解析漏洞/" rel="tag"># 解析漏洞</a>
           
         </div>
       
@@ -461,15 +426,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/07/30/sql注入中的绕过/" rel="next" title="sql注入中的绕过">
+                <i class="fa fa-chevron-left"></i> sql注入中的绕过
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/29/Jarvis-OJ-api调用/" rel="prev" title="Jarvis-OJ-api调用">
-                Jarvis-OJ-api调用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -521,8 +486,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -589,6 +563,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件解析漏洞总结-Apache"><span class="nav-text">文件解析漏洞总结-Apache</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

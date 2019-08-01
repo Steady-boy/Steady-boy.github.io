@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-30T08:26:37.714Z</updated>
+  <updated>2019-08-01T07:11:53.580Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文件解析漏洞总结-Apache</title>
+    <link href="http://yoursite.com/2019/08/01/%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93-Apache/"/>
+    <id>http://yoursite.com/2019/08/01/文件解析漏洞总结-Apache/</id>
+    <published>2019-08-01T05:42:16.000Z</published>
+    <updated>2019-08-01T07:11:53.580Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;文件解析漏洞总结-Apache&quot;&gt;&lt;a href=&quot;#文件解析漏洞总结-Apache&quot; class=&quot;headerlink&quot; title=&quot;文件解析漏洞总结-Apache&quot;&gt;&lt;/a&gt;&lt;strong&gt;文件解析漏洞总结-Apache&lt;/strong&gt;&lt;/h4&gt;
+    
+    </summary>
+    
+    
+      <category term="解析漏洞" scheme="http://yoursite.com/tags/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
   
   <entry>
     <title>sql注入中的绕过</title>
