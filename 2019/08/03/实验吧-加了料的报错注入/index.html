@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="实验吧 WEB 加了料的报错注入 打开页面是post注入，又是报错注入。所以就用到了burp，后来发现burp不好用，加了消息头也不好用，不知道为啥。既然是post那么就用脚本吧。1.首先正常传参： 12345import requestsurl=&quot;http://ctf5.shiyanbar.com/web/baocuo/index.php&quot;r=requests.session()s=r.post">
+<meta name="description" content="实验吧 WEB 加了料的报错注入 打开页面是post注入，又是报错注入。所以就用到了burp，后来发现burp不好用，加了消息头也不好用，不知道为啥。既然是post那么就用脚本吧。">
 <meta name="keywords" content="报错注入">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实验吧---加了料的报错注入">
 <meta property="og:url" content="http://yoursite.com/2019/08/03/实验吧-加了料的报错注入/index.html">
 <meta property="og:site_name" content="新先生">
-<meta property="og:description" content="实验吧 WEB 加了料的报错注入 打开页面是post注入，又是报错注入。所以就用到了burp，后来发现burp不好用，加了消息头也不好用，不知道为啥。既然是post那么就用脚本吧。1.首先正常传参： 12345import requestsurl=&quot;http://ctf5.shiyanbar.com/web/baocuo/index.php&quot;r=requests.session()s=r.post">
+<meta property="og:description" content="实验吧 WEB 加了料的报错注入 打开页面是post注入，又是报错注入。所以就用到了burp，后来发现burp不好用，加了消息头也不好用，不知道为啥。既然是post那么就用脚本吧。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i1.fuimg.com/695378/75b517bc7aa5cfc5.png">
 <meta property="og:image" content="http://yoursite.com/images/1.png">
@@ -95,10 +95,10 @@
 <meta property="og:image" content="http://yoursite.com/images/3.png">
 <meta property="og:image" content="http://yoursite.com/images/4.png">
 <meta property="og:image" content="http://yoursite.com/images/5.png">
-<meta property="og:updated_time" content="2019-08-03T01:31:41.361Z">
+<meta property="og:updated_time" content="2019-08-03T02:52:04.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实验吧---加了料的报错注入">
-<meta name="twitter:description" content="实验吧 WEB 加了料的报错注入 打开页面是post注入，又是报错注入。所以就用到了burp，后来发现burp不好用，加了消息头也不好用，不知道为啥。既然是post那么就用脚本吧。1.首先正常传参： 12345import requestsurl=&quot;http://ctf5.shiyanbar.com/web/baocuo/index.php&quot;r=requests.session()s=r.post">
+<meta name="twitter:description" content="实验吧 WEB 加了料的报错注入 打开页面是post注入，又是报错注入。所以就用到了burp，后来发现burp不好用，加了消息头也不好用，不知道为啥。既然是post那么就用脚本吧。">
 <meta name="twitter:image" content="http://i1.fuimg.com/695378/75b517bc7aa5cfc5.png">
 
 
@@ -367,7 +367,9 @@
 
       
         <h4 id="实验吧-WEB-加了料的报错注入"><a href="#实验吧-WEB-加了料的报错注入" class="headerlink" title="实验吧 WEB 加了料的报错注入"></a><strong>实验吧 WEB 加了料的报错注入</strong></h4><hr>
-<p>打开页面是post注入，又是报错注入。所以就用到了burp，后来发现burp不好用，加了消息头也不好用，不知道为啥。既然是post那么就用脚本吧。<br>1.首先正常传参：</p>
+<p>打开页面是post注入，又是报错注入。所以就用到了burp，后来发现burp不好用，加了消息头也不好用，不知道为啥。既然是post那么就用脚本吧。</p>
+<a id="more"></a>
+<p>1.首先正常传参：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url=<span class="string">"http://ctf5.shiyanbar.com/web/baocuo/index.php"</span></span><br><span class="line">r=requests.session()</span><br><span class="line">s=r.post(url,data=&#123;<span class="string">'username'</span>:<span class="string">"1"</span>,<span class="string">'password'</span>:<span class="string">"1"</span>&#125;)</span><br><span class="line">print(s.text)</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://i1.fuimg.com/695378/75b517bc7aa5cfc5.png" alt><br>2.看看是否能够绕过：<br>(其实这道题比较简单毕竟是直接给你了源码比较好绕过)</p>
@@ -435,6 +437,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/03/Mysql报错注入原理分析-count-、rand-、group-by/" rel="prev" title="Mysql报错注入原理分析(count()、rand()、group by)">
+                Mysql报错注入原理分析(count()、rand()、group by) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -511,7 +517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
