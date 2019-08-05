@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-04T07:51:49.745Z</updated>
+  <updated>2019-08-04T08:42:44.296Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,13 +21,15 @@
     <link href="http://yoursite.com/2019/08/04/linux%E6%9D%83%E9%99%90%E4%BD%93%E7%B3%BB%EF%BC%88%E4%B8%89%EF%BC%89%E7%89%B9%E6%AE%8A%E6%9D%83%E9%99%90SUID%E3%80%81SGID/"/>
     <id>http://yoursite.com/2019/08/04/linux权限体系（三）特殊权限SUID、SGID/</id>
     <published>2019-08-04T07:50:26.000Z</published>
-    <updated>2019-08-04T07:51:49.745Z</updated>
+    <updated>2019-08-04T08:42:44.296Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;一、SUID&lt;br&gt;1.1 基础知识&lt;br&gt;SUID 是针对二进制可执行文件而言的，他的最终目的是所有用户在执行设置了SUID的二进制可执行文件时，该二进制拥有的权限是文件所有者的权限。（打破安全上下文法则）。&lt;/p&gt;
     
     </summary>
+    
+      <category term="Linux基础" scheme="http://yoursite.com/categories/Linux%E5%9F%BA%E7%A1%80/"/>
     
     
   </entry>
@@ -267,7 +269,7 @@
     <link href="http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/"/>
     <id>http://yoursite.com/2019/07/27/Jarvis-OJ-IN-A-Mess/</id>
     <published>2019-07-26T23:01:51.000Z</published>
-    <updated>2019-08-03T06:01:56.144Z</updated>
+    <updated>2019-08-05T00:40:46.148Z</updated>
     
     <summary type="html">
     
