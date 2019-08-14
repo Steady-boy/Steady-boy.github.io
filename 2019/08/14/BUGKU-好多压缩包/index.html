@@ -88,13 +88,13 @@
 <meta property="og:site_name" content="新先生">
 <meta property="og:description" content="下载文件，解压后是68个压缩文件，而且每个文件都是加密的，也没有提示密码，爆破？胡扯，这么多，还不想耗死。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/image/91.png">
-<meta property="og:image" content="http://yoursite.com/image/92.png">
-<meta property="og:updated_time" content="2019-08-14T08:08:46.262Z">
+<meta property="og:image" content="http://yoursite.com/images/91.png">
+<meta property="og:image" content="http://yoursite.com/images/92.png">
+<meta property="og:updated_time" content="2019-08-14T08:12:33.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BUGKU--好多压缩包">
 <meta name="twitter:description" content="下载文件，解压后是68个压缩文件，而且每个文件都是加密的，也没有提示密码，爆破？胡扯，这么多，还不想耗死。">
-<meta name="twitter:image" content="http://yoursite.com/image/91.png">
+<meta name="twitter:image" content="http://yoursite.com/images/91.png">
 
 
 
@@ -339,6 +339,50 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/杂项/" itemprop="url" rel="index">
+                    <span itemprop="name">杂项</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/杂项/修改高度和宽度/" itemprop="url" rel="index">
+                    <span itemprop="name">修改高度和宽度</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -386,7 +430,7 @@
 <p>关于这个base64，我拿到一般的工具下面解压发现解压的内容是乱码，粘贴复制都不太好使毕竟涉及到格式、编码字符问题，所以干脆我就直接上代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">f=open(<span class="string">'./out.txt'</span>,<span class="string">'r'</span>)</span><br><span class="line">a=f.read()</span><br><span class="line">text=base64.b64decode(a)</span><br><span class="line">f1=open(<span class="string">'./out.txt'</span>,<span class="string">'w'</span>)</span><br><span class="line">f1.write(str(text))</span><br><span class="line">f.close()</span><br><span class="line">f1.close()</span><br></pre></td></tr></table></figure>
 
-<p>但是解码出来的东西放到winhex中总比别人多一个字节。所以我有换了另一种方式：<br>直接拿到notepad++使用自带的base64解码，然后放到winhex中。<br><img src="/image/91.png" alt="6bb8133621d5fa828d163b960fa53c8a.png"><br><img src="/image/92.png" alt="0c0277c97b097d56c8d07f4a2782dc65.png"><br>文件尾部是rar的文件尾部，所以补充rar头部：<br>526172211A0700，最后在注释中拿到了flag。</p>
+<p>但是解码出来的东西放到winhex中总比别人多一个字节。所以我有换了另一种方式：<br>直接拿到notepad++使用自带的base64解码，然后放到winhex中。<br><img src="/images/91.png" alt="6bb8133621d5fa828d163b960fa53c8a.png"><br><img src="/images/92.png" alt="0c0277c97b097d56c8d07f4a2782dc65.png"><br>文件尾部是rar的文件尾部，所以补充rar头部：<br>526172211A0700，最后在注释中拿到了flag。</p>
 
       
     </div>

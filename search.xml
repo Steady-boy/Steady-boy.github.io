@@ -4,6 +4,11 @@
     <title><![CDATA[BUGKU--好多压缩包]]></title>
     <url>%2F2019%2F08%2F14%2FBUGKU-%E5%A5%BD%E5%A4%9A%E5%8E%8B%E7%BC%A9%E5%8C%85%2F</url>
     <content type="text"><![CDATA[下载文件，解压后是68个压缩文件，而且每个文件都是加密的，也没有提示密码，爆破？胡扯，这么多，还不想耗死。 正确思路CRC32碰撞，介绍一下CRC32碰撞： CRC32:CRC本身是“冗余校验码”的意思，CRC32则表示会产生一个32bit（8位十六进制数）的校验值。 在产生CRC32时，源数据块的每一位都参与了运算，因此即使数据块中只有一位发生改变也会得到不同的CRC32值，利用这个原理我们可以直接爆破出加密文件的内容爆破脚本 12345678910111213141516171819202122232425262728293031#coding:utf-8import zipfileimport stringimport binascii def CrackCrc(crc): for i in dic: for j in dic: for p in dic: for q in dic: s = i + j + p + q if crc == (binascii.crc32(s) &amp; 0xffffffff): #print s f.write(s) return def CrackZip(): for I in range(68): file = 'out' + str(I) + '.zip' f = zipfile.ZipFile(file, 'r') GetCrc = f.getinfo('data.txt') crc = GetCrc.CRC #以上3行为获取压缩包CRC32值的步骤 #print hex(crc) CrackCrc(crc) dic = string.ascii_letters + string.digits + '+/=' f = open('out.txt', 'w')CrackZip()f.close() 脚本总结：1.为什么crc是四个？我们使用winrar压缩包可以查看到压缩包里面的文件大小。(winrar看到的是字节，12345好压看到的是kb)在记事本里面，一个汉字和中文的标点符号两个字节，一个英文字母和英文的标点符号占一个字节。我们猜测是英文字符啊，毕竟中文字符的话有几万个，你要是用中文字符的话和爆破有什么区别呢？所以一个txt里面是四个字符。2.dic，它表示的是字符的范围。其实更保险的话应该是用string.printable,虽然printable更保险，但是时间会更长，毕竟爆破的字符数更多了。这里解出来之后发现是一段base64字符串，也就没有什么区别了，因为base64范围：0-9 A-Z a-z + / = 这64个字符string.ascii_letters + string.digits + ‘+/=’已经完全给包含了，看来还是经验啊，大佬们可能一眼就看穿了这是个base64字符串。base64密文： 1z5BzAAANAAAAAAAAAKo+egCAIwBJAAAAVAAAAAKGNKv+a2MdSR0zAwABAAAAQ01UCRUUy91BT5UkSNPoj5hFEVFBRvefHSBCfG0ruGnKnygsMyj8SBaZHxsYHY84LEZ24cXtZ01y3k1K1YJ0vpK9HwqUzb6u9z8igEr3dCCQLQAdAAAAHQAAAAJi0efVT2MdSR0wCAAgAAAAZmxhZy50eHQAsDRpZmZpeCB0aGUgZmlsZSBhbmQgZ2V0IHRoZSBmbGFnxD17AEAHAA== 关于这个base64，我拿到一般的工具下面解压发现解压的内容是乱码，粘贴复制都不太好使毕竟涉及到格式、编码字符问题，所以干脆我就直接上代码： 12345678import base64f=open('./out.txt','r')a=f.read()text=base64.b64decode(a)f1=open('./out.txt','w')f1.write(str(text))f.close()f1.close() 但是解码出来的东西放到winhex中总比别人多一个字节。所以我有换了另一种方式：直接拿到notepad++使用自带的base64解码，然后放到winhex中。文件尾部是rar的文件尾部，所以补充rar头部：526172211A0700，最后在注释中拿到了flag。]]></content>
+      <categories>
+        <category>CTF</category>
+        <category>杂项</category>
+        <category>修改高度和宽度</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[攻防世界-2-1]]></title>
