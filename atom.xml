@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-14T06:52:04.903Z</updated>
+  <updated>2019-08-14T07:08:52.932Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,17 +17,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>攻防世界-2-1</title>
+    <link href="http://yoursite.com/2019/08/14/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-2-1/"/>
+    <id>http://yoursite.com/2019/08/14/攻防世界-2-1/</id>
+    <published>2019-08-14T07:02:23.000Z</published>
+    <updated>2019-08-14T07:08:52.932Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;python脚本之CRC爆破宽度和长度：&quot;&gt;&lt;a href=&quot;#python脚本之CRC爆破宽度和长度：&quot; class=&quot;headerlink&quot; title=&quot;python脚本之CRC爆破宽度和长度：&quot;&gt;&lt;/a&gt;&lt;strong&gt;python脚本之CRC爆破宽度和长度：&lt;/strong&gt;&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
+    
+      <category term="杂项" scheme="http://yoursite.com/categories/CTF/%E6%9D%82%E9%A1%B9/"/>
+    
+      <category term="修改高度和宽度" scheme="http://yoursite.com/categories/CTF/%E6%9D%82%E9%A1%B9/%E4%BF%AE%E6%94%B9%E9%AB%98%E5%BA%A6%E5%92%8C%E5%AE%BD%E5%BA%A6/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>BUGKU-论剑</title>
     <link href="http://yoursite.com/2019/08/14/BUGKU-%E8%AE%BA%E5%89%91/"/>
     <id>http://yoursite.com/2019/08/14/BUGKU-论剑/</id>
     <published>2019-08-14T06:40:13.000Z</published>
-    <updated>2019-08-14T06:52:04.903Z</updated>
+    <updated>2019-08-14T07:04:43.020Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;一开始以为这道题是一道简单的小杂项，后来里面设计到许多的知识点。&lt;/p&gt;
     
     </summary>
+    
+      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
+    
+      <category term="杂项" scheme="http://yoursite.com/categories/CTF/%E6%9D%82%E9%A1%B9/"/>
+    
+      <category term="修改高度和宽度" scheme="http://yoursite.com/categories/CTF/%E6%9D%82%E9%A1%B9/%E4%BF%AE%E6%94%B9%E9%AB%98%E5%BA%A6%E5%92%8C%E5%AE%BD%E5%BA%A6/"/>
     
     
   </entry>
