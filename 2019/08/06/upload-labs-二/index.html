@@ -81,12 +81,12 @@
 
 
 
-<meta name="description" content="第四关 12345678910111213141516171819202122232425262728&amp;lt;?php$is_upload = false;$msg = null;if (isset($_POST[&apos;submit&apos;])) &amp;#123;    if (file_exists(UPLOAD_PATH)) &amp;#123;        $deny_ext = array(&quot;.php&quot;,&quot;.">
+<meta name="description" content="我们进行文件上传第二阶段。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="文件上传-(二)">
+<meta property="og:title" content="upload-labs-二">
 <meta property="og:url" content="http://yoursite.com/2019/08/06/upload-labs-二/index.html">
 <meta property="og:site_name" content="新先生">
-<meta property="og:description" content="第四关 12345678910111213141516171819202122232425262728&amp;lt;?php$is_upload = false;$msg = null;if (isset($_POST[&apos;submit&apos;])) &amp;#123;    if (file_exists(UPLOAD_PATH)) &amp;#123;        $deny_ext = array(&quot;.php&quot;,&quot;.">
+<meta property="og:description" content="我们进行文件上传第二阶段。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/50.png">
 <meta property="og:image" content="http://yoursite.com/images/51.png">
@@ -99,10 +99,10 @@
 <meta property="og:image" content="http://yoursite.com/images/58.png">
 <meta property="og:image" content="http://yoursite.com/images/59.png">
 <meta property="og:image" content="http://yoursite.com/images/60.png">
-<meta property="og:updated_time" content="2019-08-08T01:21:39.937Z">
+<meta property="og:updated_time" content="2019-08-14T06:30:29.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="文件上传-(二)">
-<meta name="twitter:description" content="第四关 12345678910111213141516171819202122232425262728&amp;lt;?php$is_upload = false;$msg = null;if (isset($_POST[&apos;submit&apos;])) &amp;#123;    if (file_exists(UPLOAD_PATH)) &amp;#123;        $deny_ext = array(&quot;.php&quot;,&quot;.">
+<meta name="twitter:title" content="upload-labs-二">
+<meta name="twitter:description" content="我们进行文件上传第二阶段。">
 <meta name="twitter:image" content="http://yoursite.com/images/50.png">
 
 
@@ -139,7 +139,7 @@
 
 
 
-  <title>文件上传-(二) | 新先生</title>
+  <title>upload-labs-二 | 新先生</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">文件上传-(二)</h1>
+          <h1 class="post-title" itemprop="name headline">upload-labs-二</h1>
         
 
         <div class="post-meta">
@@ -413,7 +413,9 @@
       
 
       
-        <h4 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a><strong>第四关</strong></h4><hr>
+        <p>我们进行文件上传第二阶段。</p>
+<a id="more"></a>
+<h4 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a><strong>第四关</strong></h4><hr>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$is_upload = <span class="keyword">false</span>;</span><br><span class="line">$msg = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_POST[<span class="string">'submit'</span>])) &#123;</span><br><span class="line">    <span class="keyword">if</span> (file_exists(UPLOAD_PATH)) &#123;</span><br><span class="line">        $deny_ext = <span class="keyword">array</span>(<span class="string">".php"</span>,<span class="string">".php5"</span>,<span class="string">".php4"</span>,<span class="string">".php3"</span>,<span class="string">".php2"</span>,<span class="string">"php1"</span>,<span class="string">".html"</span>,<span class="string">".htm"</span>,<span class="string">".phtml"</span>,<span class="string">".pht"</span>,<span class="string">".pHp"</span>,<span class="string">".pHp5"</span>,<span class="string">".pHp4"</span>,<span class="string">".pHp3"</span>,<span class="string">".pHp2"</span>,<span class="string">"pHp1"</span>,<span class="string">".Html"</span>,<span class="string">".Htm"</span>,<span class="string">".pHtml"</span>,<span class="string">".jsp"</span>,<span class="string">".jspa"</span>,<span class="string">".jspx"</span>,<span class="string">".jsw"</span>,<span class="string">".jsv"</span>,<span class="string">".jspf"</span>,<span class="string">".jtml"</span>,<span class="string">".jSp"</span>,<span class="string">".jSpx"</span>,<span class="string">".jSpa"</span>,<span class="string">".jSw"</span>,<span class="string">".jSv"</span>,<span class="string">".jSpf"</span>,<span class="string">".jHtml"</span>,<span class="string">".asp"</span>,<span class="string">".aspx"</span>,<span class="string">".asa"</span>,<span class="string">".asax"</span>,<span class="string">".ascx"</span>,<span class="string">".ashx"</span>,<span class="string">".asmx"</span>,<span class="string">".cer"</span>,<span class="string">".aSp"</span>,<span class="string">".aSpx"</span>,<span class="string">".aSa"</span>,<span class="string">".aSax"</span>,<span class="string">".aScx"</span>,<span class="string">".aShx"</span>,<span class="string">".aSmx"</span>,<span class="string">".cEr"</span>,<span class="string">".sWf"</span>,<span class="string">".swf"</span>);</span><br><span class="line">        $file_name = trim($_FILES[<span class="string">'upload_file'</span>][<span class="string">'name'</span>]);</span><br><span class="line">        $file_name = deldot($file_name);<span class="comment">//删除文件名末尾的点</span></span><br><span class="line">        $file_ext = strrchr($file_name, <span class="string">'.'</span>);</span><br><span class="line">        $file_ext = strtolower($file_ext); <span class="comment">//转换为小写</span></span><br><span class="line">        $file_ext = str_ireplace(<span class="string">'::$DATA'</span>, <span class="string">''</span>, $file_ext);<span class="comment">//去除字符串::$DATA</span></span><br><span class="line">        $file_ext = trim($file_ext); <span class="comment">//收尾去空</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!in_array($file_ext, $deny_ext)) &#123;</span><br><span class="line">            $temp_file = $_FILES[<span class="string">'upload_file'</span>][<span class="string">'tmp_name'</span>];</span><br><span class="line">            $img_path = UPLOAD_PATH.<span class="string">'/'</span>.date(<span class="string">"YmdHis"</span>).rand(<span class="number">1000</span>,<span class="number">9999</span>).$file_ext;</span><br><span class="line">            <span class="keyword">if</span> (move_uploaded_file($temp_file, $img_path)) &#123;</span><br><span class="line">                $is_upload = <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                $msg = <span class="string">'上传出错！'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $msg = <span class="string">'此文件不允许上传!'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $msg = UPLOAD_PATH . <span class="string">'文件夹不存在,请手工创建！'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h5 id="审计："><a href="#审计：" class="headerlink" title="审计："></a><strong>审计：</strong></h5><p>跟第三关差不多，但是限制了好多文件名后缀。然而有一种文件格式没禁用，那就是.htaccess。</p>
@@ -470,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/06/upload-labs-一/" rel="next" title="upload-labs-(一)">
-                <i class="fa fa-chevron-left"></i> upload-labs-(一)
+              <a href="/2019/08/06/upload-labs-一/" rel="next" title="upload-labs-一">
+                <i class="fa fa-chevron-left"></i> upload-labs-一
               </a>
             
           </div>
@@ -479,6 +481,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/14/BUGKU-论剑/" rel="prev" title="BUGKU-论剑">
+                BUGKU-论剑 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -555,7 +561,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
