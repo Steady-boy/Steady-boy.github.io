@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-14T07:08:52.932Z</updated>
+  <updated>2019-08-14T08:08:46.262Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,15 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>BUGKU--好多压缩包</title>
+    <link href="http://yoursite.com/2019/08/14/BUGKU-%E5%A5%BD%E5%A4%9A%E5%8E%8B%E7%BC%A9%E5%8C%85/"/>
+    <id>http://yoursite.com/2019/08/14/BUGKU-好多压缩包/</id>
+    <published>2019-08-14T08:06:07.000Z</published>
+    <updated>2019-08-14T08:08:46.262Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;下载文件，解压后是68个压缩文件，而且每个文件都是加密的，也没有提示密码，爆破？胡扯，这么多，还不想耗死。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>攻防世界-2-1</title>
     <link href="http://yoursite.com/2019/08/14/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-2-1/"/>
     <id>http://yoursite.com/2019/08/14/攻防世界-2-1/</id>
     <published>2019-08-14T07:02:23.000Z</published>
-    <updated>2019-08-14T07:08:52.932Z</updated>
+    <updated>2019-08-14T07:11:28.629Z</updated>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;python脚本之CRC爆破宽度和长度：&quot;&gt;&lt;a href=&quot;#python脚本之CRC爆破宽度和长度：&quot; class=&quot;headerlink&quot; title=&quot;python脚本之CRC爆破宽度和长度：&quot;&gt;&lt;/a&gt;&lt;strong&gt;python脚本之CRC爆破宽度和长度：&lt;/strong&gt;&lt;/h4&gt;
+      &lt;p&gt;python之crc爆破&lt;/p&gt;
     
     </summary>
     
