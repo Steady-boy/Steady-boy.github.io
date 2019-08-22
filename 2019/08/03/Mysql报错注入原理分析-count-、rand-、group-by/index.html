@@ -53,16 +53,14 @@
 <link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.4">
 
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
@@ -116,7 +114,7 @@
 <meta property="og:image" content="http://yoursite.com/images/32.png">
 <meta property="og:image" content="http://yoursite.com/images/33.png">
 <meta property="og:image" content="http://yoursite.com/images/34.png">
-<meta property="og:updated_time" content="2019-08-03T06:02:32.216Z">
+<meta property="og:updated_time" content="2019-08-18T12:47:34.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql报错注入原理分析(count()、rand()、group by)">
 <meta name="twitter:description" content="0x00 疑问 一直在用mysql数据库报错注入方法，但为何会报错？">
@@ -288,7 +286,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="新先生">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/gxa.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -424,12 +422,56 @@
 <p>OK 那我们再增加一条<br><img src="/images/13.png" alt></p>
 <p>执行报错语句<br><img src="/images/14.png" alt><br>ok 成功报错</p>
 <p>由此可证明floor(rand(0)*2)报错是有条件的，记录必须3条以上，而且在3条以上必定报错，到底为何？请继续往下看。</p>
-<h4 id="0x03-随机因子具有决定权么-rand-和rand-0"><a href="#0x03-随机因子具有决定权么-rand-和rand-0" class="headerlink" title="0x03 随机因子具有决定权么(rand()和rand(0))"></a><strong>0x03 随机因子具有决定权么(rand()和rand(0))</strong></h4><p>为了更彻底的说明报错原因，直接把随机因子去掉，再来一遍看看，先看一条记录的时候，如下图:<br><img src="/images/15.png" alt><br>一条记录的话 无论执行多少次也不报错<br>然后增加一条记录。<br>两条记录的话 结果就变成不确定性了<br><img src="/images/16.png" alt><br><img src="/images/17.png" alt><br><img src="/images/18.png" alt><br>随机出现报错。然后再插入一条，三条记录之后，也和2条记录一样进行随机报错。<br>由此可见报错和随机因子是有关联的，但有什么关联呢，为什么直接使用rand()，有两条记录的情况下就会报错，而且是有时候报错，有时候不报错，而rand(0)的时候在两条的时候不报错，在三条以上就绝对报错？我们继续往下看。</p>
+<h4 id="0x03-随机因子具有决定权么-rand-和rand-0"><a href="#0x03-随机因子具有决定权么-rand-和rand-0" class="headerlink" title="0x03 随机因子具有决定权么(rand()和rand(0))"></a><strong>0x03 随机因子具有决定权么(rand()和rand(0))</strong></h4><p>为了更彻底的说明报错原因，直接把随机因子去掉，再来一遍看看，先看一条记录的时候，如下图:<br><img src="/images/15.png" alt></p>
+<p>一条记录的话 无论执行多少次也不报错</p>
+<p>然后增加一条记录。</p>
+<p>两条记录的话 结果就变成不确定性了<br><img src="/images/16.png" alt><br><img src="/images/17.png" alt><br><img src="/images/18.png" alt></p>
+<p>随机出现报错。然后再插入一条，三条记录之后，也和2条记录一样进行随机报错。</p>
+<p>由此可见报错和随机因子是有关联的，但有什么关联呢，为什么直接使用rand()，有两条记录的情况下就会报错，而且是有时候报错，有时候不报错，而rand(0)</p>
+<p>的时候在两条的时候不报错，在三条以上就绝对报错？我们继续往下看。</p>
 <h4 id="0x04不确定性与确定性"><a href="#0x04不确定性与确定性" class="headerlink" title="0x04不确定性与确定性"></a><strong>0x04不确定性与确定性</strong></h4><p>前面说过，floor(rand(0)<em>2)报错的原理是恰恰是由于它的确定性，这到底是为什么呢？从0x03我们大致可以猜想到，因为floor(rand()</em>2)不加随机因子的时候是随机出错的，而在3条记录以上用floor(rand(0)<em>2)就一定报错，由此可猜想floor(rand()</em>2)是比较随机的，不具备确定性因素，而floor(rand(0)<em>2)具备某方面的确定性。<br>为了证明我们猜想，分别对floor(rand()</em>2)和floor(rand(0)<em>2)在多记录表中执行多次(记录选择10条以上)，在有12条记录表中执行结果如下图：<br><img src="/images/19.png" alt><br>连续3次查询，毫无规则，接下来看看select floor(rand(0)</em>2) from T-Safe;，如下图：<br><img src="/images/20.png" alt><br>可以看到floor(rand(0)*2)是有规律的，而且是固定的，这个就是上面提到的由于是确定性才导致的报错，那为何会报错呢，我们接着往下看。</p>
 <h4 id="0x05-count与group-by的虚拟表"><a href="#0x05-count与group-by的虚拟表" class="headerlink" title="0x05 count与group by的虚拟表"></a><strong>0x05 count与group by的虚拟表</strong></h4><p>使用select count(<em>) from T-Safe group by x;这种语句的时候我们经常可以看到下面类似的结果：<br><img src="/images/21.png" alt><br>可以看出 test12的记录有5条与count()的结果相符合，那么mysql在遇到select count() from TSafe group by x;这语句的时候到底做了哪些操作呢，我们果断猜测mysql遇到该语句时会建立一个虚拟表(实际上就是会建立虚拟表)，那整个工作流程就会如下图所示：<br>1.先建立虚拟表，如下图(其中key是主键，不可重复):<br><img src="/images/22.png" alt><br>2.开始查询数据，取数据库数据，然后查看虚拟表存在不，不存在则插入新记录，存在则count(</em>)字段直接加1，如下图:<br><img src="/images/23.png" alt><br>3.由此看到 如果key存在的话就+1， 不存在的话就新建一个key。<br>那这个和报错有啥内在联系，我们直接往下来，其实到这里，结合前面的内容大家也能猜个一二了。</p>
-<h4 id="0x06-floor-rand-0-2-报错"><a href="#0x06-floor-rand-0-2-报错" class="headerlink" title="0x06 floor(rand(0)*2)报错"></a><strong>0x06 floor(rand(0)*2)报错</strong></h4><p>其实mysql官方有给过提示，就是查询的时候如果使用rand()的话，该值会被计算多次，那这个”被计算多次”到底是什么意思，就是在使用group by的时候，floor(rand(0)<em>2)会被执行一次，如果虚表不存在记录，插入虚表的时候会再被执行一次，我们来看下floor(rand(0)</em>2)报错的过程就知道了，从0x04可以看到在一次多记录的查询过程中floor(rand(0)<em>2)的值是定性的，为011011…(记住这个顺序很重要)，报错实际上就是floor(rand(0)2)被计算多次导致的，具体看看select count() from TSafe group by floor(rand(0)</em>2);的查询过程：<br>1.查询前默认会建立空虚拟表如下图:<br><img src="/images/25.png" alt><br>2.取第一条记录，执行floor(rand(0)<em>2)，发现结果为0(第一次计算),查询虚拟表，发现0的键值不存在，则floor(rand(0)</em>2)会被再计算一次，结果为1(第二次计算)，插入虚表，这时第一条记录查询完毕，如下图:<br><img src="/images/26.png" alt><br>3.查询第二条记录，再次计算floor(rand(0)<em>2)，发现结果为1(第三次计算)，查询虚表，发现1的键值存在，所以floor(rand(0)2)不会被计算第二次，直接count()加1，第二条记录查询完毕，结果如下:<br><img src="/images/27.png" alt><br>4.查询第三条记录，再次计算floor(rand(0)</em>2)，发现结果为0(第4次计算)，查询虚表，发现键值没有0，则数据库尝试插入一条新的数据，在插入数据时floor(rand(0)<em>2)被再次计算，作为虚表的主键，其值为1(第5次计算)，然而1这个主键已经存在于虚拟表中，而新计算的值也为1(主键键值必须唯一)，所以插入的时候就直接报错了。<br>5.整个查询过程floor(rand(0)</em>2)被计算了5次，查询原数据表3次，所以这就是为什么数据表中需要3条数据，使用该语句才会报错的原因。</p>
-<h4 id="0x07-floor-rand-2-报错"><a href="#0x07-floor-rand-2-报错" class="headerlink" title="0x07 floor(rand()*2)报错"></a><strong>0x07 floor(rand()*2)报错</strong></h4><p>由0x05我们可以同样推理出不加入随机因子的情况，由于没加入随机因子，所以floor(rand()<em>2)是不可测的，因此在两条数据的时候，只要出现下面情况，即可报错，如下图:<br><img src="/images/28.png" alt><br>最重要的是前面几条记录查询后不能让虚表存在0,1键值，如果存在了，那无论多少条记录，也都没办法报错，因为floor(rand()</em>2)不会再被计算做为虚表的键值，这也就是为什么不加随机因子有时候会报错，有时候不会报错的原因。如图：<br><img src="/images/29.png" alt><br>当前面记录让虚表长成这样子后，由于不管查询多少条记录，floor(rand()2)的值在虚表中都能找到，所以不会被再次计算，只是简单的增加count()字段的数量，所以不会报错，比如floor(rand(1)*2)，如图：<br><img src="/images/30.png" alt></p>
-<h3 id="这里再补充一下知识点"><a href="#这里再补充一下知识点" class="headerlink" title="这里再补充一下知识点"></a><strong>这里再补充一下知识点</strong></h3><p><strong>UpdateXml() MYSQL显错注入</strong><br>在学习之前,需要先了解 UpdateXml() 。<br>UPDATEXML (XML_document, XPath_string, new_value);<br>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc<br>第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找教程。<br>第三个参数：new_value，String格式，替换查找到的符合条件的数据<br>作用：改变文档中符合条件的节点的值<br>然后咱们再看看语句：<br><code>http://www.XXXIII.com/a.php?id=1 and updatexml(1,concat(0x7e,(SELECT @@version),0x7e),1)</code><br>CONCAT(str1,str2,…)<br>返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。<br>通过查询@@version,返回版本。然后CONCAT将其字符串化。因为UPDATEXML第二个参数需要Xpath格式的字符串,所以不符合要求，然后报错。<br>错误大概会是：<br><code>ERROR 1105 (HY000): XPATH syntax error: ’:root@localhost’</code><br><strong>1、floor函数</strong><br>因为之前讲双查询语句时，就把floor函数报错也进行了讲解，这里就不再重复。忘记的翻翻我的其他博客(sql分类)<br>这里贴个sql注入的floor语句公式：<br>and (select 1 from(select count(),concat(version(),floor(rand(0)2))x from information_schema.tables group by x)a)<br>这些sql注入的语句公式，都是研究人员经过测试总结出来的。我们需要的则是，了解这个语句公式的含义和了解其背后的逻辑原理，之后收集一些sql<br>语句注入公式拿来进行fuzz检测即可。简单一句话就是:自己在看懂和明白sql注入的原理基础上，那别人总结出的sql注入语句利用实现就好了。因为很<br>多sql注入语句都是基于这些sql注入原始公式语句变形而来的，背后的逻辑原理不会改变的。好啦，不吹了，我们继续学习剩下的函数。<br><strong>2、exp()函数</strong><br>exp函数相信大家都十分的熟悉，这是一个数学函数，用于计算e的x次方的函数。<br>exp函数特性：在mysql数据库中，exp()只能计算710之内的数值，一旦超过或者等于710的话，则会进行整形报错溢出。提示：DOUBLE value is out<br>of range in ‘exp(710)’ double类型超出了exp(710)范围。<br><img src="/images/31.png" alt><br>这里顺便在提下<del>，如果构造利用为 ~0的话，它是代表着按0按位取反就会返回“18446744073709551615”，得到最大的无符号BIGINT值。<br><img src="/images/32.png" alt><br>所以利用上述exp和</del>特性，我们可以构造成payload:and (EXP(<del>(select * from(select version())a)));<br>利用环境：mysql&gt;5.5.5<br>利用它的这个特性，我们可以构造成payload:and (EXP(</del>(select * from(select version())a)));<br><img src="/images/33.png" alt><br>通过先是通过子查询产生了最大的无符号BIGINT值，之后通过exp()函数形成了DOUBLE报错，从而能够得到我们想要的版本报错信息。<br>至于后面怎么操作，不要太死板呀。就version()你看看怎么改，换成什么database(),user()…自己慢慢思考下。<br>在这里有些人可能会有一些问题：就是说为啥exp(<del>数据库版本)，就会报错？其实在这里我们可以不用去关注select查询的东西，select在这个语句他只要成功执行就会返回一个0，所以就相当于exp( ~0)<br>3、数据重复报错<br>利用环境：mysql低版本<br>payload：select * from (select NAMECONST(version(),1),NAMECONST(version(),1))x<br><img src="/images/34.png" alt><br>这里利用了数据库无法识别重复查询数据库版本信息的操作，从而进行报错。<br>4、Xpath报错（我的博客好像也单独讲过）<br>数据库环境:mysql 5.1.5<br>在学习Xpath函数之前，我们先了解下updatexml()函数和extractvalue()函数。<br>updataxml()函数<br>UPDATEXML (XMLdocument, XPathstring, new_value);<br>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc<br>第二个参数：XPath_string (Xpath格式的字符串)<br>第三个参数：new_value，String格式，替换查找到的符合条件的数据<br>作用：改变文档中符合条件的节点的值（其实简单的说，就是对xml进行查询和修改）<br>简单分析下，在这里我们先是查询了数据库的版本信息，而后concat函数进行连接字符串信息，然后利用xml语法进行查询和修改。但是我们却使用<br>0x7e进行拼接，0x7e是啥？这是特殊字符</del>进行十六进制转换的结果。同时updataxml函数是第二位置是拼接xml字符串，而extractvalue是需要xml路<br>径。至于xml具体语法我就不讲解了，这里0x7e嵌套在里面的话，xml语法是无法识别的，所以会进行报错，从而产生了报错得到我们想要的信息。</p>
+<h4 id="0x06-floor-rand-0-2-报错"><a href="#0x06-floor-rand-0-2-报错" class="headerlink" title="0x06 floor(rand(0)*2)报错"></a><strong>0x06 floor(rand(0)*2)报错</strong></h4><p>其实mysql官方有给过提示，就是查询的时候如果使用rand()的话，该值会被计算多次，那这个”被计算多次”到底是什么意思，就是在使用group by的时候，floor(rand(0)*</p>
+<p>2)会被执行一次，如果虚表不存在记录，插入虚表的时候会再被执行一次，我们来看下floor(rand(0)<em>2)报错的过程就知道了，从0x04可以看到在一次多记录的查询过程中floor(rand(0)</em>2)的值是定性的，为011011…(记住这个顺序很重要)，报错实际上就是floor(rand(0)2)被计算多次导致的，具体看看select count() from TSafe group by floor(rand(0)2);的查询过程：</p>
+<p>1.查询前默认会建立空虚拟表如下图:<br><img src="/images/25.png" alt></p>
+<p>2.取第一条记录，执行floor(rand(0)<em>2)，发现结果为0(第一次计算),查询虚拟表，发现0的键值不存在，则floor(rand(0)</em>2)会被再计算一次，结果为1(第二次计算)，插入虚表，这时第一条记录查询完毕，如下图:</p>
+<p><img src="/images/26.png" alt></p>
+<p>3.查询第二条记录，再次计算floor(rand(0)*2)，发现结果为1(第三次计算)，查询虚表，发现1的键值存在，所以floor(rand(0)2)不会被计算第二次，直接count()加1，第二条记录查询完毕，结果如下:<br><img src="/images/27.png" alt></p>
+<p>4.查询第三条记录，再次计算floor(rand(0)<em>2)，发现结果为0(第4次计算)，查询虚表，发现键值没有0，则数据库尝试插入一条新的数据，在插入数据时floor(rand(0)</em>2)被再次计算，作为虚表的主键，其值为1(第5次计算</p>
+<p>)，然而1这个主键已经存在于虚拟表中，而新计算的值也为1(主键键值必须唯一)，所以插入的时候就直接报错了。</p>
+<p>5.整个查询过程floor(rand(0)*2)被计算了5次，查询原数据表3次，所以这就是为什么数据表中需要3条数据，使用该语句才会报错的原因。</p>
+<h4 id="0x07-floor-rand-2-报错"><a href="#0x07-floor-rand-2-报错" class="headerlink" title="0x07 floor(rand()*2)报错"></a><strong>0x07 floor(rand()*2)报错</strong></h4><p>由0x05我们可以同样推理出不加入随机因子的情况，由于没加入随机因子，所以floor(rand()*2)是不可测的，因此在两条数据的时候，只要出现下面情况，即可报错，如下图:</p>
+<p><img src="/images/28.png" alt></p>
+<p>最重要的是前面几条记录查询后不能让虚表存在0,1键值，如果存在了，那无论多少条记录，也都没办法报错，因为floor(rand()*<br>2)不会再被计算做为虚表的键值，这也就是为什么不加随机因子有时候会报错，有时候不会报错的原因。如图：<br><img src="/images/29.png" alt></p>
+<p>当前面记录让虚表长成这样子后，由于不管查询多少条记录，floor(rand()2)的值在虚表中都能找到，所以不会被再次计算，只是简单的增加count()字段的数量，所以不会报错，比如floor(rand(1)*2)，如图：<br><img src="/images/30.png" alt></p>
+<h3 id="这里再补充一下知识点"><a href="#这里再补充一下知识点" class="headerlink" title="这里再补充一下知识点"></a><strong>这里再补充一下知识点</strong></h3><p><strong>UpdateXml() MYSQL显错注入</strong></p>
+<p>在学习之前,需要先了解 UpdateXml() 。</p>
+<p>UPDATEXML (XML_document, XPath_string, new_value);</p>
+<p>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc</p>
+<p>第二个参数：XPath_string (Xpath格式的字符串) ，如果不了解Xpath语法，可以在网上查找教程。</p>
+<p>第三个参数：new_value，String格式，替换查找到的符合条件的数据</p>
+<p>作用：改变文档中符合条件的节点的值</p>
+<p>然后咱们再看看语句：</p>
+<p><code>http://www.XXXIII.com/a.php?id=1 and updatexml(1,concat(0x7e,(SELECT @@version),0x7e),1)</code></p>
+<p>CONCAT(str1,str2,…)</p>
+<p>返回结果为连接参数产生的字符串。如有任何一个参数为NULL ，则返回值为 NULL。</p>
+<p>通过查询@@version,返回版本。然后CONCAT将其字符串化。因为UPDATEXML第二个参数需要Xpath格式的字符串,所以不符合要求，然后报错。</p>
+<p>错误大概会是：</p>
+<p><code>ERROR 1105 (HY000): XPATH syntax error: ’:root@localhost’</code><br><strong>1、floor函数</strong></p>
+<p>因为之前讲双查询语句时，就把floor函数报错也进行了讲解，这里就不再重复。忘记的翻翻我的其他博客(sql分类)</p>
+<p>这里贴个sql注入的floor语句公式：</p>
+<p>and (select 1 from(select count(),concat(version(),floor(rand(0)2))x from information_schema.tables group by x)a)</p>
+<p>这些sql注入的语句公式，都是研究人员经过测试总结出来的。我们需要的则是，了解这个语句公式的含义和了解其背后的逻辑原理，之后收集一些sql</p>
+<p>语句注入公式拿来进行fuzz检测即可。简单一句话就是:自己在看懂和明白sql注入的原理基础上，那别人总结出的sql注入语句利用实现就好了。因为很</p>
+<p>多sql注入语句都是基于这些sql注入原始公式语句变形而来的，背后的逻辑原理不会改变的。好啦，不吹了，我们继续学习剩下的函数。</p>
+<p><strong>2、exp()函数</strong></p>
+<p>exp函数相信大家都十分的熟悉，这是一个数学函数，用于计算e的x次方的函数。</p>
+<p>exp函数特性：在mysql数据库中，exp()只能计算710之内的数值，一旦超过或者等于710的话，则会进行整形报错溢出。提示：DOUBLE value is out</p>
+<p>of range in ‘exp(710)’ double类型超出了exp(710)范围。<br><img src="/images/31.png" alt></p>
+<p>这里顺便在提下~，如果构造利用为 ~0的话，它是代表着按0按位取反就会返回“18446744073709551615”，得到最大的无符号BIGINT值。<br><img src="/images/32.png" alt></p>
+<p>所以利用上述exp和<del>特性，我们可以构造成payload:and (EXP(</del>(select * from(select version())a)));</p>
+<p>利用环境：mysql&gt;5.5.5</p>
+<p>利用它的这个特性，我们可以构造成payload:and (EXP(<del>(select * from(select version())a)));<br><img src="/images/33.png" alt><br>通过先是通过子查询产生了最大的无符号BIGINT值，之后通过exp()函数形成了DOUBLE报错，从而能够得到我们想要的版本报错信息。<br>至于后面怎么操作，不要太死板呀。就version()你看看怎么改，换成什么database(),user()…自己慢慢思考下。<br>在这里有些人可能会有一些问题：就是说为啥exp(</del>数据库版本)，就会报错？其实在这里我们可以不用去关注select查询的东西，select在这个语句他只要成功执行就会返回一个0，所以就相当于exp( <del>0)<br>3、数据重复报错<br>利用环境：mysql低版本<br>payload：select * from (select NAMECONST(version(),1),NAMECONST(version(),1))x<br><img src="/images/34.png" alt><br>这里利用了数据库无法识别重复查询数据库版本信息的操作，从而进行报错。<br>4、Xpath报错（我的博客好像也单独讲过）<br>数据库环境:mysql 5.1.5<br>在学习Xpath函数之前，我们先了解下updatexml()函数和extractvalue()函数。<br>updataxml()函数<br>UPDATEXML (XMLdocument, XPathstring, new_value);<br>第一个参数：XML_document是String格式，为XML文档对象的名称，文中为Doc<br>第二个参数：XPath_string (Xpath格式的字符串)<br>第三个参数：new_value，String格式，替换查找到的符合条件的数据<br>作用：改变文档中符合条件的节点的值（其实简单的说，就是对xml进行查询和修改）<br>简单分析下，在这里我们先是查询了数据库的版本信息，而后concat函数进行连接字符串信息，然后利用xml语法进行查询和修改。但是我们却使用<br>0x7e进行拼接，0x7e是啥？这是特殊字符</del>进行十六进制转换的结果。同时updataxml函数是第二位置是拼接xml字符串，而extractvalue是需要xml路<br>径。至于xml具体语法我就不讲解了，这里0x7e嵌套在里面的话，xml语法是无法识别的，所以会进行报错，从而产生了报错得到我们想要的信息。</p>
 
       
     </div>
@@ -532,6 +574,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/gxa.jpg" alt="新先生">
+            
               <p class="site-author-name" itemprop="name">新先生</p>
               <p class="site-description motion-element" itemprop="description">99年安全小白。</p>
           </div>
@@ -543,7 +587,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -625,7 +669,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2019.7.28 &mdash; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -639,9 +683,37 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">31.2k</span>
+    <span title="Site words total count">31.6k</span>
   
 </div>
+
+<script language="javascript">
+  function siteTime(){
+    window.setTimeout("siteTime()", 1000);
+    var seconds = 1000;
+    var minutes = seconds * 60;
+    var hours = minutes * 60;
+    var days = hours * 24;
+    var years = days * 365;
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var t1 = Date.UTC(2018,06,07,12,00,00); // 设置建立网站的时间
+    var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = t2-t1;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+    document.getElementById("sitetime").innerHTML=" 已运行"+diffYears+" 年 "diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+  }
+  siteTime();
+</script>
 
 
   <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
@@ -655,6 +727,8 @@
   <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
 
+
+<span id="sitetime"></span>
 
 
         
@@ -699,8 +773,6 @@
   
 
 
-  
-
 
 
 
@@ -739,11 +811,6 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -826,5 +893,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":250,"height":550},"mobile":{"show":false},"react":{"opacity":0.6},"log":false});</script></body>
 </html>
