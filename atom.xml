@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-17T09:19:38.343Z</updated>
+  <updated>2019-08-23T10:53:39.761Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git源码泄露</title>
+    <link href="http://yoursite.com/2019/08/23/Git%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/"/>
+    <id>http://yoursite.com/2019/08/23/Git源码泄露/</id>
+    <published>2019-08-23T10:31:07.000Z</published>
+    <updated>2019-08-23T10:53:39.761Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;GIT源码泄露&lt;/p&gt;
+&lt;h3 id=&quot;0x01简要介绍git&quot;&gt;&lt;a href=&quot;#0x01简要介绍git&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="漏洞原理" scheme="http://yoursite.com/categories/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/"/>
+    
+      <category term="Git源码泄露" scheme="http://yoursite.com/categories/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/Git%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>python之zipfile模块-2</title>
@@ -401,28 +428,6 @@
     
     
       <category term="杂谈" scheme="http://yoursite.com/tags/%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jarvis-OJ-api调用</title>
-    <link href="http://yoursite.com/2019/07/29/Jarvis-OJ-api%E8%B0%83%E7%94%A8/"/>
-    <id>http://yoursite.com/2019/07/29/Jarvis-OJ-api调用/</id>
-    <published>2019-07-29T01:28:52.000Z</published>
-    <updated>2019-08-05T01:21:22.342Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;面对这道题我完全小白，所以我必须详细解释。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="CTF" scheme="http://yoursite.com/categories/CTF/"/>
-    
-      <category term="Jarvis-OJ" scheme="http://yoursite.com/categories/CTF/Jarvis-OJ/"/>
-    
-    
-      <category term="Jarvis-OJ" scheme="http://yoursite.com/tags/Jarvis-OJ/"/>
     
   </entry>
   
