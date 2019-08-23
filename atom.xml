@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-23T10:53:39.761Z</updated>
+  <updated>2019-08-23T12:29:13.420Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Git源码泄露</title>
-    <link href="http://yoursite.com/2019/08/23/Git%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/"/>
-    <id>http://yoursite.com/2019/08/23/Git源码泄露/</id>
-    <published>2019-08-23T10:31:07.000Z</published>
-    <updated>2019-08-23T10:53:39.761Z</updated>
+    <title>CGI/FastCGI学习</title>
+    <link href="http://yoursite.com/2019/08/23/CGI-FastCGI%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2019/08/23/CGI-FastCGI学习/</id>
+    <published>2019-08-23T12:27:46.000Z</published>
+    <updated>2019-08-23T12:29:13.420Z</updated>
     
     <summary type="html">
     
@@ -29,10 +29,55 @@
       
         
         
-          &lt;p&gt;GIT源码泄露&lt;/p&gt;
-&lt;h3 id=&quot;0x01简要介绍git&quot;&gt;&lt;a href=&quot;#0x01简要介绍git&quot; class=&quot;headerlink&quot;
+          &lt;h3 id=&quot;CGI-FastCGI学习&quot;&gt;&lt;a href=&quot;#CGI-FastCGI学习&quot; class=&quot;headerlink&quot;
         
       
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+    
+      <category term="内核" scheme="http://yoursite.com/categories/PHP/%E5%86%85%E6%A0%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SAPI接口</title>
+    <link href="http://yoursite.com/2019/08/23/SAPI%E6%8E%A5%E5%8F%A3/"/>
+    <id>http://yoursite.com/2019/08/23/SAPI接口/</id>
+    <published>2019-08-23T12:08:10.000Z</published>
+    <updated>2019-08-23T12:29:16.796Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;PHP内核探索：从SAPI接口开始&quot;&gt;&lt;a href=&quot;#PHP内核探索：从SAPI接口开始&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="PHP" scheme="http://yoursite.com/categories/PHP/"/>
+    
+      <category term="内核" scheme="http://yoursite.com/categories/PHP/%E5%86%85%E6%A0%B8/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git源码泄露</title>
+    <link href="http://yoursite.com/2019/08/23/Git%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2/"/>
+    <id>http://yoursite.com/2019/08/23/Git源码泄露/</id>
+    <published>2019-08-23T10:31:07.000Z</published>
+    <updated>2019-08-23T11:06:23.559Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;GIT源码泄露&lt;/p&gt;
     
     </summary>
     
@@ -386,48 +431,6 @@
     
     
       <category term="sql" scheme="http://yoursite.com/tags/sql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python-scoket主机识别</title>
-    <link href="http://yoursite.com/2019/07/29/python-scoket%E4%B8%BB%E6%9C%BA%E8%AF%86%E5%88%AB/"/>
-    <id>http://yoursite.com/2019/07/29/python-scoket主机识别/</id>
-    <published>2019-07-29T02:31:55.000Z</published>
-    <updated>2019-08-03T06:03:56.335Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;python脚本编写&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="PYTHON" scheme="http://yoursite.com/categories/PYTHON/"/>
-    
-      <category term="信息收集脚本" scheme="http://yoursite.com/categories/PYTHON/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E8%84%9A%E6%9C%AC/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>xxe漏洞详解</title>
-    <link href="http://yoursite.com/2019/07/29/xxe%E6%BC%8F%E6%B4%9E%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://yoursite.com/2019/07/29/xxe漏洞详解/</id>
-    <published>2019-07-29T01:52:57.000Z</published>
-    <updated>2019-08-03T06:04:39.602Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;XML用于标记电子文件使其具有结构性的标记语言，可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="漏洞原理" scheme="http://yoursite.com/categories/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/"/>
-    
-      <category term="xxe漏洞" scheme="http://yoursite.com/categories/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/xxe%E6%BC%8F%E6%B4%9E/"/>
-    
-    
-      <category term="杂谈" scheme="http://yoursite.com/tags/%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   
