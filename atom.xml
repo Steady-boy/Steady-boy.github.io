@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-23T12:29:13.420Z</updated>
+  <updated>2019-08-23T12:44:42.371Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="http://yoursite.com/2019/08/23/CGI-FastCGI%E5%AD%A6%E4%B9%A0/"/>
     <id>http://yoursite.com/2019/08/23/CGI-FastCGI学习/</id>
     <published>2019-08-23T12:27:46.000Z</published>
-    <updated>2019-08-23T12:29:13.420Z</updated>
+    <updated>2019-08-23T12:44:42.371Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;CGI-FastCGI学习&quot;&gt;&lt;a href=&quot;#CGI-FastCGI学习&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;p&gt;CGI学习&lt;/p&gt;
     
     </summary>
     
