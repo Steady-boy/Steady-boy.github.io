@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="PHP内核探索：从SAPI接口开始SAPI:Server Application Programming Interface 服务器端应用编程端口。研究过PHP架构的同学应该知道这个东东的重要性，它提供了一个接口，使得PHP可以和其他应用进行交互数据。 本文不会详细介绍每个PHP的SAPI，只是针对最简单的CGI SAPI，来说明SAPI的机制。我们先来看看PHP的架构图： SAPI指的是PHP具">
+<meta name="description" content="PHP内核的了解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SAPI接口">
 <meta property="og:url" content="http://yoursite.com/2019/08/23/SAPI接口/index.html">
 <meta property="og:site_name" content="Steady">
-<meta property="og:description" content="PHP内核探索：从SAPI接口开始SAPI:Server Application Programming Interface 服务器端应用编程端口。研究过PHP架构的同学应该知道这个东东的重要性，它提供了一个接口，使得PHP可以和其他应用进行交互数据。 本文不会详细介绍每个PHP的SAPI，只是针对最简单的CGI SAPI，来说明SAPI的机制。我们先来看看PHP的架构图： SAPI指的是PHP具">
+<meta property="og:description" content="PHP内核的了解">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/104.png">
-<meta property="og:updated_time" content="2019-08-23T12:29:16.796Z">
+<meta property="og:updated_time" content="2019-08-23T15:07:39.780Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SAPI接口">
-<meta name="twitter:description" content="PHP内核探索：从SAPI接口开始SAPI:Server Application Programming Interface 服务器端应用编程端口。研究过PHP架构的同学应该知道这个东东的重要性，它提供了一个接口，使得PHP可以和其他应用进行交互数据。 本文不会详细介绍每个PHP的SAPI，只是针对最简单的CGI SAPI，来说明SAPI的机制。我们先来看看PHP的架构图： SAPI指的是PHP具">
+<meta name="twitter:description" content="PHP内核的了解">
 <meta name="twitter:image" content="http://yoursite.com/images/104.png">
 
 
@@ -383,7 +383,9 @@
       
 
       
-        <h3 id="PHP内核探索：从SAPI接口开始"><a href="#PHP内核探索：从SAPI接口开始" class="headerlink" title="PHP内核探索：从SAPI接口开始"></a><strong>PHP内核探索：从SAPI接口开始</strong></h3><p>SAPI:Server Application Programming Interface 服务器端应用编程端口。研究过PHP架构的同学应该知道这个东东的重要性，它提供了一个接口，使得PHP可以和其他应用进行交互数据。 本文不会详细介绍每个PHP的SAPI，只是针对最简单的CGI SAPI，来说明SAPI的机制。<br>我们先来看看PHP的架构图：<br><img src="/images/104.png" alt="05996ac51af8a4c722fb635e0cc41fc3.png"></p>
+        <p>PHP内核的了解</p>
+<a id="more"></a>
+<h3 id="PHP内核探索：从SAPI接口开始"><a href="#PHP内核探索：从SAPI接口开始" class="headerlink" title="PHP内核探索：从SAPI接口开始"></a><strong>PHP内核探索：从SAPI接口开始</strong></h3><p>SAPI:Server Application Programming Interface 服务器端应用编程端口。研究过PHP架构的同学应该知道这个东东的重要性，它提供了一个接口，使得PHP可以和其他应用进行交互数据。 本文不会详细介绍每个PHP的SAPI，只是针对最简单的CGI SAPI，来说明SAPI的机制。<br>我们先来看看PHP的架构图：<br><img src="/images/104.png" alt="05996ac51af8a4c722fb635e0cc41fc3.png"></p>
 <p>SAPI指的是PHP具体应用的编程接口， 就像PC一样，无论安装哪些操作系统，只要满足了PC的接口规范都可以在PC上正常运行， PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中。</p>
 <p>通常，我们使用Apache或者Nginx这类Web服务器来测试PHP脚本，或者在命令行下通过PHP解释器程序来执行。 脚本执行完后，Web服务器应答，浏览器显示应答信息，或者在命令行标准输出上显示内容。</p>
 <p>我们很少关心PHP解释器在哪里。虽然通过Web服务器和命令行程序执行脚本看起来很不一样， 实际上它们的工作流程是一样的。命令行参数传递给PHP解释器要执行的脚本， 相当于通过url请求一个PHP页面。脚本执行完成后返回响应结果，只不过命令行的响应结果是显示在终端上。<br>脚本执行的开始都是以SAPI接口实现开始的。只是不同的SAPI接口实现会完成他们特定的工作， 例如Apache的mod_php SAPI实现需要初始化从Apache获取的一些信息，在输出内容是将内容返回给Apache， 其他的SAPI实现也类似。</p>

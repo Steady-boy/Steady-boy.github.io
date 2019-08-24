@@ -572,27 +572,14 @@
 
       
         
-          
-            <h3 id="PHP内核探索：从SAPI接口开始"><a href="#PHP内核探索：从SAPI接口开始" class="headerlink" title="PHP内核探索：从SAPI接口开始"></a><strong>PHP内核探索：从SAPI接口开始</strong></h3><p>SAPI:Server Application Programming Interface 服务器端应用编程端口。研究过PHP架构的同学应该知道这个东东的重要性，它提供了一个接口，使得PHP可以和其他应用进行交互数据。 本文不会详细介绍每个PHP的SAPI，只是针对最简单的CGI SAPI，来说明SAPI的机制。<br>我们先来看看PHP的架构图：<br><img src="/images/104.png" alt="05996ac51af8a4c722fb635e0cc41fc3.png"></p>
-<p>SAPI指的是PHP具体应用的编程接口， 就像PC一样，无论安装哪些操作系统，只要满足了PC的接口规范都可以在PC上正常运行， PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中。</p>
-<p>通常，我们使用Apache或者Nginx这类Web服务器来测试PHP脚本，或者在命令行下通过PHP解释器程序来执行。 脚本执行完后，Web服务器应答，浏览器显示应答信息，或者在命令行标准输出上显示内容。</p>
-<p>我们很少关心PHP解释器在哪里。虽然通过Web服务器和命令行程序执行脚本看起来很不一样， 实际上它们的工作流程是一样的。命令行参数传递给PHP解释器要执行的脚本， 相当于通过url请求一个PHP页面。脚本执行完成后返回响应结果，只不过命令行的响应结果是显示在终端上。<br>脚本执行的开始都是以SAPI接口实现开始的。只是不同的SAPI接口实现会完成他们特定的工作， 例如Apache的mod_php SAPI实现需要初始化从Apache获取的一些信息，在输出内容是将内容返回给Apache， 其他的SAPI实现也类似。</p>
-<p>SAPI提供了一个和外部通信的接口， 对于PHP5.2，默认提供了很多种SAPI， 常见的给apache的mod_php5，CGI，给IIS的ISAPI，还有Shell的CLI，本文就从CGI SAPI入手 ，介绍SAPI的机制。 虽然CGI简单，但是不用担心，它包含了绝大部分内容，足以让你深刻理解SAPI的工作原理。</p>
-<p>SAPI是Server Application Programming Interface（服务器应用编程接口）的缩写。PHP通过SAPI提供了一组接口，供应用和PHP内核之间进行数据交互。</p>
-<p>简单的讲，就像函数的输入和输出一样，我们通过Linux命令行执行一段PHP代码，本质是Linux的Shell通过PHP的SAPI传入一组参数，Zend引擎执行后，返回给shell，由shell显示出来的过程。同样的，通过Apache调用PHP，通过Web服务器给SAPI传入数据，Zend引擎执行后，返回给Apache，由Apache显示在页面上</p>
-<p>PHP架构图PHP提供很多种形式的接口，包括apache、apache2filter、apache2handler、caudium、cgi 、cgi-fcgi、cli、cli-server、continuity、embed、isapi、litespeed、milter、nsapi、phttpd pi3web、roxen、thttpd、tux和webjames。但是常用的只有5种形式，CLI/CGI（命令行）、Multiprocess（多进程）、Multithreaded（多线程）、FastCGI和Embedded（内嵌）。PHP提供了一个函数查看当前SAPI接口类型：<br><code>string php_sapi_name ( void )</code></p>
-<p>PHP的运行和加载无论使用哪种SAPI，在PHP执行脚本前后，都包含一系列事件：Module的Init(MINT)和Shutdown(MSHUTDOWN)，Request 的Init(RINT)和Shutdown(RSHUTDOWN)。 第一阶段是PHP模块初始化阶段（MINT），可以初始化扩展内部变量、分配资源和注册资源处理器，在整个PHP实例生命周期内，该过程只执行一次。<br>什么是PHP模块？通过上面的PHP架构图，在PHP中可以使用get_loaded_extensions 函数来查看所有编译并加载的模块/扩展，相当于CLI模式下的php -m。以PHP的Memcached扩展源代码为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP_MINIT_FUNCTION(memcached) &#123;         </span><br><span class="line">        zend_class_entry ce;    </span><br><span class="line">        memcpy(&amp;memcached_object_handlers,zend_get_std_object_handlers(), sizeof(zend_object_handlers));    </span><br><span class="line">memcached_object_handlers.clone_obj = NULL;     /* 执行了一些类似的初始化操作 */     </span><br><span class="line">return SUCCESS; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第二阶段是请求初始化阶段（RINT），在模块初始化并激活后，会创建PHP运行环境，同时调用所有模块注册的RINT函数，调用每个扩展的请求初始化函数 ，设定特定的环境变量、分配资源或执行其他任务，如审核。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP_RINIT_FUNCTION(memcached) &#123;         </span><br><span class="line">        /* 执行一些关于请求的初始化 */      </span><br><span class="line">        return SUCCESS; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第三阶段，请求处理完成后，会调用PHP_RSHUTDOWN_FUNCTION进行回收，这是每个扩展的请求关闭函数，执行最后的清理工作。Zend引擎执行清理过程、垃圾收集、对之前的请求期间用到的每个变量执行unset。请求完成可能是执行到脚本完成，也可能是调用die()或exit()函数完成</p>
-<p>第四阶段，当PHP生命周期结束时候，PHP_MSHUTDOWN_FUNCTION对模块进行回收处理，这是每个扩展的模块关闭函数，用于关闭自己的内核子系统。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHP_MSHUTDOWN_FUNCTION(memcached) &#123; /* 执行关于模块的销毁工作 */ UNREGISTER_INI_ENTRIES(); return SUCCESS; &#125;</span><br></pre></td></tr></table></figure>
-
-
-          
+          <p>PHP内核的了解</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/23/SAPI接口/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
