@@ -77,21 +77,20 @@
 
 
 
-<meta name="description" content="CGI学习">
+<meta name="description" content="zip题目解析">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CGI&#x2F;FastCGI学习">
-<meta property="og:url" content="http://yoursite.com/2019/08/23/CGI-FastCGI学习/index.html">
+<meta property="og:title" content="CTF中的压缩包">
+<meta property="og:url" content="http://yoursite.com/2019/08/26/CTF中的压缩包/index.html">
 <meta property="og:site_name" content="Steady">
-<meta property="og:description" content="CGI学习">
+<meta property="og:description" content="zip题目解析">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/107.png">
-<meta property="og:image" content="http://yoursite.com/images/105.png">
-<meta property="og:image" content="http://yoursite.com/images/106.png">
-<meta property="og:updated_time" content="2019-08-23T12:44:42.371Z">
+<meta property="og:image" content="http://yoursite.com/images/122.png">
+<meta property="og:image" content="http://yoursite.com/images/121.png">
+<meta property="og:updated_time" content="2019-08-26T10:46:49.900Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CGI&#x2F;FastCGI学习">
-<meta name="twitter:description" content="CGI学习">
-<meta name="twitter:image" content="http://yoursite.com/images/107.png">
+<meta name="twitter:title" content="CTF中的压缩包">
+<meta name="twitter:description" content="zip题目解析">
+<meta name="twitter:image" content="http://yoursite.com/images/122.png">
 
 
 
@@ -121,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/23/CGI-FastCGI学习/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/26/CTF中的压缩包/">
 
 
 
 
 
-  <title>CGI/FastCGI学习 | Steady</title>
+  <title>CTF中的压缩包 | Steady</title>
   
 
 
@@ -254,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/23/CGI-FastCGI学习/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/CTF中的压缩包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="新boy">
@@ -271,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CGI/FastCGI学习</h1>
+          <h1 class="post-title" itemprop="name headline">CTF中的压缩包</h1>
         
 
         <div class="post-meta">
@@ -283,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-23T20:27:46+08:00">
-                2019-08-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T18:02:39+08:00">
+                2019-08-26
               </time>
             
 
@@ -306,19 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/内核/" itemprop="url" rel="index">
-                    <span itemprop="name">内核</span>
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
                   </a>
                 </span>
 
@@ -348,7 +336,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  961
+                  535
                 </span>
               
 
@@ -364,7 +352,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -385,15 +373,23 @@
       
 
       
-        <p>CGI学习</p>
+        <p>zip题目解析</p>
 <a id="more"></a>
-<h3 id="CGI-FastCGI学习"><a href="#CGI-FastCGI学习" class="headerlink" title="CGI/FastCGI学习"></a><strong>CGI/FastCGI学习</strong></h3><p>1.CGI<br>通用网关接口（Common Gateway Interface/CGI）描述了客户端和服务器程序之间传输数据的一种标准，可以让一个客户端，从网页浏览器向执行在网络服务器上的程序请求数据。CGI 独立于任何语言的，CGI 程序可以用任何脚本语言或者是完全独立编程语言实现，只要这个语言可以在这个系统上运行。Unix shell script, Python, Ruby, PHP, perl, Tcl, C/C++, 和 Visual Basic 都可以用来编写 CGI 程序。(<a href="http://www.dwz.cn/yFFgQ" target="_blank" rel="noopener">http://www.dwz.cn/yFFgQ</a>).    </p>
-<p>最初，CGI 是在 1993 年由美国国家超级电脑应用中心（NCSA）为 NCSA HTTPd Web 服务器开发的。这个 Web 服务器使用了 UNIX shell 环境变量 来保存从 Web 服务器传递出去的参数，然后生成一个运行 CGI 的独立的进程。cgi的处理流程如下图所示：<br><img src="/images/107.png" alt="a7621d149e89a97cf516c20a6063daab.png"></p>
-<p>step1. web 服务器收到客户端（浏览器）的请求Http Request，启动CGI程序，并通过环境变量、标准输入传递数据<br>step2. cgi进程启动解析器、加载配置（如业务相关配置）、连接其它服务器（如数据库服务器）、逻辑处理等<br>step3. cgi程将处理结果通过标准输出、标准错误，传递给web 服务器<br>step4. web 服务器收到cgi返回的结果，构建Http Response返回给客户端，并杀死cgi进程</p>
-<p>（2）FastCGI<br>快速通用网关接口（Fast Common Gateway Interface／FastCGI）是通用网关接口（CGI）的改进，描述了客户端和服务器程序之间传输数据的一种标准。FastCGI致力于减少Web服务器与CGI程式之间互动的开销，从而使服务器可以同时处理更多的Web请求。与为每个请求创建一个新的进程不同，FastCGI使用持续的进程来处理一连串的请求。这些进程由FastCGI进程管理器管理，而不是web服务器。(<a href="http://www.dwz.cn/yFMap" target="_blank" rel="noopener">http://www.dwz.cn/yFMap</a>)<br><img src="/images/105.png" alt="8cf70b2cbefe16a45f240a8202e812cb.png"></p>
-<p>当进来一个请求时，Web 服务器把环境变量和这个页面请求通过一个unix domain socket(都位于同一物理服务器）或者一个IP Socket（FastCGI部署在其它物理服务器）传递给FastCGI进程。<br><img src="/images/106.png" alt="23dfd42306791f670d41ca0f8346baaf.png"></p>
-<p>step1. Web 服务器启动时载入初始化FastCGI执行环境 。 例如IIS ISAPI、apache mod_fastcgi、nginx ngx_http_fastcgi_module、lighttpd mod_fastcgi<br>step2. FastCGI进程管理器自身初始化，启动多个CGI解释器进程并等待来自Web 服务器的连接。启动FastCGI进程时，可以配置以ip和UNIX 域socket两种方式启动。<br>step3. 当客户端请求到达Web 服务器时， Web 服务器将请求采用socket方式转发到 FastCGI主进程，FastCGI主进程选择并连接到一个CGI解释器。Web 服务器将CGI环境变量和标准输入发送到FastCGI子进程。<br>step4. FastCGI子进程完成处理后将标准输出和错误信息从同一socket连接返回Web 服务器。当FastCGI子进程关闭连接时，请求便处理完成。step5. FastCGI子进程接着等待并处理来自Web 服务器的下一个连接。</p>
-<p>由于 FastCGI 程序并不需要不断的产生新进程，可以大大降低服务器的压力并且产生较高的应用效率。它的速度效率最少要比CGI 技术提高 5 倍以上。它还支持分布式的部署， 即 FastCGI 程序可以在web 服务器以外的主机上执行。<br>      总结：CGI 就是所谓的短生存期应用程序，FastCGI 就是所谓的长生存期应用程序。FastCGI像是一个常驻(long-live)型的CGI，它可以一直执行着，不会每次都要花费时间去fork一次(这是CGI最为人诟病的fork-and-execute 模式)。</p>
+<h4 id="一-伪加密"><a href="#一-伪加密" class="headerlink" title="一.伪加密"></a><strong>一.伪加密</strong></h4><p>1.修改文件的十六进制<br><strong>zip：</strong></p>
+<p>a.压缩源文件数据区：</p>
+<p>50 4B 03 04：这是头文件标记（0x04034b50）<br>14 00：解压文件所需 pkware 版本<br>00 00：全局方式位标记（有无加密）<br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>00 00：扩展记录长度<br>6B65792E7478740BCECC750E71ABCE48CDC9C95728CECC2DC849AD284DAD0500</p>
+<p>b.压缩源文件目录区:</p>
+<p>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>3F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br>00 00：全局方式位标记（有无加密，这个更改这里进行伪加密，改为09 00打开就会提示有密码了）<br>08 00：压缩方式<br>5A 7E：最后修改文件时间<br>F7 46：最后修改文件日期<br>16 B5 80 14：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>07 00：文件名长度<br>24 00：扩展字段长度<br>00 00：文件注释长度<br>00 00：磁盘开始号<br>00 00：内部文件属性<br>20 00 00 00：外部文件属性<br>00 00 00 00：局部头部偏移量<br>6B65792E7478740A00200000000000010018006558F04A1CC5D001BDEBDD3B1CC5D001BDEBDD3B1CC5D001</p>
+<p>c.压缩源文件目录结束标志:</p>
+<p>50 4B 05 06：目录结束标记<br>00 00：当前磁盘编号<br>00 00：目录区开始磁盘编号<br>01 00：本磁盘上纪录总数<br>01 00：目录区中纪录总数<br>59 00 00 00：目录区尺寸大小<br>3E 00 00 00：目录区对第一张磁盘的偏移量<br>00 00 1A：ZIP 文件注释长度</p>
+<p><img src="/images/122.png" alt="5df7351c1ab56a1ccd1bad50cc738650.png"></p>
+<p><strong>RAR：</strong></p>
+<p>将84改为80</p>
+<p><img src="/images/121.png" alt="bf43f02f7012c516e934d8cc3b6b2fa8.png"></p>
+<p><strong>2.使用工具</strong><br>解密：<code>java -jar ZipCenOp.jar r xxx.zip</code><br>加密：<code>java -jar ZipCenOp.jar e xxx.zip</code></p>
+<h4 id="二、暴力破解"><a href="#二、暴力破解" class="headerlink" title="二、暴力破解"></a><strong>二、暴力破解</strong></h4><p>使用软件</p>
+<h4 id="三、明文攻击"><a href="#三、明文攻击" class="headerlink" title="三、明文攻击"></a><strong>三、明文攻击</strong></h4><p>使用软件，但是要注意：我们在压缩”明文”文件的时候，要尝试选择不同的压缩软件，不然会出现错误。</p>
+<h4 id="四、CRC碰撞"><a href="#四、CRC碰撞" class="headerlink" title="四、CRC碰撞"></a><strong>四、CRC碰撞</strong></h4><p>压缩包要使用WINRAR打开。使用脚本进行破解。</p>
 
       
     </div>
@@ -418,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/23/SAPI接口/" rel="next" title="SAPI接口">
-                <i class="fa fa-chevron-left"></i> SAPI接口
+              <a href="/2019/08/24/SUCTF-2019-CheckIn/" rel="next" title="SUCTF 2019 CheckIn">
+                <i class="fa fa-chevron-left"></i> SUCTF 2019 CheckIn
               </a>
             
           </div>
@@ -427,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/24/user-ini-文件/" rel="prev" title=".user.ini 文件">
-                .user.ini 文件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -586,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CGI-FastCGI学习"><span class="nav-number">1.</span> <span class="nav-text">CGI/FastCGI学习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-伪加密"><span class="nav-number">1.</span> <span class="nav-text">一.伪加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、暴力破解"><span class="nav-number">2.</span> <span class="nav-text">二、暴力破解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、明文攻击"><span class="nav-number">3.</span> <span class="nav-text">三、明文攻击</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、CRC碰撞"><span class="nav-number">4.</span> <span class="nav-text">四、CRC碰撞</span></a></li></ol></div>
             
 
           </div>
