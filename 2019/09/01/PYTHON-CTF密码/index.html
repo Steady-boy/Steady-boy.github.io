@@ -77,17 +77,25 @@
 
 
 
-<meta name="description" content="乘物游心,上善若水。">
+<meta name="description" content="python-ctf中的密码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PYTHON-CTF密码">
 <meta property="og:url" content="http://yoursite.com/2019/09/01/PYTHON-CTF密码/index.html">
 <meta property="og:site_name" content="Steady">
-<meta property="og:description" content="乘物游心,上善若水。">
+<meta property="og:description" content="python-ctf中的密码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-01T06:47:00.830Z">
+<meta property="og:image" content="http://yoursite.com/images/123.png">
+<meta property="og:image" content="http://yoursite.com/images/124.png">
+<meta property="og:image" content="http://yoursite.com/images/125.png">
+<meta property="og:image" content="http://yoursite.com/images/126.png">
+<meta property="og:image" content="http://yoursite.com/images/127.png">
+<meta property="og:image" content="http://yoursite.com/images/128.png">
+<meta property="og:image" content="http://yoursite.com/images/129.png">
+<meta property="og:updated_time" content="2019-09-01T08:47:03.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PYTHON-CTF密码">
-<meta name="twitter:description" content="乘物游心,上善若水。">
+<meta name="twitter:description" content="python-ctf中的密码">
+<meta name="twitter:image" content="http://yoursite.com/images/123.png">
 
 
 
@@ -311,7 +319,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2.7k
                 </span>
               
 
@@ -327,7 +335,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -348,7 +356,67 @@
       
 
       
-        
+        <p>python-ctf中的密码</p>
+<a id="more"></a>
+<h3 id="莫尔斯电码"><a href="#莫尔斯电码" class="headerlink" title="莫尔斯电码"></a><strong>莫尔斯电码</strong></h3><p>0010 0100 01 110 1111011 11 11111 010 000 0 001101 1010 111 100 0 001101 01111 000 001101 00 10 1 0 010 0 000 1 01111 10 11110 101011 1111101<br>乍一看，好像是二进制但是转换的时候发现不能除尽八。<br><img src="/images/123.png" alt="1629e1eb495adf6d9976d1942c279b5f.png"><br>密文太多了我们只能使用脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">string=<span class="string">"0010 0100 01 110 1111011 11 11111 010 000 0 001101 1010 111 100 0 001101 01111 000 001101 00 10 1 0 010 0 000 1 01111 10 11110 101011 1111101"</span></span><br><span class="line">key=string.split(<span class="string">" "</span>)</span><br><span class="line">flag=<span class="string">""</span></span><br><span class="line">dictionary= &#123;<span class="string">'01'</span>: <span class="string">'A'</span>,</span><br><span class="line">        <span class="string">'1000'</span>: <span class="string">'B'</span>,</span><br><span class="line">        <span class="string">'1010'</span>: <span class="string">'C'</span>,</span><br><span class="line">        <span class="string">'100'</span>:<span class="string">'D'</span>,</span><br><span class="line">        <span class="string">'0'</span>:<span class="string">'E'</span>,</span><br><span class="line">        <span class="string">'0010'</span>:<span class="string">'F'</span>,</span><br><span class="line">        <span class="string">'110'</span>: <span class="string">'G'</span>,</span><br><span class="line">        <span class="string">'0000'</span>: <span class="string">'H'</span>,</span><br><span class="line">        <span class="string">'00'</span>: <span class="string">'I'</span>,</span><br><span class="line">        <span class="string">'0111'</span>:<span class="string">'J'</span>,</span><br><span class="line">        <span class="string">'101'</span>: <span class="string">'K'</span>,</span><br><span class="line">        <span class="string">'0100'</span>: <span class="string">'L'</span>,</span><br><span class="line">        <span class="string">'11'</span>: <span class="string">'M'</span>,</span><br><span class="line">        <span class="string">'10'</span>: <span class="string">'N'</span>,</span><br><span class="line">        <span class="string">'111'</span>: <span class="string">'O'</span>,</span><br><span class="line">        <span class="string">'0110'</span>: <span class="string">'P'</span>,</span><br><span class="line">        <span class="string">'1101'</span>: <span class="string">'Q'</span>,</span><br><span class="line">        <span class="string">'010'</span>: <span class="string">'R'</span>,</span><br><span class="line">        <span class="string">'000'</span>: <span class="string">'S'</span>,</span><br><span class="line">        <span class="string">'1'</span>: <span class="string">'T'</span>,</span><br><span class="line">        <span class="string">'001'</span>: <span class="string">'U'</span>,</span><br><span class="line">        <span class="string">'0001'</span>: <span class="string">'V'</span>,</span><br><span class="line">        <span class="string">'011'</span>: <span class="string">'W'</span>,</span><br><span class="line">        <span class="string">'1001'</span>: <span class="string">'X'</span>,</span><br><span class="line">        <span class="string">'1011'</span>: <span class="string">'Y'</span>,</span><br><span class="line">        <span class="string">'1100'</span>: <span class="string">'Z'</span>,</span><br><span class="line">        <span class="string">'01111'</span>: <span class="string">'1'</span>,</span><br><span class="line">        <span class="string">'00111'</span>: <span class="string">'2'</span>,</span><br><span class="line">        <span class="string">'00011'</span>: <span class="string">'3'</span>,</span><br><span class="line">        <span class="string">'00001'</span>: <span class="string">'4'</span>,</span><br><span class="line">        <span class="string">'00000'</span>: <span class="string">'5'</span>,</span><br><span class="line">        <span class="string">'10000'</span>: <span class="string">'6'</span>,</span><br><span class="line">        <span class="string">'11000'</span>: <span class="string">'7'</span>,</span><br><span class="line">        <span class="string">'11100'</span>: <span class="string">'8'</span>,</span><br><span class="line">        <span class="string">'11110'</span>: <span class="string">'9'</span>,</span><br><span class="line">        <span class="string">'11111'</span>: <span class="string">'0'</span>,</span><br><span class="line">        <span class="string">'001100'</span>: <span class="string">'?'</span>,</span><br><span class="line">        <span class="string">'10010'</span>: <span class="string">'/'</span>,</span><br><span class="line">        <span class="string">'101101'</span>: <span class="string">'()'</span>,</span><br><span class="line">        <span class="string">'100001'</span>: <span class="string">'-'</span>,</span><br><span class="line">        <span class="string">'010101'</span>: <span class="string">'.'</span>,</span><br><span class="line">        <span class="string">'110011'</span>:<span class="string">','</span>,</span><br><span class="line">        <span class="string">'011010'</span>:<span class="string">'@'</span>,</span><br><span class="line">        <span class="string">'111000'</span>:<span class="string">':'</span>,</span><br><span class="line">        <span class="string">'101010'</span>:<span class="string">':'</span>,</span><br><span class="line">        <span class="string">'10001'</span>:<span class="string">'='</span>,</span><br><span class="line">        <span class="string">'011110'</span>:<span class="string">"'"</span>,</span><br><span class="line">        <span class="string">'101011'</span>:<span class="string">'!'</span>,</span><br><span class="line">        <span class="string">'001101'</span>:<span class="string">'_'</span>,</span><br><span class="line">        <span class="string">'010010'</span>:<span class="string">'"'</span>,</span><br><span class="line">        <span class="string">'10110'</span>:<span class="string">'('</span>,</span><br><span class="line">        <span class="string">'1111011'</span>:<span class="string">'&#123;'</span>,</span><br><span class="line">        <span class="string">'1111101'</span>:<span class="string">'&#125;'</span></span><br><span class="line">        &#125;; </span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> key:</span><br><span class="line">    flag+=dictionary[item]</span><br><span class="line">print(flag)</span><br><span class="line">print(flag.lower()) <span class="comment">#所有转小写</span></span><br><span class="line">print(flag.upper()) <span class="comment">#所有转大写</span></span><br><span class="line">print(flag.capitalize()) <span class="comment">#行首字母大写，其他小写</span></span><br><span class="line">print(flag.title()) <span class="comment">#每个单词首字母大写，其他小写</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ROT13"><a href="#ROT13" class="headerlink" title="ROT13"></a><strong>ROT13</strong></h3><p>ROT13（回转13位）是一种简易的替换式密码算法。它是一种在英文网络论坛用作隐藏八卦、妙句、谜题解答以及某些脏话的工具，目的是逃过版主或管理员的匆匆一瞥。ROT13 也是过去在古罗马开发的凯撒密码的一种变体。ROT13是它自身的逆反，即：要还原成原文只要使用同一算法即可得，故同样的操作可用于加密与解密。该算法并没有提供真正密码学上的保全，故它不应该被用于需要保全的用途上。它常常被当作弱加密示例的典型。</p>
+<p>应用ROT13到一段文字上仅仅只需要检查字母顺序并取代它在13位之后的对应字母，有需要超过时则重新绕回26英文字母开头即可。A换成N、B换成O、依此类推到M换成Z，然后串行反转：N换成A、O换成B、最后Z换成M。只有这些出现在英文字母里的字符受影响；数字、符号、空白字符以及所有其他字符都不变。替换后的字母大小写保持不变。</p>
+<p>ROT5 是 rotate by 5 places 的简写，意思是旋转5个位置，其它皆同。<br>下面分别说说它们的编码方式：<br>ROT5：只对数字进行编码，用当前数字往前数的第5个数字替换当前数字，例如当前为0，编码后变成5，当前为1，编码后变成6，以此类推顺序循环。<br>ROT13：只对字母进行编码，用当前字母往前数的第13个字母替换当前字母，例如当前为A，编码后变成N，当前为B，编码后变成O，以此类推顺序循环。<br>ROT18：这是一个异类，本来没有，它是将ROT5和ROT13组合在一起，为了好称呼，将其命名为ROT18。<br>ROT47：对数字、字母、常用符号进行编码，按照它们的ASCII值进行位置替换，用当前字符ASCII值往前数的第47位对应字符替换当前字符，例如当前为小写字母z，编码后变成大写字母K，当前为数字0，编码后变成符号_。<br>用于ROT47编码的字符其ASCII值范围是33－126，具体可参考ASCII编码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str1=[<span class="number">83</span>,<span class="number">89</span>,<span class="number">78</span>,<span class="number">84</span>,<span class="number">45</span>,<span class="number">86</span>,<span class="number">96</span>,<span class="number">45</span>,<span class="number">115</span>,<span class="number">121</span>,<span class="number">110</span>,<span class="number">116</span>,<span class="number">136</span>,<span class="number">132</span>,<span class="number">132</span>,<span class="number">132</span>,<span class="number">108</span>,<span class="number">128</span>,<span class="number">117</span>,<span class="number">118</span>,<span class="number">134</span>,<span class="number">110</span>,<span class="number">123</span>,<span class="number">111</span>,<span class="number">110</span>,<span class="number">127</span>,<span class="number">108</span>,<span class="number">112</span>,<span class="number">124</span>,<span class="number">122</span>,<span class="number">108</span>,<span class="number">118</span>,<span class="number">128</span>,<span class="number">108</span>,<span class="number">131</span>,<span class="number">114</span>,<span class="number">127</span>,<span class="number">134</span>,<span class="number">108</span>,<span class="number">116</span>,<span class="number">124</span>,<span class="number">124</span>,<span class="number">113</span>,<span class="number">108</span>,<span class="number">76</span>,<span class="number">76</span>,<span class="number">76</span>,<span class="number">76</span>,<span class="number">138</span>,<span class="number">23</span>,<span class="number">90</span>,<span class="number">81</span>,<span class="number">66</span>,<span class="number">71</span>,<span class="number">64</span>,<span class="number">69</span>,<span class="number">114</span>,<span class="number">65</span>,<span class="number">112</span>,<span class="number">64</span>,<span class="number">66</span>,<span class="number">63</span>,<span class="number">69</span>,<span class="number">61</span>,<span class="number">70</span>,<span class="number">114</span>,<span class="number">62</span>,<span class="number">66</span>,<span class="number">61</span>,<span class="number">62</span>,<span class="number">69</span>,<span class="number">67</span>,<span class="number">70</span>,<span class="number">63</span>,<span class="number">61</span>,<span class="number">110</span>,<span class="number">110</span>,<span class="number">112</span>,<span class="number">64</span>,<span class="number">68</span>,<span class="number">62</span>,<span class="number">70</span>,<span class="number">61</span>,<span class="number">112</span>,<span class="number">111</span>,<span class="number">112</span>]</span><br><span class="line">str2=<span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> str1:</span><br><span class="line">   ch=chr(i<span class="number">-13</span>)</span><br><span class="line">   str2+=ch</span><br><span class="line">print(str2)</span><br></pre></td></tr></table></figure>
+
+<p>1)这里是指将ascii先减13，然后在转化。跟rot13没什么关系，只是一个脑洞。</p>
+<p><strong>真正的rot13脚本：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decoder</span><span class="params">(crypt_str,shift)</span>:</span></span><br><span class="line">    crypt_list = list(crypt_str)</span><br><span class="line">    plain_str = <span class="string">""</span></span><br><span class="line">    num = int(shift)</span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> crypt_list:</span><br><span class="line">        ch = ord(ch)</span><br><span class="line">        <span class="keyword">if</span> ord(<span class="string">'a'</span>) &lt;= ch <span class="keyword">and</span> ch &lt;= ord(<span class="string">'z'</span>):</span><br><span class="line">            ch = ch + num</span><br><span class="line">            <span class="keyword">if</span> ch &gt; ord(<span class="string">'z'</span>):</span><br><span class="line">                ch -= <span class="number">26</span></span><br><span class="line">        <span class="keyword">if</span> ord(<span class="string">'A'</span>) &lt;= ch <span class="keyword">and</span> ch &lt;= ord(<span class="string">'Z'</span>):</span><br><span class="line">            ch = ch +num</span><br><span class="line">            <span class="keyword">if</span> ch &gt; ord(<span class="string">'Z'</span>):</span><br><span class="line">                ch -= <span class="number">26</span></span><br><span class="line">        a=chr(ch)</span><br><span class="line">        plain_str += a</span><br><span class="line"></span><br><span class="line">    print(plain_str)</span><br><span class="line">crypt_str = <span class="string">"alkjiuiqjjs"</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"!------decode------!"</span>)</span><br><span class="line">shift=<span class="number">13</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> crypt_str:</span><br><span class="line">    decoder(crypt_str,shift)</span><br></pre></td></tr></table></figure>
+
+<h3 id="培根密码"><a href="#培根密码" class="headerlink" title="培根密码"></a><strong>培根密码</strong></h3><p>培根密码，简单的说说原理吧。就是类似于二进制0,1的套路，但是是用A,B来替代的。<br>小写</p>
+<p><strong>一、培根密码加密方式</strong></p>
+<p>  第一种方式：<br>  A aaaaa B aaaab C aaaba D aaabb E aabaa F aabab G aabba H aabbb<br>  I abaaa J abaab  K ababa L ababb M abbaa N abbab O abbba P abbbb<br>  Q baaaa R baaab S baaba T baabb U babaa V babab W babba X babbb<br>  Y bbaaa Z bbaab<br>  第二种方式:<br>   a AAAAA   g AABBA    n ABBAA   t BAABA<br>   b AAAAB   h AABBB    o ABBAB   u-v BAABB<br>   c AAABA   i-jABAAA    p ABBBA   w BABAA<br>   d AAABB   k ABAAB    q ABBBB   x BABAB<br>   e AABAA   l  ABABA    r BAAAA   y BABBA<br>   f  AABAB   m ABABB   s BAAAB   z BABBB</p>
+<p><strong>二、举例</strong></p>
+<p>例1、 baabaaabbbabaaabbaaaaaaaaabbabaaaabaaaaaabaaabaabaaaabaabbbaabbbaababb<br>baaba aabbb abaaa bbaaa aaaaa abbab aaaab aaaaa abaaa baaba  aaaba abbba abbba ababb<br>s           h         i           y         a         n         b         a        i           s          c         o          o        l<br><img src="/images/124.png" alt="2f4dabdd00c123cf55642302212c5f10.png"><br>例2、<br>明文是LOVE，用“随意选取句子和文”加密，得到密文就是“SuLyi XuanQ uJuZi HEwEN”（这里用大写字母代表a,小写字母代表b）</p>
+<p>SuLyi  XuanQ uJuZi HEwEN<br>ababbabbbabababaabaa<br>可以这么理解，对于密文我们以大写字母为a，小写字母为b，来解密。拿到密文之后直接上脚本就ok(有时候小写字母为a，大写字母为b)<br>(典型的代表就是实验吧的黑与白)<br>例3、<br>明文:now is a good t………<br><img src="/images/125.png" alt="50ecb073f14e416198ee257945b179c3.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">alphabet = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>,<span class="string">'d'</span>,<span class="string">'e'</span>,<span class="string">'f'</span>,<span class="string">'g'</span>,<span class="string">'h'</span>,<span class="string">'i'</span>,<span class="string">'j'</span>,<span class="string">'k'</span>,<span class="string">'l'</span>,<span class="string">'m'</span>,<span class="string">'n'</span>,<span class="string">'o'</span>,<span class="string">'p'</span>,<span class="string">'q'</span>,<span class="string">'r'</span>,<span class="string">'s'</span>,<span class="string">'t'</span>,<span class="string">'u'</span>,<span class="string">'v'</span>,<span class="string">'w'</span>,<span class="string">'x'</span>,<span class="string">'y'</span>,<span class="string">'z'</span>]</span><br><span class="line"></span><br><span class="line">first_cipher = [<span class="string">"aaaaa"</span>,<span class="string">"aaaab"</span>,<span class="string">"aaaba"</span>,<span class="string">"aaabb"</span>,<span class="string">"aabaa"</span>,<span class="string">"aabab"</span>,<span class="string">"aabba"</span>,<span class="string">"aabbb"</span>,<span class="string">"abaaa"</span>,<span class="string">"abaab"</span>,<span class="string">"ababa"</span>,<span class="string">"ababb"</span>,<span class="string">"abbaa"</span>,<span class="string">"abbab"</span>,<span class="string">"abbba"</span>,<span class="string">"abbbb"</span>,<span class="string">"baaaa"</span>,<span class="string">"baaab"</span>,<span class="string">"baaba"</span>,<span class="string">"baabb"</span>,<span class="string">"babaa"</span>,<span class="string">"babab"</span>,<span class="string">"babba"</span>,<span class="string">"babbb"</span>,<span class="string">"bbaaa"</span>,<span class="string">"bbaab"</span>]</span><br><span class="line"></span><br><span class="line">second_cipher = [<span class="string">"aaaaa"</span>,<span class="string">"aaaab"</span>,<span class="string">"aaaba"</span>,<span class="string">"aaabb"</span>,<span class="string">"aabaa"</span>,<span class="string">"aabab"</span>,<span class="string">"aabba"</span>,<span class="string">"aabbb"</span>,<span class="string">"abaaa"</span>,<span class="string">"abaaa"</span>,<span class="string">"abaab"</span>,<span class="string">"ababa"</span>,<span class="string">"ababb"</span>,<span class="string">"abbaa"</span>,<span class="string">"abbab"</span>,<span class="string">"abbba"</span>,<span class="string">"abbbb"</span>,<span class="string">"baaaa"</span>,<span class="string">"baaab"</span>,<span class="string">"baaba"</span>,<span class="string">"baabb"</span>,<span class="string">"baabb"</span>,<span class="string">"babaa"</span>,<span class="string">"babab"</span>,<span class="string">"babba"</span>,<span class="string">"babbb"</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode</span><span class="params">()</span>:</span></span><br><span class="line">    string = raw_input(<span class="string">"please input string to encode:\n"</span>)</span><br><span class="line">    e_string1 = <span class="string">""</span></span><br><span class="line">    e_string2 = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> string:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):</span><br><span class="line">            <span class="keyword">if</span> index == alphabet[i]:</span><br><span class="line">                e_string1 += first_cipher[i]</span><br><span class="line">                e_string2 += second_cipher[i]</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"first encode method result is:"</span> + e_string1)</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"second encode method result is:"</span> + e_string2)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">()</span>:</span></span><br><span class="line">    e_string = raw_input(<span class="string">"please input string to decode:\n"</span>)</span><br><span class="line">    e_array = re.findall(<span class="string">".&#123;5&#125;"</span>,e_string)</span><br><span class="line">    d_string1 = <span class="string">""</span></span><br><span class="line">    d_string2 = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> e_array:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">26</span>):</span><br><span class="line">            <span class="keyword">if</span> index == first_cipher[i]:</span><br><span class="line">                d_string1 += alphabet[i]</span><br><span class="line">            <span class="keyword">if</span> index == second_cipher[i]:</span><br><span class="line">                d_string2 += alphabet[i]</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"first decode method result is:\n"</span> + d_string1)</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"second decode method result is:\n"</span> + d_string2)</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">"\t*******Bacon Encode_Decode System*******"</span>)</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">"input should be lowercase,cipher just include a b"</span>)</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">"1.encode\n2.decode\n3.exit"</span>)</span><br><span class="line">        s_number = raw_input(<span class="string">"please input number to choose\n"</span>)</span><br><span class="line">        <span class="keyword">if</span> s_number == <span class="string">"1"</span>:</span><br><span class="line">            encode()</span><br><span class="line">            raw_input()</span><br><span class="line">        <span class="keyword">elif</span> s_number == <span class="string">"2"</span>:</span><br><span class="line">            decode()</span><br><span class="line">            raw_input()</span><br><span class="line">        <span class="keyword">elif</span> s_number == <span class="string">"3"</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">continue</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="affine仿射加密"><a href="#affine仿射加密" class="headerlink" title="affine仿射加密"></a><strong>affine仿射加密</strong></h3><p>单码加密法的另一种形式称为仿射加密法（affine cipher）。在仿射加密法中，字母表的字母被赋予一个数字，例如a=0，b=1，c=2…z=25。仿射加密法的密钥为0-25直接的数字对。</p>
+<p><strong>含义</strong></p>
+<p>仿射加密法与单码加密法没什么不同，因为明文的每个字母分别只映射到一个密文字母。仿射密码的加密算法就是一个线性变换，即对任意的明文字符x，对应的密文字符为<img src="/images/126.png" alt="832541ee6c811ebcdc4a8322ba7086c8.png">，其中，a,b∈Z26，且要求gcd(a,26)=1,函数e(x)称为仿射加密函数。</p>
+<p>gcd(a,b)表示非负整数a,b的最大公因数</p>
+<p><strong>仿射密码的加密函数是 E(x)=(ax+b)(modm)</strong></p>
+<p>x表示明文按照某种编码得到的数字<br>a和 m互质<br>m是编码系统中字母的数目。</p>
+<p><strong>解密函数是 D(x)=a−1(x−b)(modm)</strong></p>
+<p>a−1 是 a 在 Zm群的乘法逆元。</p>
+<p><strong>乘法逆元</strong></p>
+<p><img src="/images/127.png" alt="210868c38302181cddfbd066920bd6f3.png"></p>
+<p><strong>举例</strong></p>
+<p>下面我们以 E(x)=(5x+8)mod26函数为例子进行介绍，加密字符串为 AFFINE CIPHER，</p>
+<p>这里我们直接采用字母表26个字母作为编码系统</p>
+<p><img src="/images/128.png" alt="9a8158a0d42932c89f12ea2eef619328.png"></p>
+<p>其对应的加密结果是 IHHWVCSWFRCP。</p>
+<p>对于解密过程，正常解密者具有a与b，可以计算得到 a−1为 21，</p>
+<p>所以其解密函数是D(x)=21(x−8)(mod26)</p>
+<p>，解密如下<br><img src="/images/129.png" alt="392f6b83362e8736d7317d7ebf24b263.png"></p>
+<p><strong>破解</strong></p>
+<p>首先，我们可以看到的是，仿射密码对于任意两个不同的字母，其最后得到的密文必然不一样，所以其也具有最通用的特点。当密文长度足够长时，我们可以使用频率分析的方法来解决。</p>
+<p>其次，我们可以考虑如何攻击该密码。可以看出当a=1</p>
+<p>时，仿射加密是凯撒加密。而一般来说，我们利用仿射密码时，其字符集都用的是字母表，一般只有26个字母，而不大于26的与26互素的个数一共有</p>
+<p>ϕ(26)=ϕ(2)×ϕ(13)=12算上b的偏移可能，一共有可能的密钥空间大小也就是12×26=312</p>
+<p>一般来说，对于该种密码，我们至少得是在已知部分明文的情况下才可以攻击。下面进行简单的分析。</p>
+<p>这种密码由两种参数来控制，如果我们知道其中任意一个参数，那我们便可以很容易地快速枚举另外一个参数得到答案。</p>
+<p>但是，假设我们已经知道采用的字母集，这里假设为26个字母，我们还有另外一种解密方式，我们只需要知道两个加密后的字母 y1,y2</p>
+<p>即可进行解密。那么我们还可以知道</p>
+<p>y1=(ax1+b)(mod26)y2=(ax2+b)(mod26)</p>
+<p>两式相减，可得y1−y2=a(x1−x2)(mod26)</p>
+<p>这里 y1,y2</p>
+<p>已知，如果我们知道密文对应的两个不一样的字符 x1 与 x2 ，那么我们就可以很容易得到 a ，进而就可以得到 b 了。</p>
+<p><strong>实战：</strong>bugku affine</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y = 17*x-8 flag&#123;szzyfimhyzd&#125;</span><br><span class="line"> </span><br><span class="line">答案格式：flag&#123;********&#125;</span><br></pre></td></tr></table></figure>
+
+<p>给了密文，加密函数。我们需要做的是解出解密函数。<code>解密函数是 D(x)=a−1(x−b)(modm)</code><br>所以我们要的明文就是，明文=<code>a-1*（x+8）mod 26</code>我们提到过a-1是a的乘法逆元(是a的负一次方)。a=17，所以他的乘法逆元就是23。解密函数为：23*(x+8) mod 26<br>上脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string  <span class="comment">#affine</span></span><br><span class="line"> </span><br><span class="line">s = <span class="string">'szzyfimhyzd'</span></span><br><span class="line">s1 = <span class="string">''</span></span><br><span class="line">len =len(s)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len):</span><br><span class="line">    a=(<span class="number">23</span>*(ord(s[i])<span class="number">-97</span>+<span class="number">8</span>))%<span class="number">26</span></span><br><span class="line">    s1+=chr(a+<span class="number">97</span>)</span><br><span class="line"><span class="keyword">print</span> s1</span><br></pre></td></tr></table></figure>
+
+<p>脚本解释：<br>1.x表示明文按照某种编码得到的数字。即a为0，b为1，以此类推。我们在进行python解密的时候x必须要是数字，而且还是要对应<code>某种编码</code> 的数字。python中ord可以将字母转化为对应的十进制ascii，而a的ascii为97。所以这就是为什么要减去97。后面加上97是为了转换为字母。</p>
+
       
     </div>
     
@@ -432,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -471,10 +548,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
+                
                   <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
-                </a>
+                
               </div>
             
 
@@ -518,6 +595,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#莫尔斯电码"><span class="nav-number">1.</span> <span class="nav-text">莫尔斯电码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROT13"><span class="nav-number">2.</span> <span class="nav-text">ROT13</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#培根密码"><span class="nav-number">3.</span> <span class="nav-text">培根密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#affine仿射加密"><span class="nav-number">4.</span> <span class="nav-text">affine仿射加密</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -545,7 +638,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">40.5k</span>
+    <span title="Site words total count">43.2k</span>
   
 </div>
 
