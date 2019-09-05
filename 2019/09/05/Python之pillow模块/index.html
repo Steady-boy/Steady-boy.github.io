@@ -77,22 +77,19 @@
 
 
 
-<meta name="description" content="关于上传中00截断的细节，很多朋友在渗透中都会发现一些这样的有趣现象，这个站点使用00截断上传的方法上传成功了，而换一个站点又失败了，这是什么原因呢？你看了这篇文章就会明白。">
+<meta name="description" content="python之pillow模块">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于上传中的00截断分析">
-<meta property="og:url" content="http://yoursite.com/2019/08/03/关于上传中的00截断分析/index.html">
+<meta property="og:title" content="Python之pillow模块">
+<meta property="og:url" content="http://yoursite.com/2019/09/05/Python之pillow模块/index.html">
 <meta property="og:site_name" content="Steady">
-<meta property="og:description" content="关于上传中00截断的细节，很多朋友在渗透中都会发现一些这样的有趣现象，这个站点使用00截断上传的方法上传成功了，而换一个站点又失败了，这是什么原因呢？你看了这篇文章就会明白。">
+<meta property="og:description" content="python之pillow模块">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/35.png">
-<meta property="og:image" content="http://yoursite.com/images/36.png">
-<meta property="og:image" content="http://yoursite.com/images/37.png">
-<meta property="og:image" content="http://yoursite.com/images/38.png">
-<meta property="og:updated_time" content="2019-08-03T07:45:24.360Z">
+<meta property="og:image" content="en-resource://database/492220:0">
+<meta property="og:updated_time" content="2019-09-05T12:25:43.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于上传中的00截断分析">
-<meta name="twitter:description" content="关于上传中00截断的细节，很多朋友在渗透中都会发现一些这样的有趣现象，这个站点使用00截断上传的方法上传成功了，而换一个站点又失败了，这是什么原因呢？你看了这篇文章就会明白。">
-<meta name="twitter:image" content="http://yoursite.com/images/35.png">
+<meta name="twitter:title" content="Python之pillow模块">
+<meta name="twitter:description" content="python之pillow模块">
+<meta name="twitter:image" content="en-resource://database/492220:0">
 
 
 
@@ -122,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/03/关于上传中的00截断分析/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/05/Python之pillow模块/">
 
 
 
 
 
-  <title>关于上传中的00截断分析 | Steady</title>
+  <title>Python之pillow模块 | Steady</title>
   
 
 
@@ -255,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/关于上传中的00截断分析/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/Python之pillow模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="新boy">
@@ -272,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于上传中的00截断分析</h1>
+          <h1 class="post-title" itemprop="name headline">Python之pillow模块</h1>
         
 
         <div class="post-meta">
@@ -284,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-03T14:10:43+08:00">
-                2019-08-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-05T20:24:18+08:00">
+                2019-09-05
               </time>
             
 
@@ -307,19 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/漏洞原理/" itemprop="url" rel="index">
-                    <span itemprop="name">漏洞原理</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/漏洞原理/上传漏洞/" itemprop="url" rel="index">
-                    <span itemprop="name">上传漏洞</span>
+                  <a href="/categories/PYTHON模块/" itemprop="url" rel="index">
+                    <span itemprop="name">PYTHON模块</span>
                   </a>
                 </span>
 
@@ -349,7 +335,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  899
+                  917
                 </span>
               
 
@@ -386,21 +372,53 @@
       
 
       
-        <p>关于上传中00截断的细节，很多朋友在渗透中都会发现一些这样的有趣现象，这个站点使用00截断上传的方法上传成功了，而换一个站点又失败了，这是什么原因呢？你看了这篇文章就会明白。</p>
+        <p>python之pillow模块</p>
 <a id="more"></a>
-<p><img src="/images/35.png" alt></p>
-<h4 id="00截断原理"><a href="#00截断原理" class="headerlink" title="00截断原理"></a><strong>00截断原理</strong></h4><hr>
-<p>0x00是字符串的结束标识符，攻击者可以利用手动添加字符串标识符的方式来将后面的内容进行截断，而后面的内容又可以帮助我们绕过检测。</p>
-<h4 id="00截断的限制条件"><a href="#00截断的限制条件" class="headerlink" title="00截断的限制条件"></a><strong>00截断的限制条件</strong></h4><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHP&lt;5.3.29，且GPC关闭</span><br></pre></td></tr></table></figure>
+<p>CTF中经常会遇到很多图片的隐写题目需要使用脚本来解题，最常用到的就是使用python中的PIL库，所以如果要更好的解出图片隐写相关处理的题目，掌握好这个库的使用是必要的。本期就来给大家介绍下这个库的基本使用和几道图片题目的解题思路。</p>
+<h4 id="0×00-PIL-vs-Pillow"><a href="#0×00-PIL-vs-Pillow" class="headerlink" title="0×00 PIL vs Pillow"></a><strong>0×00 PIL vs Pillow</strong></h4><p>首先介绍PIL这个库，PIL：Python Imaging Library，该库虽然是第三方库，但是俨然已经成为了图像处理的官方库。</p>
+<p>由于PIL仅支持到Python 2.7，加上年久失修，于是一群志愿者在PIL的基础上创建了兼容的版本，名字叫Pillow，支持最新Python 3.x，又加入了许多新特性，因此，我们可以直接安装使用Pillow。</p>
+<p>安装：win/lin/mac</p>
+<p><code>pip install Pillow</code></p>
+<h4 id="0×01-Image-类"><a href="#0×01-Image-类" class="headerlink" title="0×01 Image 类"></a><strong>0×01 Image 类</strong></h4><p>用到最多的是Image 这个类，一般我们会按照下面这个格式引用，下面就介绍下这个类的一些基本用法。</p>
+<p><code>from PIL import Image</code></p>
+<p><strong>1.加载图片，使用方法open</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.open(<span class="string">'Mycat.jpg'</span>)</span><br></pre></td></tr></table></figure>
 
-<h4 id="00截断的利用方法"><a href="#00截断的利用方法" class="headerlink" title="00截断的利用方法"></a><strong>00截断的利用方法</strong></h4><hr>
-<h4 id="上传文件后缀检测代码"><a href="#上传文件后缀检测代码" class="headerlink" title="上传文件后缀检测代码"></a><strong>上传文件后缀检测代码</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$uploaded_name = $_FILES[ &apos;file&apos; ][ &apos;name&apos; ];</span><br><span class="line">$uploaded_ext  = substr( $uploaded_name, strrpos( $uploaded_name, &apos;.&apos; ) + 1); // 提取上传文件后缀</span><br><span class="line">$target_name = md5( uniqid() . $uploaded_name ) . &apos;.&apos; . $uploaded_ext; // 对上传文件进行重命名</span><br><span class="line">if( ( strtolower( $uploaded_ext ) == &quot;jpg&quot; || strtolower( $uploaded_ext ) == &quot;jpeg&quot; || strtolower( $uploaded_ext ) == &quot;png&quot; ))</span><br><span class="line">&#123;    </span><br><span class="line">    move_uploaded_file($_FILES[&quot;file&quot;][&quot;tmp_name&quot;],    $dir . $target_name); // 将临时文件移动到指定目录    </span><br><span class="line">    $result = $dir . $target_name;   </span><br><span class="line">    echo &quot;Stored in: $result&quot;; </span><br><span class="line">&#125;</span><br><span class="line">else&#123; </span><br><span class="line">    echo &quot;Invalid file&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>im是一个Image对象，属性有format，size，mode。format是格式，size 是一个元组，表示(宽，高)，mode则指的图片的模式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.open(<span class="string">'Mycat.jpg'</span>)</span><br><span class="line"><span class="keyword">print</span> im.format,im.size,im.mode</span><br></pre></td></tr></table></figure>
 
-<p><strong>误区:</strong><br>有很多朋友喜欢在文件名中加%00进行截断，笔者认为这种方式是不对的，为什么呢？比如攻击者构造文件名：<code>admintony.php%00a.jpg</code>，在提取后缀名的时候遇到<code>%00</code>则认为字符串结束了，那么他提取到的后缀名会是.php，.php后缀又不允许上传所以上传失败了(这里有必要提一句，有人可能会说在一些情况下，<code>%00</code>截断文件名可以成功，这种案例你试一下是不是任意文件上传，西普的00截断实验就是一个任意文件上传的上传点，既然是任意文件上传又何必用00截断绕过呢？)<br><strong>正确用法:</strong><br>那么00截断应该在什么时候使用呢？笔者认为，数据包中必须含有上传后文件的目录情况才可以用，比如数据包中存在<code>path: uploads/</code>，那么攻击者可以通过修改path的值来构造<code>paylod: uploads/aa.php%00</code><br><img src="/images/36.png" alt><br>为什么修改path才可以，因为程序中检测的是文件的后缀名，如果后缀合法则拼接路径和文件名，那么攻击者修改了path以后的拼接结果为：uploads/aaa.php%00/2018051413370000.php，移动文件的时候会将文件保存为uploads/aaa.php，从而达到Getshell效果。</p>
-<h4 id="00和-00-urldecode"><a href="#00和-00-urldecode" class="headerlink" title="%00和%00(urldecode)"></a><strong>%00和%00(urldecode)</strong></h4><hr>
-<p>在网上常见用Burp将数据包中的%00进行urldecode的操作，那为什么要进行这一个操作？网上也常见直接放入%00就可以截断成功的案例，为什么呢？<br><strong>%00(urldecode)</strong></p>
-<p>首先解释为什么要进行urldecode操作呢？其原因在于上传的表单中有一个enctype的属性，并且需要<code>enctype=&quot;multipart/form-data&quot;</code>(不对表单中数据进行编码)，path大多数都是存放在表单中的，因此需要在数据包中进行urldecode操作使%00变成字符串结束符号。<br><img src="/images/37.png" alt><br><strong>%00</strong><br>那么为什么网上也有直接添加%00而不进行urldecode操作呢？因为path也可以存放在URL或者Cookie中，而在提交数据的时候，浏览器会对数据做一次urldecode的操作，而到服务端，会对数据进行一次urldecode的操作，因此如果path在非<code>enctype=multipart/form-data</code>的表单中或URL or Cookie中的时候，就可以直接写%00不需要进行URLdecode操作，让服务端对%00进行URL解码即可。<br><img src="/images/38.png" alt></p>
+<p>console输出如下：</p>
+<p><code>JPEG (245, 280) RGB</code></p>
+<p>2.呈现图片，方法show方便用来调试和测试。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.open(<span class="string">'Mycat.jpg'</span>)</span><br><span class="line">im.show()</span><br></pre></td></tr></table></figure>
+
+<p>3.图片的读和写</p>
+<p>读文件用Image.open()，保存文件用Image.save()，也可以用save方法来进行图片的格式转换。使用os模块中的os.path.splitext()方法可以讲文件名和扩展名分离开来，下面的代码能够把jpg格式的图片转为png格式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">infile = <span class="string">'Mycat.jpg'</span></span><br><span class="line">f,e = os.path.splitext(infile)</span><br><span class="line">outfile = f + <span class="string">'.png'</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    Image.open(infile).save(outfile)</span><br><span class="line"><span class="keyword">except</span> IOError:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"cannot convert"</span>,infile</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.图片的剪切，黏贴</strong></p>
+<ol>
+<li>图片剪切</li>
+</ol>
+<p>从一张图片中剪切出一块区域，比如从图片提取矩形，使用crop()方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">im = Image.open(<span class="string">'Mycat.jpg'</span>)</span><br><span class="line">box = (<span class="number">150</span>,<span class="number">150</span>,<span class="number">245</span>,<span class="number">280</span>)</span><br><span class="line">region = im.crop(box)</span><br><span class="line">region.show()</span><br></pre></td></tr></table></figure>
+
+<p>关于这个box，这是一个4元的坐标数组，坐标轴是左上角是(0,0)的卡迪尔坐标系。假设box是(x1,y1,x2,y2)，则所取区域是以各自坐标划线所围的区域。<img src="en-resource://database/492220:0" alt="a387da895be21f69ef5e3f214ccc6207.png"></p>
+<ol start="2">
+<li>图片黏贴</li>
+</ol>
+<p>图片的黏贴就是将一张图覆盖到另一张图上面。黏贴的方法是paste()。格式为：<code>paste(要贴的图片，要贴的图片的4元坐标组成的区域)</code>。如下面，我们把<code>Mycat.jpg</code>这张图片，取区域<code>(50,50,200,200)</code>，将该区域旋转180度后贴到原来的位置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">im = Image.open(<span class="string">'Mycat.jpg'</span>)</span><br><span class="line">box = (<span class="number">50</span>,<span class="number">50</span>,<span class="number">200</span>,<span class="number">200</span>)</span><br><span class="line">region = im.crop(box)</span><br><span class="line"><span class="comment"># 将图片逆序旋转180后，黏贴到原来复制的位置</span></span><br><span class="line">region = region.transpose(Image.ROTATE_180)</span><br><span class="line">im.paste(region,box)</span><br><span class="line">im.show()</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.图像序列</strong></p>
+<p>当处理GIF这种包含多个帧的图片，称之为序列文件，PIL会自动打开序列文件的第一帧。而使用seek和tell方法可以在不同帧移动。tell是帧数，而seek是取当前帧数的图片。</p>
+<p>使用while循环</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im = Image.open(<span class="string">"laopo.gif"</span>)</span><br><span class="line">im.seek(<span class="number">1</span>)</span><br><span class="line">im.show()</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">        im.seek(im.tell()+<span class="number">1</span>)</span><br><span class="line">        im.show()</span><br><span class="line"><span class="keyword">except</span> EOFError:</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>6.读取像素和修改像素</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">img = Image.open(<span class="string">'Mycat.jpg'</span>)</span><br><span class="line">width , height = img.size</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,width):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,height):</span><br><span class="line">        tmp = img.getpixel((i,j))</span><br><span class="line">        img.putpixel((i,j),(<span class="number">0</span>,<span class="number">0</span>,tmp[<span class="number">2</span>]))</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
+
+<p>说明：getpixel得到图片img的坐标为(4,4)的像素点。putpixel将坐标为(4,4)的像素点变为(255,0,0)颜色，即红色。</p>
 
       
     </div>
@@ -425,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/03/Mysql报错注入原理分析-count-、rand-、group-by/" rel="next" title="Mysql报错注入原理分析(count()、rand()、group by)">
-                <i class="fa fa-chevron-left"></i> Mysql报错注入原理分析(count()、rand()、group by)
+              <a href="/2019/09/01/PYTHON-CTF密码/" rel="next" title="PYTHON-CTF密码">
+                <i class="fa fa-chevron-left"></i> PYTHON-CTF密码
               </a>
             
           </div>
@@ -434,10 +452,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/04/linux权限体系（三）特殊权限SUID、SGID/" rel="prev" title="linux权限体系（三）特殊权限SUID、SGID">
-                linux权限体系（三）特殊权限SUID、SGID <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -593,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#00截断原理"><span class="nav-number">1.</span> <span class="nav-text">00截断原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#00截断的限制条件"><span class="nav-number">2.</span> <span class="nav-text">00截断的限制条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#00截断的利用方法"><span class="nav-number">3.</span> <span class="nav-text">00截断的利用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传文件后缀检测代码"><span class="nav-number">4.</span> <span class="nav-text">上传文件后缀检测代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#00和-00-urldecode"><span class="nav-number">5.</span> <span class="nav-text">%00和%00(urldecode)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0×00-PIL-vs-Pillow"><span class="nav-number">1.</span> <span class="nav-text">0×00 PIL vs Pillow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#0×01-Image-类"><span class="nav-number">2.</span> <span class="nav-text">0×01 Image 类</span></a></li></ol></div>
             
 
           </div>
