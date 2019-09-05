@@ -77,21 +77,21 @@
 
 
 
-<meta name="description" content="0×01 CTF 图片隐写实战题目1：图片内容读取 本题是一道图片内容逆序处理的题目，首先用16进制编辑器打开该图片，发现逆序该图片也是一张PNG 这种逆序处理相对比较简单，我们把图片当成文本就行了，只是操作的时候注意模式是二进制的模式，然后用[::-1]这种写法来逆序 12345678# coding:utf-8# author:Rebornf1 = open(&apos;flag.jpg&apos;,&apos;rb+&apos;)">
+<meta name="description" content="python之CTF脚本">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PYTHON-CTF图片">
 <meta property="og:url" content="http://yoursite.com/2019/09/05/PYTHON-CTF图片/index.html">
 <meta property="og:site_name" content="Steady">
-<meta property="og:description" content="0×01 CTF 图片隐写实战题目1：图片内容读取 本题是一道图片内容逆序处理的题目，首先用16进制编辑器打开该图片，发现逆序该图片也是一张PNG 这种逆序处理相对比较简单，我们把图片当成文本就行了，只是操作的时候注意模式是二进制的模式，然后用[::-1]这种写法来逆序 12345678# coding:utf-8# author:Rebornf1 = open(&apos;flag.jpg&apos;,&apos;rb+&apos;)">
+<meta property="og:description" content="python之CTF脚本">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/130.png">
 <meta property="og:image" content="http://yoursite.com/images/131.png">
 <meta property="og:image" content="http://yoursite.com/images/132.png">
 <meta property="og:image" content="http://yoursite.com/images/133.png">
-<meta property="og:updated_time" content="2019-09-05T13:06:47.323Z">
+<meta property="og:updated_time" content="2019-09-05T13:42:36.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PYTHON-CTF图片">
-<meta name="twitter:description" content="0×01 CTF 图片隐写实战题目1：图片内容读取 本题是一道图片内容逆序处理的题目，首先用16进制编辑器打开该图片，发现逆序该图片也是一张PNG 这种逆序处理相对比较简单，我们把图片当成文本就行了，只是操作的时候注意模式是二进制的模式，然后用[::-1]这种写法来逆序 12345678# coding:utf-8# author:Rebornf1 = open(&apos;flag.jpg&apos;,&apos;rb+&apos;)">
+<meta name="twitter:description" content="python之CTF脚本">
 <meta name="twitter:image" content="http://yoursite.com/images/130.png">
 
 
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -386,7 +386,9 @@
       
 
       
-        <h4 id="0×01-CTF-图片隐写实战"><a href="#0×01-CTF-图片隐写实战" class="headerlink" title="0×01 CTF 图片隐写实战"></a><strong>0×01 CTF 图片隐写实战</strong></h4><p><strong>题目1：图片内容读取</strong></p>
+        <p>python之CTF脚本</p>
+<a id="more"></a>
+<h4 id="0×01-CTF-图片隐写实战"><a href="#0×01-CTF-图片隐写实战" class="headerlink" title="0×01 CTF 图片隐写实战"></a><strong>0×01 CTF 图片隐写实战</strong></h4><p><strong>题目1：图片内容读取</strong></p>
 <p>本题是一道图片内容逆序处理的题目，首先用16进制编辑器打开该图片，发现逆序该图片也是一张PNG</p>
 <p>这种逆序处理相对比较简单，我们把图片当成文本就行了，只是操作的时候注意模式是二进制的模式，然后用[::-1]这种写法来逆序</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="comment"># author:Reborn</span></span><br><span class="line"></span><br><span class="line">f1 = open(<span class="string">'flag.jpg'</span>,<span class="string">'rb+'</span>)</span><br><span class="line">f2 = open(<span class="string">'fla.jpg'</span>,<span class="string">'wb+'</span>)</span><br><span class="line">f2.write(f1.read()[::<span class="number">-1</span>])</span><br><span class="line">f1.close()</span><br><span class="line">f2.close()</span><br></pre></td></tr></table></figure>
