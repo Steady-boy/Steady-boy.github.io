@@ -88,7 +88,8 @@
 <meta property="og:image" content="http://yoursite.com/images/131.png">
 <meta property="og:image" content="http://yoursite.com/images/132.png">
 <meta property="og:image" content="http://yoursite.com/images/133.png">
-<meta property="og:updated_time" content="2019-09-05T13:42:36.767Z">
+<meta property="og:image" content="http://yoursite.com/images/150.png">
+<meta property="og:updated_time" content="2019-09-06T10:45:27.299Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PYTHON-CTF图片">
 <meta name="twitter:description" content="python之CTF脚本">
@@ -349,7 +350,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1.6k
                 </span>
               
 
@@ -365,7 +366,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  6
                 </span>
               
             </div>
@@ -425,6 +426,15 @@
 
 <p><img src="/images/133.png" alt="0851bf0ec02723b39e8e6889386a0d7e.png"></p>
 <p>最终获得一张二维码，扫描该二维码可得flag。</p>
+<p><strong>0x06题目五 画二维码</strong></p>
+<p>发现是一段段重复的字母，拉到最后，发现最后两个等号。<br>于是猜测是base64编码，解码得到0和1组成的一串字符串。统计字数，发现总字数为65536，开根号，得到长宽为256。分析到这里题目就很清楚了，这是一道作图题，猜测为二维码。利用python编程得出二维码图片，扫描可得flag。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from PIL import Image</span><br><span class="line">weight = <span class="number">256</span></span><br><span class="line">height = <span class="number">256</span></span><br><span class="line"></span><br><span class="line">with open(<span class="string">"11.txt"</span>) <span class="keyword">as</span> f:</span><br><span class="line">    contents = f.read()</span><br><span class="line">    newIm = Image.<span class="keyword">new</span>(<span class="string">'RGB'</span>, (weight, height), <span class="string">'white'</span>)</span><br><span class="line">    white = (<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>)</span><br><span class="line">    black = (<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i in range(<span class="number">0</span>,height):</span><br><span class="line">        <span class="keyword">for</span> j in range(<span class="number">0</span>,weight):</span><br><span class="line">            <span class="keyword">if</span>(contents[weight*i+j] == <span class="string">'1'</span>):</span><br><span class="line">                newIm.putpixel((i,j),black)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                newIm.putpixel((i, j), white)</span><br><span class="line"></span><br><span class="line">    f.close()</span><br><span class="line">    newIm.save(<span class="string">"QR.png"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>if(contents[weight*i+j] == ‘1’</p>
+<p>一直不明白这里的作用,后来仔细研究发现，对文本中的0和1，如果是1那么就是黑色，如果是那么就是白色。contents是一个数组，content[]就代表文件中的每一个位置的数值。但是一共用65536个数值。65536是怎么来的呢？就是256的平方。为什么数组的下标要使用这个呢？<code>weight* i+j</code> weight为256.也就是说以256为一个循环。过了一个循环我要在256或者256的倍数上加256。既然content只是用来判断文件中的位置，那么我们直接使用：<br><img src="/images/150.png" alt="02fb84ce9d91a8ea4b74d712568edbb6.png"><br>我们可以看到，循环每一个数字的目的是达到了，但是我们替换的时候就出问题了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newIm.putpixel((i,j),black)</span><br></pre></td></tr></table></figure>
+
+<p>这条语句的含义就是，在我们建立的空白的图片上，根据点的坐标，贴上黑色或者白色。点的坐标是两个数，我们当然不能用一个数字来遍历。</p>
 
       
     </div>
@@ -550,7 +560,7 @@
               
               
               <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
@@ -651,7 +661,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48k</span>
+    <span title="Site words total count">48.5k</span>
   
 </div>
 
