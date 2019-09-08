@@ -250,6 +250,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/08/python之pickle模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="新boy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/gxa.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Steady">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/08/python之pickle模块/" itemprop="url">python之pickle模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-08T16:08:26+08:00">
+                2019-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PYTHON模块/" itemprop="url" rel="index">
+                    <span itemprop="name">PYTHON模块</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  640
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Pickle模块用来对Python对象执行序列化和反序列化。Python的任何对象都可以通过它永久保存到硬盘文件。Pickle实际上是先把Python对象（list、dict、class等）转换为字符流，这个字符流包含反序列化（从字符流构建对象）所需的所有数据。</p>
+<p>用于序列化的两个模块<br>　　json：用于字符串和Python数据类型间进行转换<br>　　pickle: 用于python特有的类型和python的数据类型间进行转换<br>　　json提供四个功能：dumps,dump,loads,load<br>　　pickle提供四个功能：dumps,dump,loads,load</p>
+<h4 id="pickle可以存储什么类型的数据呢？"><a href="#pickle可以存储什么类型的数据呢？" class="headerlink" title="pickle可以存储什么类型的数据呢？"></a><strong>pickle可以存储什么类型的数据呢？</strong></h4><p>1.所有python支持的原生类型：布尔值，整数，浮点数，复数，字符串，字节，None。<br>2.由任何原生类型组成的列表，元组，字典和集合。<br>3.函数，类，类的实例</p>
+<h4 id="pickle模块中常用的方法有："><a href="#pickle模块中常用的方法有：" class="headerlink" title="pickle模块中常用的方法有："></a><strong>pickle模块中常用的方法有：</strong></h4><ol>
+<li><p>pickle.dump(obj, file, protocol=None,)<br>必填参数obj表示将要封装的对象<br>必填参数file表示obj要写入的文件对象，file必须以二进制可写模式打开，即“wb”<br>可选参数protocol表示告知pickler使用的协议，支持的协议有0,1,2,3，默认的协议是添加在Python 3中的协议3。</p>
+</li>
+<li><p>pickle.load(file,*,fix_imports=True, encoding=”ASCII”, errors=”strict”)<br>必填参数file必须以二进制可读模式打开，即“rb”，其他都为可选参数</p>
+</li>
+<li><p>pickle.dumps(obj)：以字节对象形式返回封装的对象，不需要写入文件中 </p>
+</li>
+<li><p>pickle.loads(bytes_object): 从字节对象中读取被封装的对象，并返回 pickle模块可能出现三种异常：</p>
+</li>
+<li><p>PickleError：封装和拆封时出现的异常类，继承自Exception   </p>
+</li>
+<li><p>PicklingError: 遇到不可封装的对象时出现的异常，继承自PickleError   </p>
+</li>
+<li><p>UnPicklingError: 拆封对象过程中出现的异常，继承自PickleError<br>应用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dumps功能</span></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line">data = [<span class="string">'aa'</span>, <span class="string">'bb'</span>, <span class="string">'cc'</span>]  </span><br><span class="line"><span class="comment"># dumps 将数据通过特殊的形式转换为只有python语言认识的字符串</span></span><br><span class="line">p_str = pickle.dumps(data)</span><br><span class="line">print(p_str)            </span><br><span class="line"><span class="string">b'\x80\x03]q\x00(X\x02\x00\x00\x00aaq\x01X\x02\x00\x00\x00bbq\x02X\x02\x00\x00\x00ccq\x03e.</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>1 # loads功能<br>2 # loads  将pickle数据转换为python的数据结构<br>3 mes = pickle.loads(p_str)<br>4 print(mes)<br>5 [‘aa’, ‘bb’, ‘cc’]</p>
+<p>1 # dump功能<br>2 # dump 将数据通过特殊的形式转换为只有python语言认识的字符串，并写入<strong>文件</strong><br>3 with open(‘D:/tmp.pk’, ‘w’) as f:<br>4     pickle.dump(data, f)</p>
+<p>1 # load功能<br>2 # load <strong>从数据文件中读取数据</strong>，并转换为python的数据结构<br>3 with open(‘D:/tmp.pk’, ‘r’) as f:<br>4 data = pickle.load(f)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/LSB隐写/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1918,194 +2114,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/23/CGI-FastCGI学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="新boy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/gxa.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Steady">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/23/CGI-FastCGI学习/" itemprop="url">CGI/FastCGI学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-23T20:27:46+08:00">
-                2019-08-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/内核/" itemprop="url" rel="index">
-                    <span itemprop="name">内核</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  961
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>CGI学习</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/23/CGI-FastCGI学习/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2158,7 +2166,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2253,7 +2261,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">49.3k</span>
+    <span title="Site words total count">49.9k</span>
   
 </div>
 
