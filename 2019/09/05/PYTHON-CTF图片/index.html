@@ -90,7 +90,8 @@
 <meta property="og:image" content="http://yoursite.com/images/133.png">
 <meta property="og:image" content="http://yoursite.com/images/150.png">
 <meta property="og:image" content="http://yoursite.com/images/151.png">
-<meta property="og:updated_time" content="2019-09-08T06:44:59.369Z">
+<meta property="og:image" content="http://yoursite.com/images/152.png">
+<meta property="og:updated_time" content="2019-09-08T07:07:10.013Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PYTHON-CTF图片">
 <meta name="twitter:description" content="python之CTF脚本">
@@ -351,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.9k
+                  2.4k
                 </span>
               
 
@@ -367,7 +368,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  9
                 </span>
               
             </div>
@@ -443,6 +444,18 @@
 <p>定义：im.putpixel(xy,colour)</p>
 <p>含义：修改指定位置上的像素值。对于单通道图像，变量colour为一个数值；对于多通道图像，变量colour为一个元组。</p>
 <p>注意：这个方法执行比较慢。如果是1.1.6版本，像素访问对象（参考load方法）提供了一个更快的方法修改图像。如果用户要生成整幅图像，可以使用更有效的方法产生一个python list，然后使用方法putdata()将它拷贝到图像上去。对于更大的改变，使用方法paste或者ImageDraw模块。</p>
+<p>做这个题首先我们就是需要知道我们所画图片的长和宽。我们把文本放到notepad上，一共61366行。最后一行是空的。那么问题来了这跟行有什么关系呢？首先他给我们的是RGB，<code>什么是rgb呢？</code></p>
+<p>RGB这一个词想必很多人还是不陌生的，或者称为24位真彩色想必很多人也听过，但是RGB（24位真彩色）到底是什么呢？由我来简单讲解一下吧。</p>
+<p>RGB实际上是三种颜色红（red）、绿（green）、蓝（blue）三种颜色的合称，小时候大家都知道绿色和蓝色混合会变成黄色，而RGB色彩标准就是这样一个东西——通过三种颜色的混合基本就能够混合出人类视力所能感受到的所有颜色。<br>同时一个颜色占八位（即色度从0~255有256（2^8）个级，零为白色），所以亦被称为24位真彩色，即总共能够表达2^24=16777216种的颜色，一般称为1600万色或者千万色。 </p>
+<p><code>什么又是像素呢？</code></p>
+<p>像素是构成位图图像最基本的单元，每个像素都有自己的颜色，像素越多，颜色信息就越丰富，图像效果就越好！</p>
+<p>一个像素就是一个颜色，而颜色又是由rgb来决定的。所以一个rgb就是一个像素。</p>
+<p>知道了像素、grb以后，是不是还是没有头绪?那好我在讲一下，像素也可以用来描述图片的大小。如图：<br><img src="/images/152.png" alt="751763d4b22a98864e2aff34e42f6cde.png"></p>
+<p>综上所述，我们要知道一个图片的大小，就要知道像素，而像素又是由rgb组成的。一个rgb就是一个像素。所以根据rgb的个数我们就能够知道图片的大小。</p>
+<p>怎么确定图片的大小呢？图片无非就是长和宽。总数613336我们知道了，因此我们整数分解就ok。<br>上脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">61366</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">1000</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">1000</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j)==a:</span><br><span class="line">            print(i,j)</span><br></pre></td></tr></table></figure>
+
+<p>你可能会问：1和613366不行吗?行，但是你见过这样的图片吗？</p>
 
       
     </div>
@@ -568,7 +581,7 @@
               
               
               <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
@@ -669,7 +682,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">48.7k</span>
+    <span title="Site words total count">49.3k</span>
   
 </div>
 
