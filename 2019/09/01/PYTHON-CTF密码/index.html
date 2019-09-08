@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/images/127.png">
 <meta property="og:image" content="http://yoursite.com/images/128.png">
 <meta property="og:image" content="http://yoursite.com/images/129.png">
-<meta property="og:updated_time" content="2019-09-05T13:03:53.867Z">
+<meta property="og:updated_time" content="2019-09-08T12:37:29.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PYTHON-CTF密码">
 <meta name="twitter:description" content="python-ctf中的密码">
@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.7k
+                  3.9k
                 </span>
               
 
@@ -368,7 +368,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  19
                 </span>
               
             </div>
@@ -449,7 +449,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string  <span class="comment">#affine</span></span><br><span class="line"> </span><br><span class="line">s = <span class="string">'szzyfimhyzd'</span></span><br><span class="line">s1 = <span class="string">''</span></span><br><span class="line">len =len(s)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len):</span><br><span class="line">    a=(<span class="number">23</span>*(ord(s[i])<span class="number">-97</span>+<span class="number">8</span>))%<span class="number">26</span></span><br><span class="line">    s1+=chr(a+<span class="number">97</span>)</span><br><span class="line"><span class="keyword">print</span> s1</span><br></pre></td></tr></table></figure>
 
 <p>脚本解释：<br>1.x表示明文按照某种编码得到的数字。即a为0，b为1，以此类推。我们在进行python解密的时候x必须要是数字，而且还是要对应<code>某种编码</code> 的数字。python中ord可以将字母转化为对应的十进制ascii，而a的ascii为97。所以这就是为什么要减去97。后面加上97是为了转换为字母。</p>
-
+<h4 id="url编码"><a href="#url编码" class="headerlink" title="url编码"></a><strong>url编码</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.parse <span class="keyword">import</span> quote,unquote</span><br><span class="line">str = <span class="string">'%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3D95%3DAC%3DE4%3DB8%3D9A%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE8%3D87%3DAA%3DE7%3D94%3DB1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE8%3D87%3DAA%3DE7%3D94%3DB1%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3D95%3DAC%3DE4%3DB8%3D9A%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3D85%3DAC%3DE6%3DAD%3DA3%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3D8F%3D8B%3DE5%3D96%3D84%3DE5%3D85%3DAC%3DE6%3DAD%3DA3%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3D95%3DAC%3DE4%3DB8%3D9A%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DB9%3DB3%3DE7%3DAD%3D89%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE8%3D87%3DAA%3DE7%3D94%3DB1%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3D95%3DAC%3DE4%3DB8%3D9A%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3D8F%3D8B%3DE5%3D96%3D84%3DE5%3D85%3DAC%3DE6%3DAD%3DA3%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DB9%3DB3%3DE7%3DAD%3D89%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3D95%3DAC%3DE4%3DB8%3D9A%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DB9%3DB3%3DE7%3DAD%3D89%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DB9%3DB3%3DE7%3DAD%3D89%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE8%3D87%3DAA%3DE7%3D94%3DB1%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE7%3D88%3DB1%3DE5%3D9B%3DBD%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3D8F%3D8B%3DE5%3D96%3D84%3DE5%3D85%3DAC%3DE6%3DAD%3DA3%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3D95%3DAC%3DE4%3DB8%3D9A%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DB9%3DB3%3DE7%3DAD%3D89%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE8%3D87%3DAA%3DE7%3D94%3DB1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DB9%3DB3%3DE7%3DAD%3D89%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DB9%3DB3%3DE7%3DAD%3D89%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3D8F%3D8B%3DE5%3D96%3D84%3DE5%3D85%3DAC%3DE6%3DAD%3DA3%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE8%3D87%3DAA%3DE7%3D94%3DB1%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE7%3D88%3DB1%3DE5%3D9B%3DBD%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3D8F%3D8B%3DE5%3D96%3D84%3DE5%3D85%3DAC%3DE6%3DAD%3DA3%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3DB0%3D91%3DE4%3DB8%3DBB%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3D95%3DAC%3DE4%3DB8%3D9A%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE8%3DAF%3D9A%3DE4%3DBF%3DA1%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE6%3D96%3D87%3DE6%3D98%3D8E%3DE5%3DAF%3D8C%3DE5%3DBC%3DBA%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE5%3D85%3DAC%3DE6%3DAD%3DA3%3DE5%3D92%3D8C%3DE8%3DB0%3D90%3DE6%3D95%3DAC%3DE4%3DB8%3D9A'</span></span><br><span class="line">print(unquote(str))</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -564,7 +564,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -641,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#莫尔斯电码"><span class="nav-number">1.</span> <span class="nav-text">莫尔斯电码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROT13"><span class="nav-number">2.</span> <span class="nav-text">ROT13</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#培根密码"><span class="nav-number">3.</span> <span class="nav-text">培根密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#affine仿射加密"><span class="nav-number">4.</span> <span class="nav-text">affine仿射加密</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#莫尔斯电码"><span class="nav-number">1.</span> <span class="nav-text">莫尔斯电码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROT13"><span class="nav-number">2.</span> <span class="nav-text">ROT13</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#培根密码"><span class="nav-number">3.</span> <span class="nav-text">培根密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#affine仿射加密"><span class="nav-number">4.</span> <span class="nav-text">affine仿射加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#url编码"><span class="nav-number">4.1.</span> <span class="nav-text">url编码</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -675,7 +675,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">51.6k</span>
+    <span title="Site words total count">52.8k</span>
   
 </div>
 
