@@ -77,17 +77,17 @@
 
 
 
-<meta name="description" content="乘物游心,上善若水。">
+<meta name="description" content="关于url编码问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python之url模块">
 <meta property="og:url" content="http://yoursite.com/2019/09/08/python之url模块/index.html">
 <meta property="og:site_name" content="Steady">
-<meta property="og:description" content="乘物游心,上善若水。">
+<meta property="og:description" content="关于url编码问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-08T12:38:17.632Z">
+<meta property="og:updated_time" content="2019-09-08T12:40:38.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python之url模块">
-<meta name="twitter:description" content="乘物游心,上善若水。">
+<meta name="twitter:description" content="关于url编码问题">
 
 
 
@@ -290,6 +290,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PYTHON模块/" itemprop="url" rel="index">
+                    <span itemprop="name">PYTHON模块</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -311,7 +333,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  616
                 </span>
               
 
@@ -327,7 +349,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -348,7 +370,28 @@
       
 
       
-        
+        <p>关于url编码问题</p>
+<a id="more"></a>
+<h4 id="URL编码、解码原因"><a href="#URL编码、解码原因" class="headerlink" title="URL编码、解码原因"></a><strong>URL编码、解码原因</strong></h4><p>通常如果一样东西需要编码，说明其并不适合直接传输。原因多种多样，如Size过大，包含隐私数据。对于Url来说，之所以要进行编码，是因为Url中有些字符会引起歧义。</p>
+<p>例如，Url参数字符串中使用key=value键值对这样的形式来传参，键值对之间以&amp;符号分隔，如/s?q=abc&amp;ie=utf-8。如果你的value字符串中包含了=或者&amp;，那么势必会造成接收Url的服务器解析错误，因此必须将引起歧义的&amp;和=符号进行转义，也就是对其进行编码。</p>
+<p>字符串被当作url提交时会被自动进行url编码处理，在python里也有个urllib.urlencode的方法，可以很方便的把字典形式的参数进行url编码。当url地址含有中文或者“/”的时候，这是就需要用做urlencode一下编码转换。</p>
+<h4 id="urlencode和quote"><a href="#urlencode和quote" class="headerlink" title="urlencode和quote"></a><strong>urlencode和quote</strong></h4><p>urlencode的参数是词典，它可以将key-value这样的键值对转换成我们想要的格式，将URL中的键值对以连接符&amp;划分。如果你用的是python2.*，urlencode在urllib.urlencode。如果使用的是python3，urlencode在urllib.parse.urlencode。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.parse  </span><br><span class="line">data=&#123;<span class="string">"name"</span>:<span class="string">"王尼玛"</span>,<span class="string">"age"</span>:<span class="string">"/"</span>,<span class="string">"addr"</span>:<span class="string">"abcdef"</span>&#125;  </span><br><span class="line">print(urllib.parse.urlencode(data))</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=%E7%8E%8B%E5%B0%BC%E7%8E%9B&amp;addr=abcdef&amp;age=%2F</span><br></pre></td></tr></table></figure>
+
+<p>如果只想对一个字符串进行urlencode转换，使用urllib提供的另外一个函数：quote()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(urllib.parse.quote(<span class="string">"hahaha你好啊！"</span>))</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hahaha%E4%BD%A0%E5%A5%BD%E5%95%8A%EF%BC%81</span><br></pre></td></tr></table></figure>
+
+<h4 id="unquote"><a href="#unquote" class="headerlink" title="unquote"></a><strong>unquote</strong></h4><p>对url进行解码，把类似”%xx”的字符替换成单个字符，当urlencode之后的字符串传递过来之后，接收完毕解码使用urllib提供的unquote()函数，注意没有urldecode()！若unquote方法接收到的参数类型是unicode，则返回的值类型也是unicode，只不过是把”%”替换成了’\x’，明智的做法是使用str（）转换一下再用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  urllib.parse  </span><br><span class="line">data=&#123;<span class="string">"name"</span>:<span class="string">"王尼玛"</span>,<span class="string">"age"</span>:<span class="string">"/"</span>,<span class="string">"addr"</span>:<span class="string">"abcdef"</span>&#125;  </span><br><span class="line">print(urllib.parse.urlencode(data))</span><br><span class="line">print(urllib.parse.unquote(<span class="string">"name=%E7%8E%8B%E5%B0%BC%E7%8E%9B&amp;addr=abcdef&amp;age=%2F"</span>))  </span><br><span class="line">print(urllib.parse.quote(<span class="string">"hahaha你好啊！"</span>))  </span><br><span class="line">print(urllib.parse.unquote(<span class="string">"hahaha%E4%BD%A0%E5%A5%BD%E5%95%8A%EF%BC%81"</span>))</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name=%E7%<span class="number">8</span>E%<span class="number">8</span>B%E5%B0%BC%E7%<span class="number">8</span>E%<span class="number">9</span>B&amp;addr=abcdef&amp;age=%<span class="number">2</span>F</span><br><span class="line">name=王尼玛&amp;addr=abcdef&amp;age=/</span><br><span class="line">hahaha%E4%BD%A0%E5%A5%BD%E5%<span class="number">95</span>%<span class="number">8</span>A%EF%BC%<span class="number">81</span></span><br><span class="line">hahaha你好啊！</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -432,8 +475,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -518,6 +570,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#URL编码、解码原因"><span class="nav-number">1.</span> <span class="nav-text">URL编码、解码原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#urlencode和quote"><span class="nav-number">2.</span> <span class="nav-text">urlencode和quote</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unquote"><span class="nav-number">3.</span> <span class="nav-text">unquote</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -545,7 +613,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">52.8k</span>
+    <span title="Site words total count">53.6k</span>
   
 </div>
 

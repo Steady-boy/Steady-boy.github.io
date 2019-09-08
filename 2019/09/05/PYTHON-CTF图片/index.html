@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/images/150.png">
 <meta property="og:image" content="http://yoursite.com/images/151.png">
 <meta property="og:image" content="http://yoursite.com/images/152.png">
-<meta property="og:updated_time" content="2019-09-08T07:07:10.013Z">
+<meta property="og:updated_time" content="2019-09-08T12:57:51.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PYTHON-CTF图片">
 <meta name="twitter:description" content="python之CTF脚本">
@@ -352,7 +352,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.4k
+                  2.5k
                 </span>
               
 
@@ -368,7 +368,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9
+                  10
                 </span>
               
             </div>
@@ -456,7 +456,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">61366</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">1000</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">1000</span>):</span><br><span class="line">        <span class="keyword">if</span> (i*j)==a:</span><br><span class="line">            print(i,j)</span><br></pre></td></tr></table></figure>
 
 <p>你可能会问：1和613366不行吗?行，但是你见过这样的图片吗？</p>
-
+<h4 id="图片区污渍"><a href="#图片区污渍" class="headerlink" title="图片区污渍"></a><strong>图片区污渍</strong></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">lena = Image.open(<span class="string">'C:/Users/12521/Desktop/solved22.png'</span>)</span><br><span class="line">pixsels = lena.load()</span><br><span class="line">width=lena.size[<span class="number">0</span>]</span><br><span class="line">height=lena.size[<span class="number">1</span>]</span><br><span class="line">list1=[]</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">0</span>,width):</span><br><span class="line">  <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">0</span>,height):</span><br><span class="line">    r,g,b=pixsels[x,y]</span><br><span class="line">    <span class="keyword">if</span> r==<span class="number">255</span> <span class="keyword">and</span> g==<span class="number">255</span>:</span><br><span class="line">      <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      <span class="keyword">if</span> int(bin(b)[<span class="number">-1</span>])==<span class="number">1</span>:</span><br><span class="line">        list1.append(<span class="number">0</span>)</span><br><span class="line">      <span class="keyword">else</span>:</span><br><span class="line">        list1.append(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">print</span> (len(list1))</span><br><span class="line">im=Image.new(<span class="string">"1"</span>,(<span class="number">300</span>,<span class="number">300</span>))</span><br><span class="line">i=<span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i&lt;len(list1):</span><br><span class="line">   im.putpixel((i%<span class="number">300</span>,i/<span class="number">300</span>),list1[i])</span><br><span class="line">   i=i+<span class="number">1</span></span><br><span class="line">im.save(<span class="string">"2.png"</span>)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -648,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0×01-CTF-图片隐写实战"><span class="nav-number">1.</span> <span class="nav-text">0×01 CTF 图片隐写实战</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用像素画图片"><span class="nav-number">2.</span> <span class="nav-text">利用像素画图片</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#0×01-CTF-图片隐写实战"><span class="nav-number">1.</span> <span class="nav-text">0×01 CTF 图片隐写实战</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用像素画图片"><span class="nav-number">2.</span> <span class="nav-text">利用像素画图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片区污渍"><span class="nav-number">3.</span> <span class="nav-text">图片区污渍</span></a></li></ol></div>
             
 
           </div>
@@ -682,7 +682,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">52.8k</span>
+    <span title="Site words total count">53.6k</span>
   
 </div>
 
