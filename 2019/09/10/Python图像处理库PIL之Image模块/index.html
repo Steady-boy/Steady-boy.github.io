@@ -77,19 +77,19 @@
 
 
 
-<meta name="description" content="PHP内核的了解">
+<meta name="description" content="一、Pasteim.paste(image,box) 将一张图粘贴到另一张图像上。变量box或者是一个给定左上角的2元组，或者是定义了左，上，右和下像素坐标的4元组，或者为空（与（0，0）一样）。如果给定4元组，被粘贴的图像的尺寸必须与区域尺寸一样。 如果模式不匹配，被粘贴的图像将被转换为当前图像的模式。 format : 识别图像的源格式，如果该文件不是从文件中读取的，则被置为 None 值。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SAPI接口">
-<meta property="og:url" content="http://yoursite.com/2019/08/23/SAPI接口/index.html">
+<meta property="og:title" content="Python图像处理库PIL之Image模块">
+<meta property="og:url" content="http://yoursite.com/2019/09/10/Python图像处理库PIL之Image模块/index.html">
 <meta property="og:site_name" content="Steady">
-<meta property="og:description" content="PHP内核的了解">
+<meta property="og:description" content="一、Pasteim.paste(image,box) 将一张图粘贴到另一张图像上。变量box或者是一个给定左上角的2元组，或者是定义了左，上，右和下像素坐标的4元组，或者为空（与（0，0）一样）。如果给定4元组，被粘贴的图像的尺寸必须与区域尺寸一样。 如果模式不匹配，被粘贴的图像将被转换为当前图像的模式。 format : 识别图像的源格式，如果该文件不是从文件中读取的，则被置为 None 值。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/104.png">
-<meta property="og:updated_time" content="2019-08-23T15:07:39.780Z">
+<meta property="og:image" content="http://yoursite.com/images/163.png">
+<meta property="og:updated_time" content="2019-09-10T13:29:08.368Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SAPI接口">
-<meta name="twitter:description" content="PHP内核的了解">
-<meta name="twitter:image" content="http://yoursite.com/images/104.png">
+<meta name="twitter:title" content="Python图像处理库PIL之Image模块">
+<meta name="twitter:description" content="一、Pasteim.paste(image,box) 将一张图粘贴到另一张图像上。变量box或者是一个给定左上角的2元组，或者是定义了左，上，右和下像素坐标的4元组，或者为空（与（0，0）一样）。如果给定4元组，被粘贴的图像的尺寸必须与区域尺寸一样。 如果模式不匹配，被粘贴的图像将被转换为当前图像的模式。 format : 识别图像的源格式，如果该文件不是从文件中读取的，则被置为 None 值。">
+<meta name="twitter:image" content="http://yoursite.com/images/163.png">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/23/SAPI接口/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/10/Python图像处理库PIL之Image模块/">
 
 
 
 
 
-  <title>SAPI接口 | Steady</title>
+  <title>Python图像处理库PIL之Image模块 | Steady</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/23/SAPI接口/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/Python图像处理库PIL之Image模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="新boy">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SAPI接口</h1>
+          <h1 class="post-title" itemprop="name headline">Python图像处理库PIL之Image模块</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-23T20:08:10+08:00">
-                2019-08-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T21:27:43+08:00">
+                2019-09-10
               </time>
             
 
@@ -291,39 +291,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/内核/" itemprop="url" rel="index">
-                    <span itemprop="name">内核</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -383,26 +350,51 @@
       
 
       
-        <p>PHP内核的了解</p>
-<a id="more"></a>
-<h3 id="PHP内核探索：从SAPI接口开始"><a href="#PHP内核探索：从SAPI接口开始" class="headerlink" title="PHP内核探索：从SAPI接口开始"></a><strong>PHP内核探索：从SAPI接口开始</strong></h3><p>SAPI:Server Application Programming Interface 服务器端应用编程端口。研究过PHP架构的同学应该知道这个东东的重要性，它提供了一个接口，使得PHP可以和其他应用进行交互数据。 本文不会详细介绍每个PHP的SAPI，只是针对最简单的CGI SAPI，来说明SAPI的机制。<br>我们先来看看PHP的架构图：<br><img src="/images/104.png" alt="05996ac51af8a4c722fb635e0cc41fc3.png"></p>
-<p>SAPI指的是PHP具体应用的编程接口， 就像PC一样，无论安装哪些操作系统，只要满足了PC的接口规范都可以在PC上正常运行， PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中。</p>
-<p>通常，我们使用Apache或者Nginx这类Web服务器来测试PHP脚本，或者在命令行下通过PHP解释器程序来执行。 脚本执行完后，Web服务器应答，浏览器显示应答信息，或者在命令行标准输出上显示内容。</p>
-<p>我们很少关心PHP解释器在哪里。虽然通过Web服务器和命令行程序执行脚本看起来很不一样， 实际上它们的工作流程是一样的。命令行参数传递给PHP解释器要执行的脚本， 相当于通过url请求一个PHP页面。脚本执行完成后返回响应结果，只不过命令行的响应结果是显示在终端上。<br>脚本执行的开始都是以SAPI接口实现开始的。只是不同的SAPI接口实现会完成他们特定的工作， 例如Apache的mod_php SAPI实现需要初始化从Apache获取的一些信息，在输出内容是将内容返回给Apache， 其他的SAPI实现也类似。</p>
-<p>SAPI提供了一个和外部通信的接口， 对于PHP5.2，默认提供了很多种SAPI， 常见的给apache的mod_php5，CGI，给IIS的ISAPI，还有Shell的CLI，本文就从CGI SAPI入手 ，介绍SAPI的机制。 虽然CGI简单，但是不用担心，它包含了绝大部分内容，足以让你深刻理解SAPI的工作原理。</p>
-<p>SAPI是Server Application Programming Interface（服务器应用编程接口）的缩写。PHP通过SAPI提供了一组接口，供应用和PHP内核之间进行数据交互。</p>
-<p>简单的讲，就像函数的输入和输出一样，我们通过Linux命令行执行一段PHP代码，本质是Linux的Shell通过PHP的SAPI传入一组参数，Zend引擎执行后，返回给shell，由shell显示出来的过程。同样的，通过Apache调用PHP，通过Web服务器给SAPI传入数据，Zend引擎执行后，返回给Apache，由Apache显示在页面上</p>
-<p>PHP架构图PHP提供很多种形式的接口，包括apache、apache2filter、apache2handler、caudium、cgi 、cgi-fcgi、cli、cli-server、continuity、embed、isapi、litespeed、milter、nsapi、phttpd pi3web、roxen、thttpd、tux和webjames。但是常用的只有5种形式，CLI/CGI（命令行）、Multiprocess（多进程）、Multithreaded（多线程）、FastCGI和Embedded（内嵌）。PHP提供了一个函数查看当前SAPI接口类型：<br><code>string php_sapi_name ( void )</code></p>
-<p>PHP的运行和加载无论使用哪种SAPI，在PHP执行脚本前后，都包含一系列事件：Module的Init(MINT)和Shutdown(MSHUTDOWN)，Request 的Init(RINT)和Shutdown(RSHUTDOWN)。 第一阶段是PHP模块初始化阶段（MINT），可以初始化扩展内部变量、分配资源和注册资源处理器，在整个PHP实例生命周期内，该过程只执行一次。<br>什么是PHP模块？通过上面的PHP架构图，在PHP中可以使用get_loaded_extensions 函数来查看所有编译并加载的模块/扩展，相当于CLI模式下的php -m。以PHP的Memcached扩展源代码为例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP_MINIT_FUNCTION(memcached) &#123;         </span><br><span class="line">        zend_class_entry ce;    </span><br><span class="line">        memcpy(&amp;memcached_object_handlers,zend_get_std_object_handlers(), sizeof(zend_object_handlers));    </span><br><span class="line">memcached_object_handlers.clone_obj = NULL;     /* 执行了一些类似的初始化操作 */     </span><br><span class="line">return SUCCESS; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="一、Paste"><a href="#一、Paste" class="headerlink" title="一、Paste"></a><strong>一、Paste</strong></h4><p>im.paste(image,box)</p>
+<p>将一张图粘贴到另一张图像上。变量box或者是一个给定左上角的2元组，或者是定义了左，上，右和下像素坐标的4元组，或者为空（与（0，0）一样）。如果给定4元组，被粘贴的图像的尺寸必须与区域尺寸一样。</p>
+<p>如果模式不匹配，被粘贴的图像将被转换为当前图像的模式。</p>
+<p>format : 识别图像的源格式，如果该文件不是从文件中读取的，则被置为 None 值。    size : 返回的一个元组，有两个元素，其值为象素意义上的宽和高。<br>mode : RGB（true color image），此外还有，L（luminance），CMTK（pre-press image）。</p>
+<p>使用crop((x0,y0,x1,y1))方法可以对图片做裁切。</p>
+<p>区域由一个4元组定义，表示为坐标是 (left, upper, right, lower)，Python Imaging Library 使用左上角为 (0, 0)的坐标系统</p>
+<p>box(100,100,200,200)就表示在原始图像中以左上角为坐标原点，截取一个100*100（像素为单位）的图像，为方便理解，如下为示意图box（b1,a1,b2,a2）<br><img src="/images/163.png" alt="526002f027e30e9e3a9f17216ba1e20c.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">img=Image.open(<span class="string">"C:/Users/12521/Desktop/1.jpg"</span>)</span><br><span class="line">box=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>]</span><br><span class="line">img1=img.crop(box)</span><br><span class="line">print(<span class="string">"图片大小:"</span> + str(img1.size))</span><br><span class="line">print(<span class="string">"图片RGB"</span> + str(img1.mode))</span><br><span class="line">img.paste(img1,(<span class="number">200</span>,<span class="number">200</span>)) <span class="comment">#第一次个参数是图片</span></span><br><span class="line">img.paste(img1,(<span class="number">500</span>,<span class="number">500</span>,<span class="number">600</span>,<span class="number">600</span>))</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
 
-<p>第二阶段是请求初始化阶段（RINT），在模块初始化并激活后，会创建PHP运行环境，同时调用所有模块注册的RINT函数，调用每个扩展的请求初始化函数 ，设定特定的环境变量、分配资源或执行其他任务，如审核。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PHP_RINIT_FUNCTION(memcached) &#123;         </span><br><span class="line">        /* 执行一些关于请求的初始化 */      </span><br><span class="line">        return SUCCESS; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>im.paste(colour,box)</p>
+<p>它与定义1一样，但是它使用同一种颜色填充变量box对应的区域。对于单通道图像，变量colour为单个颜色值；对于多通道，则为一个元组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im01= Image.open(<span class="string">"C:/Users/12521/Desktop/1.jpg"</span>)</span><br><span class="line">im01.paste((<span class="number">0</span>,<span class="number">256</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line">im01.paste(<span class="number">255</span>,(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line">im01.show()</span><br></pre></td></tr></table></figure>
 
-<p>第三阶段，请求处理完成后，会调用PHP_RSHUTDOWN_FUNCTION进行回收，这是每个扩展的请求关闭函数，执行最后的清理工作。Zend引擎执行清理过程、垃圾收集、对之前的请求期间用到的每个变量执行unset。请求完成可能是执行到脚本完成，也可能是调用die()或exit()函数完成</p>
-<p>第四阶段，当PHP生命周期结束时候，PHP_MSHUTDOWN_FUNCTION对模块进行回收处理，这是每个扩展的模块关闭函数，用于关闭自己的内核子系统。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHP_MSHUTDOWN_FUNCTION(memcached) &#123; /* 执行关于模块的销毁工作 */ UNREGISTER_INI_ENTRIES(); return SUCCESS; &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>二、Putpixel</strong></p>
+<p>im.putpixel(xy,colour)</p>
+<p>修改指定位置上的像素值。对于单通道图像，变量colour为一个数值；对于多通道图像，变量colour为一个元组。</p>
+<p>这个方法执行比较慢。如果是1.1.6版本，像素访问对象（参考load方法）提供了一个更快的方法修改图像。如果用户要生成整幅图像，可以使用更有效的方法产生一个python list，然后使用方法putdata()将它拷贝到图像上去。对于更大的改变，使用方法paste或者ImageDraw模块。</p>
+<p><strong>三、getpixel</strong></p>
+<p>定义：im.getpixel(xy) ⇒ value or tuple</p>
+<p>含义：返回给定位置的像素值。如果图像为多通道，则返回一个元组。</p>
+<p>注意：该方法执行比较慢；如果用户需要使用python处理图像中较大部分数据，可以使用像素访问对象（见load），或者方法getdata()。</p>
+<p><strong>四、Seek</strong></p>
+<p>定义：im.seek(frame)<br>含义：在给定的文件序列中查找指定的帧。如果查找超越了序列的末尾，则产生一个EOFError异常。当文件序列被打开时，PIL库自动指定到第0帧上。<br>注意：在当前的版本上，大多数序列格式只允许用户查找下一帧，不能跳跃式查找指定的帧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">img= Image.open(<span class="string">"C:/Users/12521/Desktop/aaa.gif"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">	img.seek(i)</span><br><span class="line">	img.show()</span><br></pre></td></tr></table></figure>
 
+<h4 id="四、-Point"><a href="#四、-Point" class="headerlink" title="四、 Point"></a><strong>四、 Point</strong></h4><p>定义：im.point(table)⇒ image</p>
+<p>im.point(function) ⇒ image</p>
+<p>含义：返回给定查找表对应的图像像素值的拷贝。变量table为图像的每个通道设置256个值。如果使用变量function，其对应函数应该有一个参数。这个函数将对每个像素值使用一次，结果表格将应用于图像的所有通道。</p>
+<p>如果图像的模式为“I（整数）”或者“F（浮点）”，用户必须使用function方式，function必须按照下面的格式：</p>
+<p>argument * scale+ offset</p>
+<p>例如：</p>
+<p>out = im.point(lambda i: i * 1.2 + 10)</p>
+<p>用户可以省略变量scale和offset。</p>
+<p>例子1：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">im01 = Image.open(<span class="string">"D:\\Code\\Python\\test\\img\\test01.jpg"</span>)</span><br><span class="line"></span><br><span class="line">im_point_fun = im01.point(<span class="keyword">lambda</span> i:i*<span class="number">1.2</span>+<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">im_point_fun.show()</span><br></pre></td></tr></table></figure>
+
+<p>图像im_point_fun比原图im01亮度增加了很多；因为lambda表达式中对原图的每个像素点的值都做了增加操作。</p>
+<p>Lambda表达式是python中可以替代简单函数的一种方式，它只能封装有限的逻辑，但是对于某些情况，使用起来还是很方便的。</p>
+<p>定义lambda函数的形式如下：labmda参数：表达式lambda函数默认返回表达式的值。你也可以将其赋值给一个变量。lambda函数可以接受任意个参数，包括可选参数，但是表达式只有一个。</p>
+<p>Lambda表达式的例子：</p>
+<p>range(10)</p>
+<p><code>[0, 1, 2, 3, 4,5, 6, 7, 8, 9]</code></p>
+<p>如果我们要对这10个数字，逐个做加一操作，可以使用如下表达式：</p>
+<p><code>map(lambda x:x+1, [y for y in range(10)])</code></p>
+<p><code>[1, 2, 3, 4, 5,6, 7, 8, 9, 10]</code></p>
 
       
     </div>
@@ -427,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/23/Git源码泄露/" rel="next" title="Git源码泄露">
-                <i class="fa fa-chevron-left"></i> Git源码泄露
+              <a href="/2019/09/10/xor密码/" rel="next" title="xor密码">
+                <i class="fa fa-chevron-left"></i> xor密码
               </a>
             
           </div>
@@ -436,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/23/CGI-FastCGI学习/" rel="prev" title="CGI/FastCGI学习">
-                CGI/FastCGI学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP内核探索：从SAPI接口开始"><span class="nav-number">1.</span> <span class="nav-text">PHP内核探索：从SAPI接口开始</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、Paste"><span class="nav-number">1.</span> <span class="nav-text">一、Paste</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、-Point"><span class="nav-number">2.</span> <span class="nav-text">四、 Point</span></a></li></ol></div>
             
 
           </div>

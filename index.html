@@ -250,6 +250,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/Python图像处理库PIL之Image模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="新boy">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/gxa.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Steady">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/10/Python图像处理库PIL之Image模块/" itemprop="url">Python图像处理库PIL之Image模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-10T21:27:43+08:00">
+                2019-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一、Paste"><a href="#一、Paste" class="headerlink" title="一、Paste"></a><strong>一、Paste</strong></h4><p>im.paste(image,box)</p>
+<p>将一张图粘贴到另一张图像上。变量box或者是一个给定左上角的2元组，或者是定义了左，上，右和下像素坐标的4元组，或者为空（与（0，0）一样）。如果给定4元组，被粘贴的图像的尺寸必须与区域尺寸一样。</p>
+<p>如果模式不匹配，被粘贴的图像将被转换为当前图像的模式。</p>
+<p>format : 识别图像的源格式，如果该文件不是从文件中读取的，则被置为 None 值。    size : 返回的一个元组，有两个元素，其值为象素意义上的宽和高。<br>mode : RGB（true color image），此外还有，L（luminance），CMTK（pre-press image）。</p>
+<p>使用crop((x0,y0,x1,y1))方法可以对图片做裁切。</p>
+<p>区域由一个4元组定义，表示为坐标是 (left, upper, right, lower)，Python Imaging Library 使用左上角为 (0, 0)的坐标系统</p>
+<p>box(100,100,200,200)就表示在原始图像中以左上角为坐标原点，截取一个100*100（像素为单位）的图像，为方便理解，如下为示意图box（b1,a1,b2,a2）<br><img src="/images/163.png" alt="526002f027e30e9e3a9f17216ba1e20c.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">img=Image.open(<span class="string">"C:/Users/12521/Desktop/1.jpg"</span>)</span><br><span class="line">box=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>]</span><br><span class="line">img1=img.crop(box)</span><br><span class="line">print(<span class="string">"图片大小:"</span> + str(img1.size))</span><br><span class="line">print(<span class="string">"图片RGB"</span> + str(img1.mode))</span><br><span class="line">img.paste(img1,(<span class="number">200</span>,<span class="number">200</span>)) <span class="comment">#第一次个参数是图片</span></span><br><span class="line">img.paste(img1,(<span class="number">500</span>,<span class="number">500</span>,<span class="number">600</span>,<span class="number">600</span>))</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
+
+<p>im.paste(colour,box)</p>
+<p>它与定义1一样，但是它使用同一种颜色填充变量box对应的区域。对于单通道图像，变量colour为单个颜色值；对于多通道，则为一个元组。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">im01= Image.open(<span class="string">"C:/Users/12521/Desktop/1.jpg"</span>)</span><br><span class="line">im01.paste((<span class="number">0</span>,<span class="number">256</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line">im01.paste(<span class="number">255</span>,(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line">im01.show()</span><br></pre></td></tr></table></figure>
+
+<p><strong>二、Putpixel</strong></p>
+<p>im.putpixel(xy,colour)</p>
+<p>修改指定位置上的像素值。对于单通道图像，变量colour为一个数值；对于多通道图像，变量colour为一个元组。</p>
+<p>这个方法执行比较慢。如果是1.1.6版本，像素访问对象（参考load方法）提供了一个更快的方法修改图像。如果用户要生成整幅图像，可以使用更有效的方法产生一个python list，然后使用方法putdata()将它拷贝到图像上去。对于更大的改变，使用方法paste或者ImageDraw模块。</p>
+<p><strong>三、getpixel</strong></p>
+<p>定义：im.getpixel(xy) ⇒ value or tuple</p>
+<p>含义：返回给定位置的像素值。如果图像为多通道，则返回一个元组。</p>
+<p>注意：该方法执行比较慢；如果用户需要使用python处理图像中较大部分数据，可以使用像素访问对象（见load），或者方法getdata()。</p>
+<p><strong>四、Seek</strong></p>
+<p>定义：im.seek(frame)<br>含义：在给定的文件序列中查找指定的帧。如果查找超越了序列的末尾，则产生一个EOFError异常。当文件序列被打开时，PIL库自动指定到第0帧上。<br>注意：在当前的版本上，大多数序列格式只允许用户查找下一帧，不能跳跃式查找指定的帧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line">img= Image.open(<span class="string">"C:/Users/12521/Desktop/aaa.gif"</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">	img.seek(i)</span><br><span class="line">	img.show()</span><br></pre></td></tr></table></figure>
+
+<h4 id="四、-Point"><a href="#四、-Point" class="headerlink" title="四、 Point"></a><strong>四、 Point</strong></h4><p>定义：im.point(table)⇒ image</p>
+<p>im.point(function) ⇒ image</p>
+<p>含义：返回给定查找表对应的图像像素值的拷贝。变量table为图像的每个通道设置256个值。如果使用变量function，其对应函数应该有一个参数。这个函数将对每个像素值使用一次，结果表格将应用于图像的所有通道。</p>
+<p>如果图像的模式为“I（整数）”或者“F（浮点）”，用户必须使用function方式，function必须按照下面的格式：</p>
+<p>argument * scale+ offset</p>
+<p>例如：</p>
+<p>out = im.point(lambda i: i * 1.2 + 10)</p>
+<p>用户可以省略变量scale和offset。</p>
+<p>例子1：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">im01 = Image.open(<span class="string">"D:\\Code\\Python\\test\\img\\test01.jpg"</span>)</span><br><span class="line"></span><br><span class="line">im_point_fun = im01.point(<span class="keyword">lambda</span> i:i*<span class="number">1.2</span>+<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">im_point_fun.show()</span><br></pre></td></tr></table></figure>
+
+<p>图像im_point_fun比原图im01亮度增加了很多；因为lambda表达式中对原图的每个像素点的值都做了增加操作。</p>
+<p>Lambda表达式是python中可以替代简单函数的一种方式，它只能封装有限的逻辑，但是对于某些情况，使用起来还是很方便的。</p>
+<p>定义lambda函数的形式如下：labmda参数：表达式lambda函数默认返回表达式的值。你也可以将其赋值给一个变量。lambda函数可以接受任意个参数，包括可选参数，但是表达式只有一个。</p>
+<p>Lambda表达式的例子：</p>
+<p>range(10)</p>
+<p><code>[0, 1, 2, 3, 4,5, 6, 7, 8, 9]</code></p>
+<p>如果我们要对这10个数字，逐个做加一操作，可以使用如下表达式：</p>
+<p><code>map(lambda x:x+1, [y for y in range(10)])</code></p>
+<p><code>[1, 2, 3, 4, 5,6, 7, 8, 9, 10]</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/xor密码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1874,194 +2069,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/01/PYTHON-CTF密码/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="新boy">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/gxa.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Steady">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/01/PYTHON-CTF密码/" itemprop="url">PYTHON-CTF密码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-01T14:47:00+08:00">
-                2019-09-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PYTHON-CTF/" itemprop="url" rel="index">
-                    <span itemprop="name">PYTHON-CTF</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PYTHON-CTF/密码/" itemprop="url" rel="index">
-                    <span itemprop="name">密码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.9k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  19
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>python-ctf中的密码</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/01/PYTHON-CTF密码/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2114,7 +2121,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2209,7 +2216,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">55.1k</span>
+    <span title="Site words total count">56.5k</span>
   
 </div>
 
